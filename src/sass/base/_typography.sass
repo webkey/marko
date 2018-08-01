@@ -4,10 +4,11 @@
 
 body
 	position: relative
+	min-width: $page-layout-min
 	+font-normal
 	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
 	color: $text-color
-	min-width: 320px
 	background: $bg-color url(../../img/empty.png) no-repeat left top fixed
 
 	// выделение текста
@@ -103,7 +104,7 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
-.entry-text
+//.entry-text
 	+font-bold
 	font-size: 1.2em
 	margin-bottom: $bottom-space
@@ -114,7 +115,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	i, em
 		+font-bold-italic
 
-.entry-img
+//.entry-img
 	position: relative
 	overflow: hidden
 	+ratio(10, 6)
@@ -141,7 +142,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			width: auto
 			height: 100%
 
-.entry-img__title
+//.entry-img__title
 	position: absolute
 	+position(50%)
 	+padding-horizontal(0 !important)
@@ -161,6 +162,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 	+media('<mob-md')
 		+font(22px, 1)
+
+.hide
+	display: none
 
 .mark
 	color: $mark-color
@@ -440,7 +444,7 @@ table
 			display: block
 			margin: 0
 			padding: 0 0 10px
-			font-family: $font-alt
+			+font-alt
 			+font(round-float($font-size*1.25, 1), $line-height)
 			color: $text-color
 			text-align: center

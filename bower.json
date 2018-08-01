@@ -23,6 +23,7 @@
     "jquery-smartresize": "*",
     "include-media": "^1.4.9",
     "swiper": "^3.4.2",
+    "matchHeight": "matchheight#^0.7.0",
     "normalize-scss": "normalize.scss#^7.0.1",
     "jquery-validation": "^1.17.0"
   },

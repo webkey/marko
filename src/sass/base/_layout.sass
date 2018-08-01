@@ -15,11 +15,20 @@ html
 
 /* === LAYOUT ===
 .max-wrap
-	max-width: #{$page-layout-width +  nth($page-layout-space, 2)*2}
+	max-width: $page-layout-width
 
 .layout
 	+padding-horizontal(nth($page-layout-space, 2))
 	+push-auto
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($page-layout-space--mob, 2))
+
+.layout-space
+	+padding-horizontal(nth($page-layout-space, 2))
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($page-layout-space--mob, 2))
 
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
@@ -133,17 +142,19 @@ html
 	margin-left: auto
 	margin-right: auto
 
-// лэяут страницы
+// layout страницы
 .wrapper
+	position: relative
 	display: flex
 	flex-direction: column
 	justify-content: space-between
 	align-items: stretch
 	margin: 0 auto
-	//min-height: 100vh
 	min-height: 100%
-	overflow: hidden
-	position: relative
+	max-width: 100%
+	width: $page-layout-width
+	background-color: $bg-color-alt
+	box-shadow: 0 0 0 1px #cdcdcd
 
 /* === LAYOUT end ===
 
@@ -151,153 +162,850 @@ html
 .main
 	flex-shrink: 1
 	flex-grow: 1
-	position: relative
-	clear: both
-	z-index: 4
-
-.main__holder
-	width: 100%
-	+clear
-
-.content-wrap
-	float: left
-	width: 100%
-
-.content
-	margin: 0 200px 0 300px
-	min-height: 50px
-
-	background-color: whitesmoke
-
-	+media('<desk-lg')
-		margin-right: 0
+	padding-top: $header-height
 
 	+media('<tab-lg')
-		margin-left: 0
+		padding-top: $header-height--sm
 
 /* === CONTENT end ===
 
 /* === HEADER ===
 .header
-	background-color: lightgreen
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: $header-height
+	min-width: $page-layout-min
+	z-index: $z-i-header
+
+	+media('<tab-lg')
+		height: $header-height--sm
 
 .header__holder
 	position: relative
-	padding: 10px 0
-	z-index: 5
+	height: 100%
+	//padding: 0
+	background-color: $header-bg
+	box-shadow: $header-shadow
 	+clear
 
 /* logo
 .logo
-	position: relative
-	float: left
-	background: url(../../img/logo.png) no-repeat
-	width: 220px
-	height: 85px
-	text-indent: -9999px
-	overflow: hidden
-	margin: 0 2rem 0 0
-	z-index: 5
+	display: block
+	position: absolute
+	left: nth($page-layout-space, 2)
+	width: nth($logo-size, 1)
+	top: 50%
+	transform: translate(0, -50%)
+
+	+media('<mob-lg')
+		left: nth($page-layout-space--mob, 2)
+		width: nth($logo-size--mob, 1)
+
+	&::before
+		content: ""
+		display: block
+		+ratio(nth($logo-size, 1), nth($logo-size, 2))
+		background-repeat: no-repeat
+		background-position: left
+		background-color: $header-bg
+		background-image: url(../../img/logo.png)
+		background-size: contain
 
 	a, & > span
+		position: absolute
 		display: block
-		height: 100%
+		left: 0
+		top: 0
+		+size(100%)
+		z-index: 5
+
+		& > em
+			+hide-text
 
 /* logo end
+
+/* search-form
+.search-panel
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	min-width: 320px
+	z-index: 20
+
+	&.search-is-open
+		z-index: 25
+
+.search-panel__layout
+	margin: 0 auto
+	position: relative
+
+.search-form
+	$bg-color: white
+	display: none
+	align-items: center
+	position: absolute
+	right: 0
+	top: 0
+	height: $header-height
+	padding: 5px 90px 5px nth($page-layout-space, 2)
+	background-color: $bg-color
+	//opacity: 0
+	//visibility: hidden
+	// transition
+	//z-index: -1
+	//$prop: opacity
+	//will-change: $prop
+	//transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		height: $header-height--sm
+		padding-right: 70px
+		width: 100%
+
+	+media('<mob-lg')
+		padding-left: nth($page-layout-space--mob, 2)
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		right: 100%
+		height: 100%
+		width: 40px
+		margin: 0 -4px
+		pointer-events: none
+		+linear-gradient(to left, $bg-color 0%, $bg-color 50%, rgba($bg-color, 0) 100%)
+
+		+media('<tab-lg')
+			display: none
+
+	.search-is-open &
+		display: block
+		display: flex
+//opacity: 1
+//z-index: auto
+
+.search-form__field
+	position: relative
+	height: nth($search-form--size, 1)
+	width: nth($search-form--size, 2)
+	margin: 0
+	// transform
+	//$scale: 0.95
+	//transform: scale($scale)
+	//transform: scale3d($scale, $scale, 1)
+	// transition
+	//$prop: transform
+	//will-change: $prop
+	//transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		height: nth($search-form--size--sm, 1)
+		width: nth($search-form--size--sm, 2)
+
+	.search-is-open &
+		// transform
+		//$scale: 1
+		//transform: scale($scale)
+		//transform: scale3d($scale, $scale, 1)
+		display: block
+
+input.search-form__input
+	+size(100%)
+	+font(16px, 20px)
+	padding: 13px 45px 13px 10px
+	border-radius: 5px
+	border: 2px solid $border-color
+	background-color: #f3f3f3
+
+	+media('<tab-lg')
+		+padding-vertical(8px)
+
+	&, &:hover, &:focus, &.error, &.input--has-value
+		box-shadow: none
+		border-color: $border-color
+
+.search-form__btn
+	position: absolute
+	right: 10px
+	top: 50%
+	margin: -15px 0 0
+	+font-normal
+	+size(30px)
+	color: $text-color
+	text-align: center
+	border: none
+	background: none
+	padding: 0
+	z-index: 5
+	// transition
+	pointer-events: none
+	$prop: color
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	.input--has-value &
+		pointer-events: auto
+
+	input
+		+cover-abs()
+		padding: 0
+		border: 0
+		opacity: 0
+		z-index: 99
+
+	svg
+		display: inline-block
+		position: absolute
+		+position(50%)
+		+size(18px)
+		margin: -9px 0 0 -9px
+
+	path
+		fill: currentColor
+		transition: inherit
+
+	span
+		+hide-text
+
+	.no-touchevents &:hover
+		color: $link-color
+
+.search-opener
+	display: block
+	position: absolute
+	right: nth($page-layout-space, 2)
+	top: round($header-height/2)
+	margin: -#{round($search-form--opener-size/2)} 0 0
+	height: $search-form--opener-size
+	width: $search-form--opener-size
+	border: 2px solid $border-color
+	border-radius: $search-form--opener-size
+	background-color: white
+	color: $text-color
+	z-index: 20
+	$prop: color, border-color
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		top: round($header-height--sm/2)
+		right: 66px
+		border: none
+		border-radius: 0
+
+	svg
+		display: block
+		position: absolute
+		+position(50%)
+		// transition
+		//$prop: transform, opacity
+		//will-change: $prop
+		//transition:
+			property: $prop
+			duration: $animation-speed
+			timing-function: ease-in-out
+
+		&.svg-ico-search
+			+size($search-form--btn-icon-size)
+			margin: -#{round($search-form--btn-icon-size*0.5)} 0 0 -#{round($search-form--btn-icon-size*0.5)}
+
+			+media('<tab-lg')
+				+size($search-form--btn-icon-size--sm)
+				margin: -#{round($search-form--btn-icon-size--sm*0.5)} 0 0 -#{round($search-form--btn-icon-size--sm*0.5)}
+
+	//&.svg-ico-cross
+		+size(24px)
+		margin: -12px 0 0 -12px
+		opacity: 0
+		// transform
+		$scale: 0.5
+		transform: scale($scale)
+		transform: scale3d($scale, $scale, 1)
+
+	path
+		fill: currentColor
+		transition: inherit
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+	// active
+	&.search-is-open
+		display: none
+
+// active
+//&.search-is-open
+	border-color: white
+
+	svg
+		&.svg-ico-search
+			opacity: 0
+			// transform
+			$scale: 0.5
+			transform: scale($scale)
+			transform: scale3d($scale, $scale, 1)
+
+		&.svg-ico-cross
+			opacity: 1
+			// transform
+			$scale: 1
+			transform: scale($scale)
+			transform: scale3d($scale, $scale, 1)
+
+.search-closer
+	display: none
+	position: absolute
+	right: nth($page-layout-space, 2)
+	top: round($header-height/2)
+	margin: -#{round($search-form--opener-size/2)} 0 0
+	height: $search-form--opener-size
+	width: $search-form--opener-size
+	color: $text-color
+	z-index: 20
+	$prop: color
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		top: round($header-height--sm/2)
+		right: 10px
+		border: none
+
+	svg
+		display: block
+		position: absolute
+		+position(50%)
+		+size(24px)
+		margin: -12px 0 0 -12px
+
+	path
+		fill: currentColor
+		transition: inherit
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+	// active
+	&.search-is-open
+		display: block
+
+/* search-form end
 /* === HEADER end ===
 
 /* === NAVIGATION ===
-.nav
-	position: relative
+// variables
+$nav-is-open-class: 'nav-is-open'
 
+// nav layout
+.nav
+	position: fixed
+	width: 100%
+	min-width: $page-layout-min
+	z-index: $z-i-header
+	left: 0
+	top: 0
+	$prop: transform, opacity
+	will-change: $prop
+	transition:
+		property: transform, opacity
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		position: fixed
+		width: $nav-width
+		height: calc(100% - #{$header-height--sm})
+		left: 0
+		top: $header-height--sm
+		background-color: white
+		z-index: 9999
+		$x: -100%
+		transform: translate($x, 0) // for old browser
+		transform: translateX($x)
+
+		&.#{$nav-is-open-class} // add js
+			$x: 0
+			transform: translate($x, 0) // for old browser
+			transform: translateX($x)
+
+	+media('<mob-lg')
+		width: 100%
+
+.nav__layout
+	position: relative
+	height: 100%
+	margin: 0 auto
+
+	+media('<tab-lg')
+		padding: 0
+
+/* nav list
+// общие стили для пунктов навигации
 .nav__list
-	+clear
+	position: absolute
+	top: 0
+	left: #{nth($logo-size, 1) + nth($page-layout-space, 2) + 50}
+	height: $header-height
+
+	+media('<tab-lg')
+		position: relative
+		top: auto
+		left: auto
+		height: 100%
+		overflow-x: hidden
+		overflow-y: auto
+
+	// убрать подсветку при клике на тачскринах
+	.touchevents &
+		user-select: none
+		-webkit-tap-highlight-color: transparent
 
 	li
 		position: relative
 
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
+	.nav__tab
+		position: relative
 
 	a
 		display: block
+		position: relative
+		padding: 8px 20px
+		color: $text-color
+		text-decoration: none
+		$prop: color, background-color, border-color
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
 
-	& > li
-		float: left
-		margin-right: 2rem
+		+media('<tab-lg')
+			+padding-horizontal(nth($page-layout-space, 2))
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
+		//+media('<mob-lg')
+			+padding-horizontal(nth($page-layout-space--mob, 2))
 
+		// убрать подсветку при клике на тачскринах
+		.touchevents &
+			user-select: none
+			-webkit-tap-highlight-color: transparent
+
+		span
+			+font(1.6rem, round-float(24/16, 2))
+
+	&, & ul
+		list-style: none
+		padding: 0
+		margin: 0
+
+// общие стили для подменю навигации
 .nav__drop
-	position: absolute
-	left: 0
-	top: 100%
-	background-color: white
-	border: 1px solid $border-color
-	padding: 2rem
-	width: 320px
-	opacity: 0
-	visibility: hidden
-	z-index: 10
+	display: none
+	// transition
+	$prop: opacity, visibility
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
 
-	li:hover > &
+	+media('>=tab-lg')
+		position: absolute
+		left: 0
+		top: 100%
+		width: 280px
+		padding: 14px 0
+		opacity: 0
+		visibility: hidden
+		border: 1px solid #ccc
+		background-color: #fff
+
+	.hover > &
+		+media('>=tab-lg')
+			display: block
+			opacity: 1
+			visibility: visible
+
+	.no-js &
+		display: block
 		opacity: 1
 		visibility: visible
 
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
+// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
+.nav__list li.has-drop > .nav__tab > a
+	+media('<tab-lg')
+		padding-right: (round($nav-arrow-size+10))
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
+// стили для пункта навигации ТЕКУЩЕЙ страницы
+.nav__list li.current > .nav__tab
 
+	&
+		a
+			color: $base-color
+			+font-alt-bold
 
-	.nav__drop
-		top: 0
-		left: 100%
+// стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
+//.nav__list li
+	&.is-open
+		& > .nav__tab a
+			&::before
+				opacity: 1
+				transform: translate(0, 0)
 
-/* === NAVIGATION end ===
+//& > .nav__drop
+	display: block
 
-/* === SIDEBAR ===
-.sidebar
-	display: inline
+// нужно добавлять на nav__drop style="display: block"
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.nav__list > li
 	float: left
-	margin: 0 0 0 -100%
-	width: $sidebar-width
-
-	background-color: sandybrown
+	height: $header-height
 
 	+media('<tab-lg')
-		display: none
+		float: none
+		height: auto
+		width: $nav-width
 
-/* === SIDEBAR end ===
+		.touchevents &
+			width: auto
 
-/* === ASIDE ===
-.aside
-	display: inline
-	float: right
-	margin: 0 0 0 -#{$aside-width}
-	width: $aside-width
-	background-color: sandybrown
+	& > .nav__tab
+		height: 100%
+		padding: 10px 0
 
-	+media('<desk-lg')
-		display: none
+		+media('<tab-lg')
+			padding: 0
+			height: auto
 
-/* === ASIDE end ===
+	& > .nav__tab a,
+	& > a
+			display: flex
+			align-items: center
+			height: 100%
+			+padding-vertical(5px)
+			+font-alt-bold
+			color: $text-color
+			border-radius: 10px
+			border: 2px solid transparent
+
+			+media('<tab-lg')
+				border: none
+				+padding-vertical(15px)
+
+			span
+				+font(2.0rem, round-float(24/20, 2))
+
+	// hover
+	&.hover
+		// только для десктопа
+		+media('>=tab-lg')
+			& > .nav__tab a,
+			& > a
+					border-color: rgba($base-color, 0.3)
+					color: $base-color
+
+// СТРЕЛКИ навигации
+.nav__angle
+	position: absolute
+	right: 0
+	top: 0
+	width: $nav-arrow-size
+	height: 100%
+	//border: solid #666
+	//border-width: 0 0 0 1px
+	transition-property: transform, color, background-color
+	transition-duration: $animation-speed
+	z-index: 2
+	cursor: pointer
+	display: none
+
+	// убрать подсветку при клике на тачскринах
+	.touchevents &
+		user-select: none
+		-webkit-tap-highlight-color: transparent
+
+	li.has-drop > .nav__tab > &
+		+media('<tab-lg')
+			display: block
+
+	i
+		position: absolute
+		+position(50%, 50%)
+		+size(20px)
+		margin: -10px 0 0 -10px
+		background-color: $base-color
+		border-radius: 10px
+		pointer-events: none
+		transition-property: transform
+		transition-duration: $animation-speed
+		+font(0, 0)
+
+		&::before, &::after
+			+pseudo()
+			+position(50%, 50%)
+			height: 2px
+			width: 10px
+			margin: -1px -5px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: white
+			transition-property: background-color, transform
+			transition-duration: $animation-speed
+
+		&::after
+			transform: rotate(0.25turn)
+
+	// активное (подменю открыто)
+	li.is-open > .nav__tab & i
+		//transform: rotate(0)
+
+		&::before, &::after
+			transform: rotate(0)
+
+// стили стрелок навигации для разных состояний
+//.nav__angle
+
+	// ховер
+	//.no-touchevents li > .nav__tab &:hover i
+		&::before, &::after
+			background-color: $base-color
+
+// особые стили для пунктов ПОДМЕНЮ
+.nav__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	//ul, a, .nav__angle
+		background-color: $nav-bg-color-s
+
+	a
+		color: $text-color
+
+		+media('>=tab-lg')
+			padding-left: 20px
+
+		+media('<tab-lg')
+			padding-left: #{round(nth($page-layout-space, 2)*2)}
+
+	//span
+		+font(1.6rem, round-float(20/16, 2))
+
+	// hover
+	li.hover
+		// только для десктопа
+		+media('>=tab-lg')
+			& > .nav__tab a,
+			& > a
+					background-color: rgba($base-color, 0.1)
+
+	.nav__drop
+
+		left: 100%
+		top: -15px
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		//ul, a, .nav__angle
+			background-color: $nav-bg-color-ss
+
+		a
+			+media('<tab-lg')
+				padding-left: #{round(nth($page-layout-space, 2)*3)}
+
+		//span
+			+font(1.6rem, round-float(20/16, 2))
+
+		.nav__drop
+// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+//ul, a, .nav__angle
+	background-color: $nav-bg-color-sss
+
+//a
+	span
+		+font(1.4rem, round-float(18/14, 2))
+
+/* nav list
+// nav opener btn
+a.nav-opener
+	$btn-menu-bg: white
+	$btn-menu-color: $text-color
+	$btn-menu-size: 40px
+	$btn-menu-lines-width: 30px
+	$btn-menu-lines-height: 3px
+	$btn-menu-lines-space: 5px
+	$btn-menu-lines-color: $text-color
+	$btn-menu-animation-speed: $animation-speed
+	$btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
+
+	$user-options-cross-width: $btn-menu-lines-width
+	$user-options-cross-height: $btn-menu-lines-height
+	$user-options-cross-color: $btn-menu-lines-color
+
+	// =====================
+
+	display: none
+	position: fixed
+	right: 14px
+	top: round($header-height--sm/2)
+	margin-top: -#{round($btn-menu-size/2)}
+	z-index: 20
+	+size($btn-menu-size)
+	text-decoration: none
+	color: $text-color
+	background-color: $btn-menu-bg
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+	+media('<tab-lg')
+		display: block
+
+	.touchevents &
+		// убрать подсветку при клике на тачскринах
+		user-select: none
+		-webkit-tap-highlight-color: transparent
+
+	& > span
+		+hide-text
+		white-space: normal
+
+	// крест
+	&::before, &::after
+		+pseudo()
+		+size($user-options-cross-width, $user-options-cross-height)
+		background-color: $user-options-cross-color
+		+position(50%)
+		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
+		will-change: opacity, transform
+		opacity: 0
+		transition:
+			property: transform, opacity
+			duration: $btn-menu-animation-speed
+			delay: 0s
+			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+	// бутерброд
+	& > i
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($btn-menu-lines-width, $btn-menu-lines-height)
+		background-color: $btn-menu-lines-color
+		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
+		backface-visibility: hidden
+		transition:
+			property: opacity
+			duration: $btn-menu-animation-speed
+			delay: $btn-menu-animation-delay
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			+size($btn-menu-lines-width, $btn-menu-lines-height)
+			background-color: $btn-menu-lines-color
+			backface-visibility: hidden
+			transition:
+				property: transform
+				duration: $btn-menu-animation-speed
+				delay: $btn-menu-animation-delay
+
+		//first line menu
+		&::before
+			top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
+
+		//third line menu
+		&::after
+			top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+	// hover
+	.no-touchevents &:hover
+		//background-color: #f3f3f3
+
+		&::before, &::after
+			background-color: $base-color
+
+		& > i
+			background-color: $base-color
+
+			&::before, &::after
+				background-color: $base-color
+
+	// active
+	&.nav-is-open
+		background-color: #fff
+
+		&::before, &::after
+			transition-delay: $btn-menu-animation-delay
+			//background-color: $base-color
+
+			opacity: 1
+
+		&::before
+			transform: rotate(45deg) translateZ(0)
+
+		&::after
+			transform: rotate(-45deg) translateZ(0)
+
+		& > i
+			opacity: 0
+			transition-delay: 0s
+
+			&::before, &::after
+				transition-delay: 0s
+
+			&::before
+				transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+			&::after
+				transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+// overlay
+// в html добавить
+// <div class="nav-overlay nav-overlay-js">&nbsp;</div>
+.overlay
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	background-color: rgba(black, 0.35)
+	z-index: 9998
+	opacity: 0
+	visibility: hidden
+	$prop: opacity, visibility
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	&.nav-overlay
+		top: $header-height--sm
+
+	&.open-only-mob
+		+media('>=tab-lg')
+			display: none
+
+	&.#{$nav-is-open-class}
+		opacity: 1
+		visibility: visible
+
+	&.filters-is-open, &.request-is-open
+		opacity: 1
+		visibility: visible
+
+/* navigation end
+
+/* === NAVIGATION end ===
 
 /* === FOOTER ===
 .footer

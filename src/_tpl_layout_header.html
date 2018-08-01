@@ -1,23 +1,50 @@
 <header class="header">
-	<div class="max-wrap layout">
-		<div class="header__holder">
-			<!--logo-->
-			<strong class="logo">
-				<@@if(currentItem == "Главная"){span}@@if(currentItem != "Главная"){a href="index.html" title="Project Name"}>Project Name</@@if(currentItem == "Главная"){span}@@if(currentItem != "Главная"){a}>
-				<img style="display: none;" src="img/logo.png" alt="Project Name">
-			</strong>
-			<!--logo end-->
-
-			<!--navigation-->
-			<div class="nav-wrap">
-				<nav class="nav">
-					@@include('_tpl_nav-constructor.html', {
-						"currentItem": "@@currentItem",
-						"bsKey": "nav"
-					})
-				</nav>
-			</div>
-		<!--navigation end-->
+	<div class="max-wrap layout header__holder">
+		<!--logo-->
+		<div class="logo">
+			@@if(!context.logoNoLink){<a href="index.html">}
+			@@if(context.logoNoLink){<span>}
+			<em>Azbooks</em>
+			@@if(context.logoNoLink){</span>}
+			@@if(!context.logoNoLink){</a>}
+			<img style="display: none;" class="logo-print" src="img/logo.png" alt="Azbooks">
 		</div>
+		<!--logo end-->
 	</div>
 </header>
+
+<!--search-->
+<div class="search-panel search-form-js">
+	<div class="search-panel__layout max-wrap layout">
+		<form class="search-form" action="#" method="post" data-tc-stop>
+			<div class="search-form__field input-wrap">
+				<input type="search" class="search-form__input field-effects-js"/>
+				<div class="search-form__btn">
+					@@include("includes/svg/icon-search.svg")
+					<span>Find</span>
+					<input type="submit" value="">
+				</div>
+			</div>
+		</form>
+		<a href="#" class="search-opener search-opener-js">
+			@@include("includes/svg/icon-search.svg")
+		</a>
+		<a href="#" class="search-closer search-closer-js">
+			@@include("includes/svg/icon-cross.svg")
+		</a>
+	</div>
+</div>
+<!--search end-->
+
+<!--navigation-->
+<nav class="nav shutter--nav-js" data-tc-stop>
+	<div class="nav__layout max-wrap layout">
+		@@include('_tpl_nav-constructor.html', {
+			"currentItem": "@@currentItem",
+			"bsKey": "nav"
+		})
+	</div>
+</nav>
+<div class="overlay nav-overlay nav-overlay-js">&nbsp;</div>
+<a href="#" class="nav-opener nav-opener-js"><i>&nbsp;</i></a>
+<!--navigation end-->

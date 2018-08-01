@@ -109,6 +109,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
 		, 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
+		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
