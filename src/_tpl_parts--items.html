@@ -1,0 +1,60 @@
+<div class="parts__item">
+	<div class="parts__item__img">
+		<img src="@@src" alt="@@title" />
+	</div>
+	<div class="parts__item__thumb">
+		<a href="#!" class="p1">
+			<div class="t">@@title</div>
+			<div class="l">@@length</div>
+			@@include("includes/svg/icon-arrow-next.svg")
+		</a>
+		<a href="#!" class="p2">
+			<div class="t">Все новинки</div>
+			<div class="l">@@new</div>
+			@@include("includes/svg/icon-arrow-next.svg")
+		</a>
+	</div>
+	<div class="parts__item__prods">
+		<ul>
+			<li>
+				<a href="#!">
+					<div class="product__labels">
+						<div class="product__label product__label--new">Новинка</div>
+					</div>
+					<img src="@@list.src-1" alt="@@list.title-1" />
+					<ul>
+						<li>@@list.code-1</li>
+						<li>@@list.title-1</li>
+						<li><b>@@list.price-1</b> руб.</li>
+					</ul>
+				</a>
+			</li>
+			<li>
+				<a href="#!">
+					<div class="product__labels">
+						<div class="product__label product__label--new">Новинка</div>
+					</div>
+					<img src="@@list.src-2" alt="@@list.title-2" />
+					<ul>
+						<li>@@list.code-2</li>
+						<li>@@list.title-2</li>
+						<li><b>@@list.price-2</b> руб.</li>
+					</ul>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="product__labels">
+						<div class="product__label product__label--new">Новинка</div>
+					</div>
+					<img src="@@list.src-3" alt="@@list.title-3" />
+					<ul>
+						<li>@@list.code-3</li>
+						<li>@@list.title-3</li>
+						<li><b>@@list.price-3</b> руб.</li>
+					</ul>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

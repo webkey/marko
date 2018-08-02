@@ -124,7 +124,7 @@ function slidersInit() {
 			var $thisSlider = $(this);
 			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
 			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
-			var $thisFractPag = $('.swiper-pagination', $thisSlider);
+			var $thisPag = $('.swiper-pagination', $thisSlider);
 
 			new Swiper($thisSlider, {
 				// Optional parameters
@@ -139,9 +139,90 @@ function slidersInit() {
 				prevButton: $thisBtnPrev,
 
 				// Pagination
-				pagination: $thisFractPag,
+				pagination: $thisPag,
 				paginationType: 'bullets'
 			});
+		});
+	}
+
+	/*tape slider*/
+	var $tapeSlider = $('.tape-slider-js');
+	if ($tapeSlider.length) {
+		$tapeSlider.each(function () {
+			var $thisSlider = $(this),
+				$thisBtnNext = $('.swiper-button-next', $thisSlider),
+				$thisBtnPrev = $('.swiper-button-prev', $thisSlider),
+				$thisPag = $('.swiper-pagination', $thisSlider),
+				// slidesLength = $('.swiper-slide', $thisSlider).length,
+				perView = 4;
+
+			// console.log("slidesLength: ", slidesLength);
+			// console.log("perView: ", perView);
+
+			var mySwiper = new Swiper($thisSlider, {
+				// slidesPerView: 'auto',
+				slidesPerView: perView,
+				// slidesPerGroup: 2,
+				// autoHeight: true,
+				// Optional parameters
+				loop: false,
+				// Keyboard
+				keyboardControl: true,
+				// additional slide offset in the beginning of the container
+				// slidesOffsetBefore: 91,
+				// spaceBetween: 65,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				// navigation: {
+				// 	nextEl: $thisBtnNext,
+				// 	prevEl: $thisBtnPrev
+				// },
+
+				// Pagination
+				pagination: $thisPag,
+				// paginationType: 'fraction',
+				// Responsive breakpoints
+				breakpoints: {
+					1919: {
+						// slidesOffsetBefore: 71,
+						// spaceBetween: 30
+					},
+					1599: {
+						// slidesOffsetBefore: 41
+					},
+					1199: {
+						// slidesOffsetBefore: 30
+					},
+					639: {
+						// slidesOffsetBefore: 20
+					},
+					479: {
+						// slidesOffsetBefore: 0,
+						slidesPerView: 1
+					}
+				},
+				// events
+				onInit: function (swiper) {
+					$(swiper.slides).matchHeight({
+						byRow: true, property: 'height', target: null, remove: false
+					});
+				}
+			});
+
+			// $('h2').on('click', function () {
+			// 	console.log(1);
+			// 	mySwiper.detachEvents();
+			// });
+			// $('.parts__item__thumb').on('click', function () {
+			// 	console.log(2);
+			// 	mySwiper.update();
+			// 	mySwiper.attachEvents();
+			// })
 		});
 	}
 }

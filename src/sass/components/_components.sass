@@ -165,190 +165,6 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 
 /* swiper slider end
 
-/* promo slider
-.main-section--promo
-	height: calc(100vh - #{$header-height})
-	min-height: 820px
-
-.promo-slider
-	//width: 600px
-	height: 100%
-	//background-color: $bg-color-alt
-	color: white
-
-	+media('<mob-lg')
-		color: $text-color
-		padding-bottom: 60px
-
-.promo-slider__prev, .promo-slider__next, .promo-slider__pagination, .promo-slider__item__content
-	//filter: drop-shadow(1px 1px rgba(white, 0.5))
-	user-select: none
-
-.promo-slider__prev, .promo-slider__next
-	color: inherit
-
-	&::before, &::after
-		border-color: currentColor
-
-		+media('<mob-lg')
-			border-color: currentColor
-
-.promo-slider
-	.promo-slider__pagination
-		position: absolute
-		top: 0
-		left: 0
-		bottom: auto
-		width: auto
-		min-width: 35px
-		padding-right: 20px
-		+font-italic
-		+font(20px, 1)
-
-		+media('<mob-lg')
-			position: absolute
-			width: auto
-			min-width: 85px
-			+padding-horizontal(25px)
-			transform: translate(-50%, 0)
-			+font-italic
-			+font(18px, 1)
-			text-align: center
-			color: $text-color
-
-		&::after
-			+pseudo()
-			left: 100%
-			top: 50%
-			+size(100px, 0)
-			border-top: 1px solid black
-			margin-top: -1px
-
-			+media('<desk-sm')
-				width: 50px
-
-			+media('<mob-lg')
-				content: none
-
-.promo-slider__item
-	display: flex
-	text-align: center
-	justify-content: center
-	align-items: center
-	position: relative
-	padding-bottom: $partials-height
-	overflow: hidden
-
-	&::before
-		$grad-color: #2d2c2c
-		+pseudo()
-		+size(100%)
-		+position(0)
-		//+linear-gradient(to right, rgba($grad-color, 0.33) 0%, rgba($grad-color, 0) 100%)
-		background-color: rgba($grad-color, 0.35)
-		background-image: url(../../img/promo-slider-pattern.png)
-		background-size: 25% 25%
-		z-index: -1
-
-		+media('<mob-lg')
-			content: none
-
-.promo-slider__item__img
-	position: absolute
-	+size(100%)
-	+position(0)
-	background-color: $bg-color-alt
-	z-index: -2
-
-	+media('<mob-lg')
-		position: relative
-		+size(auto)
-		+position(auto)
-		z-index: auto
-
-	&::before
-		content: none
-		display: block
-		+ratio(172, 85)
-
-		+media('<mob-lg')
-			content: ""
-
-	img
-		display: block
-		+size(100%)
-		max-width: none
-		+object-fit(cover)
-
-		+media('<mob-lg')
-			position: absolute
-			left: 0
-			top: 0
-
-.promo-slider__item__content
-	//+display-inline-block-top
-	width: 960px
-	text-align: center
-
-.promo-slider__item__title
-	$font-size: 60px
-	$font-size--hd: 60px
-	$font-size--lg: 48px
-	$font-size--md: 44px
-	$font-size--sm: 30px
-	$font-size--mob: 26px
-	$line-height: round-float(72/60, 1)
-	$line-height--sm: round-float(36/30, 1)
-	// ===============
-	display: block
-	overflow: hidden
-	max-width: 100%
-	max-height: round($font-size*$line-height*3) // maximum 5 line
-	margin-bottom: $bottom-space--large
-	+font-black
-	+font($font-size, $line-height)
-	letter-spacing: 0.05em
-	text-align: center
-	cursor: default
-
-	+media('<desk-sm')
-		width: 600px
-		font-size: $font-size--md
-		max-height: round($font-size--md*$line-height*5) // maximum 5 line
-
-	+media('<mob-lg')
-		width: auto
-		font-size: $font-size--sm
-		line-height: $line-height--sm
-		max-height: round($font-size--sm*$line-height--sm*5) // maximum 5 line
-		margin-bottom: 2rem
-
-	+media('<mob-md')
-		font-size: $font-size--mob
-		max-height: round($font-size--mob*$line-height--sm*5) // maximum 5 line
-
-	&:last-child
-		margin-bottom: 0
-
-.promo-slider__item__footer
-	.more-link
-		+display-inline-block-top
-		text-decoration: none
-		color: inherit
-
-		span
-			+display-inline-block-top
-			line-height: 1.5
-			border-bottom: 2px solid
-
-		&:hover
-			color: $base-color
-
-			span
-				border-color: $base-color
-
-/* promo slider end
-
 /* breadcrumbs
 //.breadcrumbs
 	color: $text-color-light
@@ -492,3 +308,994 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 			margin-bottom: 0
 
 /* feature list end
+
+/* main sections
+.main-section
+	padding-top: nth($main-section-space-vertical, 1)
+	padding-bottom: nth($main-section-space-vertical, 2)
+
+.main-section__heading
+	position: relative
+	margin-bottom: 5rem
+
+	h1, h2, h3
+		+font-normal
+		font-size: 4.8rem
+		line-height: round-float(52/48, 2)
+		color: $text-color
+
+		& > span
+			display: inline-block
+			vertical-align: top
+			position: relative
+
+			&::after
+				content: ""
+				display: block
+				position: absolute
+				left: 100%
+				bottom: 10px
+				width: 100px
+				height: 2px
+				background-color: currentColor
+				margin-left: 20px
+
+/* main sections end
+
+/* main enter
+.main-enter
+	position: relative
+	overflow: hidden
+
+/* main enter end
+
+/* promo slider
+.main-section--promo
+	height: calc(100vh - #{$header-height})
+	min-height: 820px
+	padding-top: 0
+	padding-bottom: 0
+
+.promo-slider
+	//width: 600px
+	height: 100%
+	//background-color: $bg-color-alt
+	color: white
+
+	+media('<mob-lg')
+		color: $text-color
+		padding-bottom: 60px
+
+.promo-slider__prev, .promo-slider__next, .promo-slider__pagination, .promo-slider__item__content
+	//filter: drop-shadow(1px 1px rgba(white, 0.5))
+	user-select: none
+
+.promo-slider__prev, .promo-slider__next
+	color: inherit
+
+	&::before, &::after
+		border-color: currentColor
+
+		+media('<mob-lg')
+			border-color: currentColor
+
+.promo-slider
+	.promo-slider__pagination
+		position: absolute
+		top: 0
+		left: 0
+		bottom: auto
+		width: auto
+		min-width: 35px
+		padding-right: 20px
+		+font-italic
+		+font(20px, 1)
+
+		+media('<mob-lg')
+			position: absolute
+			width: auto
+			min-width: 85px
+			+padding-horizontal(25px)
+			transform: translate(-50%, 0)
+			+font-italic
+			+font(18px, 1)
+			text-align: center
+			color: $text-color
+
+		&::after
+			+pseudo()
+			left: 100%
+			top: 50%
+			+size(100px, 0)
+			border-top: 1px solid black
+			margin-top: -1px
+
+			+media('<desk-sm')
+				width: 50px
+
+			+media('<mob-lg')
+				content: none
+
+.promo-slider__item
+	display: flex
+	text-align: center
+	justify-content: center
+	align-items: center
+	position: relative
+	//padding-bottom: $parts-height
+	//padding-bottom: 25%
+	overflow: hidden
+
+	+image-mask
+
+.promo-slider__item__img
+	position: absolute
+	+size(100%)
+	+position(0)
+	background-color: $bg-color-alt
+	z-index: -2
+
+	+media('<mob-lg')
+		position: relative
+		+size(auto)
+		+position(auto)
+		z-index: auto
+
+	&::before
+		content: none
+		display: block
+		+ratio(172, 85)
+
+		+media('<mob-lg')
+			content: ""
+
+	img
+		display: block
+		+size(100%)
+		max-width: none
+		+object-fit(cover)
+
+		+media('<mob-lg')
+			position: absolute
+			left: 0
+			top: 0
+
+.promo-slider__item__content
+	//+display-inline-block-top
+	width: 960px
+	text-align: center
+
+.promo-slider__item__title
+	$font-size: 60px
+	$font-size--hd: 60px
+	$font-size--lg: 48px
+	$font-size--md: 44px
+	$font-size--sm: 30px
+	$font-size--mob: 26px
+	$line-height: round-float(72/60, 1)
+	$line-height--sm: round-float(36/30, 1)
+	// ===============
+	display: block
+	overflow: hidden
+	max-width: 100%
+	max-height: round($font-size*$line-height*3) // maximum 5 line
+	margin-bottom: 5rem
+	+font-black
+	+font($font-size, $line-height)
+	letter-spacing: 0.05em
+	text-align: center
+	cursor: default
+
+	+media('<desk-sm')
+		width: 600px
+		font-size: $font-size--md
+		max-height: round($font-size--md*$line-height*5) // maximum 5 line
+
+	+media('<mob-lg')
+		width: auto
+		font-size: $font-size--sm
+		line-height: $line-height--sm
+		max-height: round($font-size--sm*$line-height--sm*5) // maximum 5 line
+		margin-bottom: 2rem
+
+	+media('<mob-md')
+		font-size: $font-size--mob
+		max-height: round($font-size--mob*$line-height--sm*5) // maximum 5 line
+
+	&:last-child
+		margin-bottom: 0
+
+.promo-slider__item__footer
+	.more-link
+		+display-inline-block-top
+		text-decoration: none
+		color: inherit
+
+		span
+			+display-inline-block-top
+			line-height: 1.5
+			border-bottom: 2px solid
+
+		&:hover
+			color: $base-color
+
+			span
+				border-color: $base-color
+
+/* promo slider end
+
+/* product labels
+.i
+
+	svg
+		$size: 20px
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		width: $size
+		height: $size
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+
+		path
+			fill: currentColor
+
+.product__labels
+	position: relative
+
+.product__label
+	$size: 34px
+
+	display: block
+	width: $size
+	height: $size
+	border-radius: round($size/2)
+	color: white
+	text-indent: -9999px
+	overflow: hidden
+	background-color: $base-color
+	background-repeat: no-repeat
+	background-position: center
+	background-size: 20px auto
+
+	& ~ .product__label
+		margin-top: 10px
+
+.product__label--new
+	background-image: url(../../img/icon-new.svg)
+
+.product__label--hit
+	background-image: url(../../img/icon-like.svg)
+
+.product__label--share
+	background-image: url(../../img/icon-share.svg)
+
+.product__label--sale
+	background-image: url(../../img/icon-sale.svg)
+
+/* product labels end
+
+/* product item
+.products__inner
+	position: relative
+	display: block
+	text-decoration: none
+
+	border: 1px solid $border-color
+
+	a
+		text-decoration: none
+		color: $text-color
+
+	+clear
+
+	.product__labels
+		position: absolute
+		left: $products-grid-space
+		top: $products-grid-space
+		z-index: 1
+
+.products__visual
+	float: left
+	width: calc(100% - #{$product-content-width})
+	padding-right: $product-visual-space
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--sm})
+
+		+media('<desk-md')
+			padding-top: 0
+			width: calc(100% - #{$product-content-width})
+
+	&, .page--has-m-aside &
+		+media('<mob-lg')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--sm})
+
+		+media('<mob-md')
+			float: none
+			width: 100%
+			padding-right: 0
+			padding-top: 0
+			margin-bottom: 3rem
+
+.products__figure
+	display: block
+	position: relative
+	max-width: 240px // ограничиваем ширину изображения продукта
+	+push-auto
+	text-decoration: none
+	color: inherit
+
+	+media('<mob-md')
+		max-width: 160px
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(3, 4)
+
+.products__img
+	+cover-abs()
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(scale-down)
+
+.products__title, .products__content, .products__footer
+	float: right
+	clear: right
+	width: $product-content-width
+	margin-bottom: $bottom-space--middle
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			width: $product-content-width--sm
+
+		+media('<desk-md')
+			width: $product-content-width
+
+	&, .page--has-m-aside &
+		+media('<mob-lg')
+			width: $product-content-width--sm
+
+		+media('<mob-md')
+			float: none
+			clear: none
+			width: 100%
+			margin-bottom: 2rem
+
+.products__content, .products__footer
+	&:last-child
+		margin-bottom: 0
+
+.products__title
+	overflow: hidden
+
+	a
+		padding-top: 0.5em
+		text-decoration: none
+		color: inherit
+		transition: inherit
+
+	.products__model
+		display: none
+
+	//hover
+	.no-touchevents a:hover &
+		color: $base-color
+
+		.products__model
+			color: $text-color-light
+
+.products__model
+	+font-normal
+	color: $text-color-light
+	letter-spacing: $letter-spacing
+
+	&::before
+		content: "/ "
+
+// list of characteristics
+.products__dl
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.products__di
+	position: relative
+	padding: 5px 0
+	border-bottom: 1px dashed $text-color-light
+	+clear
+
+.products__dt
+	float: left
+	width: $product-dt
+	color: $text-color-light
+	padding-right: 10px
+
+.products__dd
+	margin-left: $product-dt
+
+// colors
+.products__dd
+	.color-pics
+		+clear-spacing
+		margin-top: -10px
+		padding-top: 8px
+
+// footer
+.products__footer
+	+clear
+
+// price
+.products__price
+	float: left
+	width: $product-dt
+	padding-right: 10px
+
+	.cur
+		display: block
+		line-height: 30px
+		color: $base-color
+
+		.val
+			+font-bold
+			font-size: 16px
+			letter-spacing: 0.025em
+
+		.unit
+			+font-normal
+			font-size: 12px
+			letter-spacing: 0.05em
+
+// btn to basket
+.btn-to-basket, .btn-from-basket
+	$btn-space: 10px
+	//====================
+	+display-inline-block-top
+	//position: absolute
+	//right: 0
+	//top: 0
+	cursor: default
+	color: inherit
+	text-align: center
+	white-space: nowrap
+	+clear-spacing
+	user-select: none
+
+	//svg, span
+		+display-inline-block-middle
+	svg
+		display: block
+		float: left
+
+	.svg-ico-basket
+		+size(22px)
+
+	.svg-ico-basket-add
+		+size(32px, 22px)
+
+	path
+		fill: currentColor
+
+	span
+		display: block
+		overflow: hidden
+		padding-right: $btn-space
+		+font(1.6rem, round-float(20/16, 2))
+		letter-spacing: $letter-spacing
+		text-align: left
+		white-space: normal
+
+	svg + span
+		padding: 2px 0 0 $btn-space
+
+// hover
+a.btn-to-basket
+	cursor: pointer
+
+	.no-touchevents &:hover
+		color: $link-color
+
+.btn-from-basket
+	&, .grid-view &
+		display: none
+
+	.touchevents &
+		color: $base-color
+
+	&:hover
+		color: $base-color
+
+/* grid view
+.grid-view
+	.products__list
+		+grid-parent($products-grid-space)
+		+clear-spacing
+
+		+media('<mob-lg')
+			+grid-parent($products-grid-space--md)
+
+	.products__item
+		+grid-item(4, $products-grid-space, $products-space)
+
+		.page--has-m-aside &
+			+media('<desk-md')
+				+grid-item-responsive(3, $products-grid-space, $products-space)
+
+			+media('<desk-sm')
+				+grid-item-responsive(3, $products-grid-space, $products-space--md)
+
+		&, .page--has-m-aside &
+			+media('<mob-lg')
+				+grid-item-responsive(2, $products-grid-space--md, $products-space--md)
+
+	//+media('<mob-md')
+		+grid-item-responsive(1, $products-grid-space--md, $products-space--md)
+
+	.products__visual, .products__title, .products__content, .products__footer
+		float: none
+		width: auto
+
+	.products__visual
+		padding: 0
+		margin-bottom: $bottom-space--middle
+
+		+media('<mob-lg')
+			padding-top: 40px
+
+		&:last-child
+			margin-bottom: 0
+
+	.products__title
+		//+padding-horizontal($grid-space)
+		+font-normal
+		+font(16px, round-float(24/16, 2))
+		letter-spacing: $letter-spacing
+		text-align: center
+		text-transform: none
+		max-width: 260px
+		margin: 0 auto 1.5rem
+
+		+media('<mob-md')
+			font-size: 13px
+
+		.products__model
+			display: inline
+
+	.products__content
+		display: none
+
+	// price
+	.products__price
+		text-align: center
+		float: none
+		width: auto
+		padding: 0
+
+	.btn-to-basket,
+	.btn-from-basket
+		span
+			display: none
+
+	.btn-to-basket
+		// hide
+		display: none
+
+		.touchevents &
+			display: inline-block
+
+	.products__inner:hover .btn-to-basket
+		display: inline-block
+
+/* grid view end
+/* product item end
+
+/* products list
+.products
+	overflow: hidden
+	margin-bottom: $bottom-space--large
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	+grid-parent($products-space)
+	+clear-spacing
+
+	+media('<desk-lg')
+		+grid-parent($products-space--md)
+
+.products__item
+	+grid-item(2, $products-space)
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+
+	+media('<desk-lg')
+		+grid-item-responsive(2, $products-space--md, 5rem)
+
+/* products list end
+
+/* parts
+$width: 25%
+
+.main-section--parts
+	position: relative
+	pointer-events: none
+	padding-top: 0
+	padding-bottom: 0
+
+	.main-enter &
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		bottom: 0
+		z-index: 5
+
+.parts
+	height: 25%
+	pointer-events: auto
+
+.parts__list
+	height: 100%
+
+.parts__item
+	height: 100%
+	float: left
+	width: 25%
+
+.parts__item__img
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: -1
+	opacity: 0
+	pointer-events: none
+	//$y: 20rem
+	//$x: 20rem
+	//transform: translate(0, $y)
+	//transform: translateY($y)
+	// transition
+	$prop: transform, opacity, visibility
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $parts-animation-speed-out
+
+	+image-mask
+
+	img
+		position: relative
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+		z-index: -2
+
+.parts__item__thumb
+	position: relative
+	overflow: hidden
+	height: 100%
+	color: white
+	z-index: 10
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		z-index: -1
+		background-color: $base-color
+		opacity: 0
+		// transition
+		$prop: opacity, transform
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $parts-animation-speed-out
+			//delay: $parts-animation-speed
+
+	.p1, .p2
+		display: block
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		position: absolute
+		left: 0
+		top: 0
+		height: 100%
+		padding: 0 10px
+		z-index: 1
+		+font-bold
+		color: inherit
+		text-align: center
+		text-decoration: none
+		border: 0 solid rgba(white, 0.25)
+		// transition
+		$prop: opacity
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $parts-animation-speed-out
+
+		.t, .l
+			width: 100%
+			// transition
+			$prop: transform
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $parts-animation-speed-out
+
+		.t
+			font-size: 3rem
+			line-height: round-float(30/30, 2)
+			letter-spacing: 0.05em
+			margin-bottom: 0.3em
+
+		.l
+			opacity: 0.5
+			font-size: 1.8rem
+			line-height: round-float(30/18, 2)
+			letter-spacing: 0.05em
+
+		svg
+			$width: 42px
+			$height: 20px
+			display: block
+			position: absolute
+			bottom: 20px
+			left: 50%
+			height: $height
+			width: $width
+			margin-left: -#{round-float($width/2, 2)}
+			opacity: 0
+			// transition
+			$prop: transform, opacity
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $parts-animation-speed
+
+			path
+				fill: currentColor
+
+	.p1
+		width: 50%
+		left: 0
+
+		.t, .l
+			$x: 50%
+			transform: translate($x, 0)
+			transform: translateX($x)
+
+	.p2
+		width: 50%
+		left: 50%
+		border-left-width: 1px
+		opacity: 0
+		pointer-events: none
+
+		&::before
+			$size: 120px
+			content: ""
+			display: block
+			position: absolute
+			width: $size
+			height: $size
+			background: url(../../img/icon-new.svg) no-repeat
+			background-size: contain
+			opacity: 0.2
+			$x: 50%
+			transform: translate($x, 0)
+			transform: translateX($x)
+			// transition
+			$prop: transform
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $parts-animation-speed-out
+
+		.t, .l
+			$x: 20%
+			transform: translate($x, 0)
+			transform: translateX($x)
+
+	.p1, .p2
+		&:hover
+			//background-color: #343434
+
+			svg
+				opacity: 1
+
+.parts__item__prods
+	$space: 30px
+	position: absolute
+	overflow: hidden
+	left: 0
+	bottom: 25%
+	height: 75%
+	z-index: 1
+	width: $width
+	pointer-events: none
+
+	& > ul
+		display: flex
+		flex-direction: column
+		list-style: none
+		margin: 0
+		padding: 0
+		height: 100%
+		background-color: rgba(white, 1)
+		opacity: 0
+		$y: 10rem
+		transform: translate(0, $y)
+		transform: translateY($y)
+		// transition
+		$prop: transform, opacity, visibility
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $parts-animation-speed-out
+
+		& > li
+			position: relative
+			flex-grow: 1
+			flex-shrink: 1
+			height: 33.33%
+			max-height: 33.33%
+
+			&::before
+				content: ""
+				display: block
+				position: absolute
+				top: 0
+				left: $space
+				right: $space
+				border-top: 1px solid #e6e6e6
+
+			&:first-child
+				&::before
+					content: none
+
+			& > a
+				display: block
+				position: relative
+				height: 100%
+				padding: $space
+				color: inherit
+				text-decoration: none
+
+			.product__labels
+				position: absolute
+				left: $space
+				top: $space
+
+			img
+				float: left
+				width: 34%
+				max-width: 144px
+				margin-right: 30px
+
+	ul ul
+		list-style: none
+		margin: 0
+		padding: 20px 0 0 0
+		overflow: hidden
+		+font-normal
+		font-size: 1.8rem
+		line-height: 2.4rem
+		color: #000
+
+		& > li
+			position: relative
+			+truncate(100%)
+
+			&:first-child
+				+font-normal
+				color: #b2b2b2
+
+			&:last-child
+				margin-top: 15px
+				b
+					+font-black
+					font-size: 2.4rem
+
+.parts__item
+	&:nth-child(1)
+		.parts__item__prods
+			left: $width*0
+
+	&:nth-child(2)
+		.parts__item__prods
+			left: $width*1
+
+	&:nth-child(3)
+		.parts__item__prods
+			left: $width*2
+
+	&:nth-child(4)
+		.parts__item__prods
+			left: $width*3
+
+// hover
+.main-enter
+	background-color: rgba($img-mask-bg, 0.8)
+
+	.main-section--promo
+		// transition
+		$prop: opacity
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+
+	.no-touchevents &:hover
+		.main-section--promo
+			opacity: 0
+
+			&:hover
+				opacity: 1
+
+.parts__item:hover
+	.parts__item__img
+		opacity: 1
+		transition:
+			duration: $parts-animation-speed
+
+	.parts__item__thumb
+		&:before
+			opacity: 1
+			transition:
+				duration: $parts-animation-speed
+				//delay: 0s
+
+		.p1, .p2
+			.t, .l
+				$x: 0
+				transform: translate($x, 0)
+				transform: translateX($x)
+				transition:
+					duration: $parts-animation-speed
+
+		.p2
+			opacity: 1
+			pointer-events: auto
+
+			&::before
+				$x: 0
+				transform: translate($x, 0)
+				transform: translateX($x)
+				transition:
+					duration: $parts-animation-speed
+
+	.parts__item__prods
+		pointer-events: auto
+
+		& > ul
+			opacity: 1
+			$y: 0
+			transform: translate(0, $y)
+			transform: translateY($y)
+			transition:
+				duration: $parts-animation-speed
+				//delay: $parts-animation-speed
+
+/* parts end
+

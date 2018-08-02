@@ -1,0 +1,68 @@
+<article class="products__item">
+	<div class="products__inner">
+		@@if (context.labels.new || context.labels.hit || context.labels.share || context.labels.sale) {
+		<div class="product__labels">
+			@@if (context.labels.new) {<div class="product__label product__label--new">@@labels.new</div>}
+			@@if (context.labels.hit) {<div class="product__label product__label--hit">@@labels.hit</div>}
+			@@if (context.labels.share) {<div class="product__label product__label--share">@@labels.share</div>}
+			@@if (context.labels.sale) {<div class="product__label product__label--sale">@@labels.sale</div>}
+		</div>
+		}
+		<a href="#!">
+			<div class="products__visual">
+				<div class="products__figure">
+					<div class="products__img">
+						@@if (context.src) {
+						<img src="img/@@src" alt="@@title" />
+						}
+					</div>
+				</div>
+			</div>
+			<div class="products__code"><span>@@code</span></div>
+			<div class="products__title"><span>@@title</span></div>
+		</a>
+
+		<div class="products__content">
+			<div class="products__dl">
+				@@if (context.ch) {
+					@@for (var key in ch) {
+					<div class="products__di">
+						<div class="products__dt">`+key+`:</div>
+						<div class="products__dd">`+ch[key]+`</div>
+					</div>
+					}
+				}
+				@@if (context.colors) {
+				<div class="products__di">
+					<div class="products__dt">Цвет</div>
+					<div class="products__dd">
+						<div class="color-pics">
+						@@for (var i = 0; i < colors.length; i++) {
+							<div class="color-pic" style="background-color: `+colors[i]+`;">`+colors[i]+`</div>
+						}
+						</div>
+					</div>
+				</div>
+				}
+			</div>
+		</div>
+
+		<div class="products__footer">
+			@@if (context.price) {
+			<div class="products__price">
+				<div class="cur"><strong class="val">@@price</strong> <span class="unit">@@priceUnit</span></div>
+				<div class="old"><strong class="val">@@old</strong> <span class="unit">@@oldUnit</span></div>
+			</div>
+			}
+			@@if (!context.price) {
+			<div class="products__price">
+				<div class="no">Цену уточняйте</div>
+			</div>
+			}
+		</div>
+
+		<div class="products__shop">
+			<a href="#!" class="btn-default">Где купить</a>
+		</div>
+	</div>
+</article>

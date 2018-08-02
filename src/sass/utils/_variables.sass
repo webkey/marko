@@ -186,10 +186,10 @@ $user-content: user-content !default
 // ==========================================================================
 
 // отступы для всего сайта
-$page-layout-space: 18px 20px !default // v h
+$page-layout-space: 18px 30px !default // v h
 $page-layout-space--mob: 10px 10px !default // v h
 // максимальная ширина сайта
-$page-layout-width: 1600px !default
+$page-layout-width: 1800px !default
 // минимальная ширина сайта
 $page-layout-min: 320px !default
 // минимальные отступы у текствого блока
@@ -200,7 +200,7 @@ $text-layout-space--mob: 8px 10px !default // v h
 // максимальная ширина текстового блока
 $text-layout-width: 800px !default
 // максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 1000px !default
+$flood-layout-width: 1440px !default
 // отступы внутри блочных элементов
 $grid-space: 28px 30px !default // v h
 $grid-space--lg: 18px 20px !default // v h
@@ -216,9 +216,46 @@ $z-i-footer: 5 !default
 $z-i-cover: 2 !default // приподнять над остальным контентом
 
 
+// Main section
+// ==========================================================================
+$main-section-space-vertical: 40px 50px
+
+
+// Image mask
+// ==========================================================================
+$img-mask-bg: #2d2c2c
+=image-mask()
+	&::before
+		+pseudo()
+		+size(100%)
+		+position(0)
+		background-color: rgba($img-mask-bg, 0.35)
+		background-image: url(../../img/promo-slider-pattern.png)
+		background-size: 25% 25%
+		z-index: -1
+
+		+media('<mob-lg')
+			content: none
+
 // Partials
 // ==========================================================================
-$partials-height: 202px
+$parts-height: 202px
+$parts-animation-speed: 0.3s
+$parts-animation-speed-out: 0.45s
+
+
+// Products
+// ==========================================================================
+$products-space: 74px !default
+$products-space--md: 50px !default
+$products-space--sm: 30px !default
+$products-space--mob: 20px !default
+$products-grid-space: 30px !default
+$products-grid-space--md: 20px !default
+$product-content-width: 315px !default // или 50%
+$product-content-width--sm: 260px !default // или 50%
+$product-visual-space: 20px !default
+$product-dt: 120px !default
 
 
 // Header

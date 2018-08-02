@@ -175,62 +175,522 @@
 		<!--HEADER end-->
 		<!--MAIN-->
 		<div class="main">
-			<section class="main-section main-section--promo">
-				<h2 class="hide">Акции</h2>
-				<div class="promo-slider swiper-container promo-slider-js">
-					<div class="swiper-wrapper">
-						<div class="promo-slider__item swiper-slide">
-							<div class="promo-slider__item__img" data-swiper-parallax="700">
-								<img src="img/img-promo-slider-01.jpg" alt="Распродажа весенней коллекции и скидки на всю коллекцию «Весна-лето»" />
-							</div>
-							<div class="promo-slider__item__content">
-								<div class="promo-slider__item__title" data-swiper-parallax="-400">Распродажа весенней коллекции и скидки на всю коллекцию
-									<div class="nobr">«Весна-лето»</div>
+			<div class="main-enter">
+				<section class="main-section main-section--promo">
+					<h2 class="hide">Акции</h2>
+					<div class="promo-slider swiper-container promo-slider-js">
+						<div class="swiper-wrapper">
+							<div class="promo-slider__item swiper-slide">
+								<div class="promo-slider__item__img" data-swiper-parallax="700">
+									<img src="img/img-promo-slider-01.jpg" alt="Распродажа весенней коллекции и скидки на всю коллекцию «Весна-лето»" />
 								</div>
-								<div class="promo-slider__item__footer" data-swiper-parallax="-200">
-									<a href="#" class="more-link"><span>Подробнее</span></a>
+								<div class="promo-slider__item__content">
+									<div class="promo-slider__item__title" data-swiper-parallax="-400">Распродажа весенней коллекции и скидки на всю коллекцию
+										<div class="nobr">«Весна-лето»</div>
+									</div>
+									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+										<a href="#" class="more-link"><span>Подробнее</span></a>
+									</div>
+								</div>
+							</div>
+							<div class="promo-slider__item swiper-slide">
+								<div class="promo-slider__item__img" data-swiper-parallax="700">
+									<img src="img/temp/img_1280_01.jpg" alt="Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии" />
+								</div>
+								<div class="promo-slider__item__content">
+									<div class="promo-slider__item__title" data-swiper-parallax="-400">Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии</div>
+									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+										<a href="#" class="more-link"><span>Подробнее</span></a>
+									</div>
+								</div>
+							</div>
+							<div class="promo-slider__item swiper-slide">
+								<div class="promo-slider__item__img" data-swiper-parallax="700">
+									<img src="img/temp/img_1280_02.jpg" alt="Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно" />
+								</div>
+								<div class="promo-slider__item__content">
+									<div class="promo-slider__item__title" data-swiper-parallax="-400">Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно</div>
+									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+										<a href="#" class="more-link"><span>Подробнее</span></a>
+									</div>
+								</div>
+							</div>
+							<div class="promo-slider__item swiper-slide">
+								<div class="promo-slider__item__img" data-swiper-parallax="700">
+									<img src="img/temp/img_1280_03.jpg" alt="В школу вместе с «Марко»! -20% на школьную коллекцию" />
+								</div>
+								<div class="promo-slider__item__content">
+									<div class="promo-slider__item__title" data-swiper-parallax="-400">В школу вместе с «Марко»! -20% на школьную коллекцию</div>
+									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+										<a href="#" class="more-link"><span>Подробнее</span></a>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="promo-slider__item swiper-slide">
-							<div class="promo-slider__item__img" data-swiper-parallax="700">
-								<img src="img/temp/img_1280_01.jpg" alt="Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии" />
-							</div>
-							<div class="promo-slider__item__content">
-								<div class="promo-slider__item__title" data-swiper-parallax="-400">Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии</div>
-								<div class="promo-slider__item__footer" data-swiper-parallax="-200">
-									<a href="#" class="more-link"><span>Подробнее</span></a>
+						<!-- pagination -->
+						<div class="promo-slider__pagination swiper-pagination"></div>
+						<!-- navigation buttons -->
+						<div class="promo-slider__prev swiper-button-prev">
+							<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
+</svg>
+							<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+						</div>
+						<div class="promo-slider__next swiper-button-next">
+							<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
+							<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+						</div>
+					</div>
+				</section>
+				<section class="main-section main-section--parts">
+					<h2 class="hide">Разделы</h2>
+					<div class="parts">
+						<div class="parts__list">
+							<div class="parts__item">
+								<div class="parts__item__img">
+									<img src="img/img-part-01.jpg" alt="Женская обувь" />
+								</div>
+								<div class="parts__item__thumb">
+									<a href="#!" class="p1">
+										<div class="t">Женская обувь</div>
+										<div class="l">1429 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+									<a href="#!" class="p2">
+										<div class="t">Все новинки</div>
+										<div class="l">105 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+								</div>
+								<div class="parts__item__prods">
+									<ul>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-01.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044834</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.33</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-02.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044835</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.79</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-03.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044715</li>
+													<li>Ботинки малодетские</li>
+													<li><b>41.17</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="promo-slider__item swiper-slide">
-							<div class="promo-slider__item__img" data-swiper-parallax="700">
-								<img src="img/temp/img_1280_02.jpg" alt="Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно" />
-							</div>
-							<div class="promo-slider__item__content">
-								<div class="promo-slider__item__title" data-swiper-parallax="-400">Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно</div>
-								<div class="promo-slider__item__footer" data-swiper-parallax="-200">
-									<a href="#" class="more-link"><span>Подробнее</span></a>
+							<div class="parts__item">
+								<div class="parts__item__img">
+									<img src="img/img-part-02.jpg" alt="Мужская обувь" />
+								</div>
+								<div class="parts__item__thumb">
+									<a href="#!" class="p1">
+										<div class="t">Мужская обувь</div>
+										<div class="l">971 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+									<a href="#!" class="p2">
+										<div class="t">Все новинки</div>
+										<div class="l">105 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+								</div>
+								<div class="parts__item__prods">
+									<ul>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-01.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044834</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.33</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-02.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044835</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.79</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-03.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044715</li>
+													<li>Ботинки малодетские</li>
+													<li><b>41.17</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="promo-slider__item swiper-slide">
-							<div class="promo-slider__item__img" data-swiper-parallax="700">
-								<img src="img/temp/img_1280_03.jpg" alt="В школу вместе с «Марко»! -20% на школьную коллекцию" />
+							<div class="parts__item">
+								<div class="parts__item__img">
+									<img src="img/img-part-03.jpg" alt="Детская обувь" />
+								</div>
+								<div class="parts__item__thumb">
+									<a href="#!" class="p1">
+										<div class="t">Детская обувь</div>
+										<div class="l">1320 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+									<a href="#!" class="p2">
+										<div class="t">Все новинки</div>
+										<div class="l">105 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+								</div>
+								<div class="parts__item__prods">
+									<ul>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-01.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044834</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.33</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-02.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044835</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.79</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-03.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044715</li>
+													<li>Ботинки малодетские</li>
+													<li><b>41.17</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
-							<div class="promo-slider__item__content">
-								<div class="promo-slider__item__title" data-swiper-parallax="-400">В школу вместе с «Марко»! -20% на школьную коллекцию</div>
-								<div class="promo-slider__item__footer" data-swiper-parallax="-200">
-									<a href="#" class="more-link"><span>Подробнее</span></a>
+							<div class="parts__item">
+								<div class="parts__item__img">
+									<img src="img/img-part-04.jpg" alt="Сумки и аксессуары" />
+								</div>
+								<div class="parts__item__thumb">
+									<a href="#!" class="p1">
+										<div class="t">Сумки и аксессуары</div>
+										<div class="l">175 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+									<a href="#!" class="p2">
+										<div class="t">Все новинки</div>
+										<div class="l">105 моделей</div>
+										<svg class="svg-ico-arrow-next" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+</svg>
+									</a>
+								</div>
+								<div class="parts__item__prods">
+									<ul>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-01.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044834</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.33</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#!">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-02.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044835</li>
+													<li>Ботинки малодетские</li>
+													<li><b>55.79</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="product__labels">
+													<div class="product__label product__label--new">Новинка</div>
+												</div>
+												<img src="img/img-new-prod-03.jpg" alt="Ботинки малодетские" />
+												<ul>
+													<li>Арт. 044715</li>
+													<li>Ботинки малодетские</li>
+													<li><b>41.17</b> руб.</li>
+												</ul>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
+				</section>
+			</div>
+			<section class="main-section main-section--collections">
+				<div class="main-section__heading layout-flood">
+					<h2><span>Коллекции</span></h2>
+				</div>
+				<div class="tape-slider swiper-container tape-slider-js">
+					<div class="swiper-wrapper">
+						<div class="collection-slider__item swiper-slide">
+							<div class="collection-slider__item__img">
+								<img src="img/img-collection-01.png" alt="MarkoSport" />
+							</div>
+							<div class="collection-slider__item__content">
+								<div class="collection-slider__item__title">MarkoSport</div>
+								<div class="collection-slider__item__text">Коллекция <a href="#!">мужской</a> и <a href="#!">женской</a> обуви. Это обувь для тех, у кого спорт живет в душе. Покупатели коллекции независимы и уверенны в себе.</div>
+							</div>
+						</div>
+						<div class="collection-slider__item swiper-slide">
+							<div class="collection-slider__item__img">
+								<img src="img/img-collection-02.png" alt="MarkoBoots" />
+							</div>
+							<div class="collection-slider__item__content">
+								<div class="collection-slider__item__title">MarkoBoots</div>
+								<div class="collection-slider__item__text">Коллекция мужской, женской и детской обуви Обладает высокими теплозащитными свойствами и надежной защитой от влаги и загрязнений.</div>
+							</div>
+						</div>
+						<div class="collection-slider__item swiper-slide">
+							<div class="collection-slider__item__img">
+								<img src="img/img-collection-03.png" alt="MarkoOptima" />
+							</div>
+							<div class="collection-slider__item__content">
+								<div class="collection-slider__item__title">MarkoOptima</div>
+								<div class="collection-slider__item__text">Коллекция мужской и женской обуви из искусственных материалов. Оптимальное соотношение цены и высокого качества.</div>
+							</div>
+						</div>
+						<div class="collection-slider__item swiper-slide">
+							<div class="collection-slider__item__img">
+								<img src="img/img-collection-04.png" alt="HomeMarko" />
+							</div>
+							<div class="collection-slider__item__content">
+								<div class="collection-slider__item__title">HomeMarko</div>
+								<div class="collection-slider__item__text">Коллекция мужской и женской домашней обуви, созданная дарить уют, тепло и комфорт.</div>
+							</div>
+						</div>
+					</div>
 					<!-- pagination -->
-					<div class="promo-slider__pagination swiper-pagination"></div>
+					<div class="swiper-pagination"></div>
 					<!-- navigation buttons -->
-					<div class="promo-slider__prev swiper-button-prev">Предыдущий</div>
-					<div class="promo-slider__next swiper-button-next">Слудующий</div>
+					<div class="promo-slider__prev swiper-button-prev">
+						<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
+</svg>
+						<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+					</div>
+					<div class="promo-slider__next swiper-button-next">
+						<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
+						<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+					</div>
+				</div>
+			</section>
+			<section class="main-section main-section--collections">
+				<div class="main-section__heading layout-flood">
+					<h2><span>Популярные моделы</span></h2>
+				</div>
+				<div class="layout-flood">
+					<div class="products grid-view">
+						<section class="products__list">
+							<article class="products__item">
+								<div class="products__inner">
+									<div class="product__labels">
+										<div class="product__label product__label--new">Новинка</div>
+										<div class="product__label product__label--hit">Хит</div>
+										<div class="product__label product__label--share">Акция</div>
+										<div class="product__label product__label--sale">Скидка</div>
+									</div>
+									<a href="#!">
+										<div class="products__visual">
+											<div class="products__figure">
+												<div class="products__img">
+													<img src="img/img-products-01.jpg" alt="Полусапожки женские" />
+												</div>
+											</div>
+										</div>
+										<div class="products__code"><span>16187</span></div>
+										<div class="products__title"><span>Полусапожки женские</span></div>
+									</a>
+									<div class="products__content">
+										<div class="products__dl">
+											<div class="products__di">
+												<div class="products__dt">Верх:</div>
+												<div class="products__dd">Натуральная кожа</div>
+											</div>
+											<div class="products__di">
+												<div class="products__dt">Подкладка:</div>
+												<div class="products__dd">Натуральная кожа</div>
+											</div>
+											<div class="products__di">
+												<div class="products__dt">Подошва:</div>
+												<div class="products__dd">Полиуретановая композиция</div>
+											</div>
+										</div>
+									</div>
+									<div class="products__footer">
+										<div class="products__price">
+											<div class="cur"><strong class="val">60,00</strong> <span class="unit">руб.</span></div>
+											<div class="old"><strong class="val">78,15</strong> <span class="unit">руб.</span></div>
+										</div>
+									</div>
+									<div class="products__shop">
+										<a href="#!" class="btn-default">Где купить</a>
+									</div>
+								</div>
+							</article>
+						</section>
+					</div>
+				</div>
+			</section>
+			<section class="main-section main-section--collections">
+				<div class="main-section__heading layout-flood">
+					<h2><span>Новости</span></h2>
+				</div>
+				<div class="layout-flood">
+					<div class="tape-slider swiper-container tape-slider-js">
+						<div class="swiper-wrapper">
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__img">
+									<img src="img/img-news-01.jpg" alt="Ещё один фирменный магазин «Марко» в Кобрине." />
+								</div>
+								<div class="collection-slider__item__content">
+									<div class="collection-slider__item__title">Ещё один фирменный магазин «Марко» в Кобрине.</div>
+									<div class="collection-slider__item__text"></div>
+								</div>
+							</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__img">
+									<img src="img/img-news-02.jpg" alt="Фирменный магазин «Марко» - теперь и в Саранске!" />
+								</div>
+								<div class="collection-slider__item__content">
+									<div class="collection-slider__item__title">Фирменный магазин «Марко» - теперь и в Саранске!</div>
+									<div class="collection-slider__item__text"></div>
+								</div>
+							</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__img">
+									<img src="img/img-news-03.jpg" alt="Первый фирменный магазин «Марко» в Рогачёве." />
+								</div>
+								<div class="collection-slider__item__content">
+									<div class="collection-slider__item__title">Первый фирменный магазин «Марко» в Рогачёве.</div>
+									<div class="collection-slider__item__text"></div>
+								</div>
+							</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__img">
+									<img src="img/img-news-04.jpg" alt="Новый фирменный магазин «Марко» в Воронеже!" />
+								</div>
+								<div class="collection-slider__item__content">
+									<div class="collection-slider__item__title">Новый фирменный магазин «Марко» в Воронеже!</div>
+									<div class="collection-slider__item__text"></div>
+								</div>
+							</div>
+						</div>
+						<!-- pagination -->
+						<div class="swiper-pagination"></div>
+						<!-- navigation buttons -->
+						<div class="promo-slider__prev swiper-button-prev">
+							<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
+</svg>
+							<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+						</div>
+						<div class="promo-slider__next swiper-button-next">
+							<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
+							<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>

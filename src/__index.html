@@ -13,17 +13,91 @@
 
 <!--MAIN-->
 <div class="main">
-	<section class="main-section main-section--promo">
-		<h2 class="hide">Акции</h2>
-		<div class="promo-slider swiper-container promo-slider-js">
+	<div class="main-enter">
+		<section class="main-section main-section--promo">
+			<h2 class="hide">Акции</h2>
+			<div class="promo-slider swiper-container promo-slider-js">
+				<div class="swiper-wrapper">
+					@@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_promo-slider.json")
+				</div>
+				<!-- pagination -->
+				<div class="promo-slider__pagination swiper-pagination"></div>
+				<!-- navigation buttons -->
+				<div class="promo-slider__prev swiper-button-prev">
+					@@include("includes/svg/icon-arrow-left.svg")
+					@@include("includes/svg/icon-arrow-left-alt.svg")
+				</div>
+				<div class="promo-slider__next swiper-button-next">
+					@@include("includes/svg/icon-arrow-right.svg")
+					@@include("includes/svg/icon-arrow-right-alt.svg")
+				</div>
+			</div>
+		</section>
+		<section class="main-section main-section--parts">
+			<h2 class="hide">Разделы</h2>
+			<div class="parts">
+				<div class="parts__list">
+					@@loop("_tpl_parts--items.html", "includes/json/parts--items.json")
+				</div>
+			</div>
+		</section>
+	</div>
+	<section class="main-section main-section--collections">
+		<div class="main-section__heading layout-flood">
+			<h2><span>Коллекции</span></h2>
+		</div>
+		<div class="tape-slider swiper-container tape-slider-js">
 			<div class="swiper-wrapper">
-				@@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_promo-slider.json")
+				@@loop("_tpl_collections--items.html", "includes/json/collections--items.json")
 			</div>
 			<!-- pagination -->
-			<div class="promo-slider__pagination swiper-pagination"></div>
+			<div class="swiper-pagination"></div>
 			<!-- navigation buttons -->
-			<div class="promo-slider__prev swiper-button-prev">Предыдущий</div>
-			<div class="promo-slider__next swiper-button-next">Слудующий</div>
+			<div class="promo-slider__prev swiper-button-prev">
+				@@include("includes/svg/icon-arrow-left.svg")
+				@@include("includes/svg/icon-arrow-left-alt.svg")
+			</div>
+			<div class="promo-slider__next swiper-button-next">
+				@@include("includes/svg/icon-arrow-right.svg")
+				@@include("includes/svg/icon-arrow-right-alt.svg")
+			</div>
+		</div>
+	</section>
+
+	<section class="main-section main-section--collections">
+		<div class="main-section__heading layout-flood">
+			<h2><span>Популярные моделы</span></h2>
+		</div>
+		<div class="layout-flood">
+			<div class="products grid-view">
+				<section class="products__list">
+					@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+				</section>
+			</div>
+		</div>
+	</section>
+
+	<section class="main-section main-section--collections">
+		<div class="main-section__heading layout-flood">
+			<h2><span>Новости</span></h2>
+		</div>
+		<div class="layout-flood">
+			<div class="tape-slider swiper-container tape-slider-js">
+				<div class="swiper-wrapper">
+					@@loop("_tpl_collections--items.html", "includes/json/news--items.json")
+				</div>
+				<!-- pagination -->
+				<div class="swiper-pagination"></div>
+				<!-- navigation buttons -->
+				<div class="promo-slider__prev swiper-button-prev">
+					@@include("includes/svg/icon-arrow-left.svg")
+					@@include("includes/svg/icon-arrow-left-alt.svg")
+				</div>
+				<div class="promo-slider__next swiper-button-next">
+					@@include("includes/svg/icon-arrow-right.svg")
+					@@include("includes/svg/icon-arrow-right-alt.svg")
+				</div>
+			</div>
 		</div>
 	</section>
 </div>
