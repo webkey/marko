@@ -44,7 +44,7 @@
 			+media('<mob-lg')
 				display: block
 				width: 100%
-				margin-top: $bottom-space--small
+				margin-top: $bottom-space--row
 
 				&:first-child
 					margin-top: 0
@@ -165,7 +165,7 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 
 /* swiper slider end
 
-/* breadcrumbs
+///* breadcrumbs
 //.breadcrumbs
 	color: $text-color-light
 	margin-bottom: $bottom-space--large
@@ -226,9 +226,9 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 			span
 				border-color: rgba($base-color, 0.3)
 
-/* breadcrumbs end
+///* breadcrumbs end
 
-/* files links
+///* files links
 //.file
 	$file-icon-size: 42px
 	+display-inline-block-top
@@ -272,9 +272,9 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 //.st-text
 	fill: #fff
 
-/* files links end
+///* files links end
 
-/* feature list
+///* feature list
 //.feature-list
 	margin-bottom: $bottom-space--medium
 
@@ -307,7 +307,381 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 		&:last-child
 			margin-bottom: 0
 
-/* feature list end
+///* feature list end
+
+/* product labels
+.i
+	svg
+		$size: 20px
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		width: $size
+		height: $size
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+
+		path
+			fill: currentColor
+
+.prod__labels
+	position: relative
+
+.prod__label
+	$size: 34px
+
+	display: block
+	width: $size
+	height: $size
+	border-radius: round($size/2)
+	color: white
+	text-indent: -9999px
+	overflow: hidden
+	background-color: $base-color
+	background-repeat: no-repeat
+	background-position: center
+	background-size: 20px auto
+
+	& ~ .prod__label
+		margin-top: 10px
+
+.prod__label--new
+	background-image: url(../../img/icon-new.svg)
+
+.prod__label--hit
+	background-image: url(../../img/icon-like.svg)
+
+.prod__label--share
+	background-image: url(../../img/icon-share.svg)
+
+.prod__label--sale
+	background-image: url(../../img/icon-sale.svg)
+
+/* product labels end
+
+/* product item
+.prod
+	position: relative
+	display: block
+	height: 100%
+	text-decoration: none
+	overflow: hidden
+	color: inherit
+
+a.prod__inner
+	display: block
+	height: 100%
+	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 80px
+	text-decoration: none
+	color: inherit
+
+.prod__labels
+	position: absolute
+	left: nth($products-grid-space, 2)
+	top: nth($products-grid-space, 2)
+	z-index: 1
+
+.prod__figure
+	position: relative
+	max-width: 240px // ограничиваем ширину изображения продукта
+	padding: 0
+	margin: 0 auto $bottom-space--element
+
+	+media('<mob-lg')
+		margin-top: 40px // a place for labels
+
+	+media('<mob-md')
+		max-width: 160px
+
+	&:last-child
+		margin-bottom: 0
+
+	&:before
+		content: ""
+		display: block
+		+ratio(1, 1)
+
+	img
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(scale-down)
+
+.prod__code, .prod__title
+	display: block
+	+font-normal
+	+font(18px, round-float(24/18, 2))
+	letter-spacing: 0.1em
+	text-align: center
+	max-width: 260px
+	margin: 0 auto
+
+.prod__code
+	color: $text-color-light
+
+.prod__title
+	margin-bottom: 0.5em
+
+	&:last-child
+		margin-bottom: 0
+
+// info (show hover hover)
+.prod__info
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: 5
+	pointer-events: none
+
+.prod__body
+	position: absolute
+	width: 100%
+	left: 50%
+	top: 50%
+	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 180px
+	transform: translate(-50%, -50%)
+
+// list of characteristics
+.prod__dl-list
+	margin-bottom: $bottom-space--element
+	font-size: 1.8rem
+	line-height: round-float(22/18, 2)
+	text-align: center
+
+	&:last-child
+		margin-bottom: 0
+
+.prod__dl-list__di
+	position: relative
+	margin-top: 14px
+
+.prod__dl-list__dt
+	display: block
+	color: $text-color-light
+
+// footer
+.prod__foot
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
+	z-index: 5
+
+// price
+.prod__price
+	text-align: center
+	line-height: 24px
+
+.prod__price__cur,
+.prod__price__old
+	position: relative
+	display: inline-block
+	+margin-horizontal(7px)
+
+.prod__price__cur__val
+	+font-black
+	font-size: 24px
+
+.prod__price__old
+	color: $base-color
+	text-decoration: line-through
+
+	&::before
+		content: "/ "
+		color: $text-color
+		display: block
+		position: absolute
+		right: 100%
+		top: 0
+		margin-right: 5px
+
+.prod__price__old__val
+	+font-normal
+
+// add info
+.prod__add-info
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
+	z-index: 5
+
+// hover animation
+.prod
+	$animation-speed: 0.53s
+	$animation-elements: ".prod__labels, .prod__figure, .prod__dl-list__di, .prod__code, .prod__title, .prod__foot, .prod__add-info"
+
+	#{$animation-elements}
+		// transition
+		$prop: transform, opacity
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+
+	.prod__dl-list__di
+		opacity: 0
+		$x: -50px
+		$y: 0
+		transform: translate($x, $y)
+		transform: translate3d($x, $y, 0)
+
+		@for $i from 1 through 4
+			&:nth-child(#{$i + 1})
+				transition:
+					delay: 0.05s * $i
+
+	.prod__foot
+		pointer-events: none
+
+	.prod__add-info
+		opacity: 0
+		pointer-events: none
+		$x: 0
+		$y: 50px
+		transform: translate($x, $y)
+		transform: translate3d($x, $y, 0)
+
+	// hover
+	.no-touchevents &:hover
+		$animation-speed: 0.35s
+		#{$animation-elements}
+			transition-duration: $animation-speed
+
+		.prod__labels
+			opacity: 0
+
+		.prod__figure
+			opacity: 0.1
+			$scale: 0.88
+			transform: scale($scale)
+			transform: scale3d($scale, $scale, 1)
+
+		.prod__info
+			pointer-events: auto
+
+		.prod__dl-list__di
+			opacity: 1
+			$x: 0
+			$y: 0
+			transform: translate($x, $y)
+			transform: translate3d($x, $y, 0)
+
+		.prod__code,
+		.prod__title
+			opacity: 0
+			$x: 0
+			$y: -50px
+			transform: translate($x, $y)
+			transform: translate3d($x, $y, 0)
+
+		.prod__foot
+			$x: 0
+			$y: -110px
+			transform: translate($x, $y)
+			transform: translate3d($x, $y, 0)
+
+		.prod__add-info
+			opacity: 1
+			$x: 0
+			$y: -20px
+			transform: translate($x, $y)
+			transform: translate3d($x, $y, 0)
+
+			[class*="btn-"]
+				pointer-events: auto
+
+/* product item end
+
+/* products list
+.main-section--collections
+	overflow: hidden
+
+.products
+	overflow: hidden
+	margin-bottom: $bottom-space--section
+
+	.main-section--collections &
+		margin-left: -2px
+		margin-right: -2px
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	display: flex
+	flex: 0 1 auto
+	justify-content: stretch
+	flex-flow: row wrap
+	+clear-spacing
+
+.products__item
+	+grid-item(5, nth($products-space, 2), nth($products-space, 1))
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+
+	// Оставить 10 елементов
+	// Остальные скрыть
+	.main-section--collections &
+		&:nth-child(n + 11)
+			display: none
+
+	+media('<desk-sm')
+		+grid-item-responsive(3, nth($products-space, 2), nth($products-space, 1))
+
+	+media('<mob-lg')
+		+grid-item-responsive(2, nth($products-space, 2), nth($products-space, 1))
+
+// дополнительные бордеры нужны для safari
+// т.к. в этом браузере не поддерживается автовысота во flex-box элементах
+// подходит только, если не нужно делать всю область кликабельной
+.products, .products__list, .products__item
+	position: relative
+
+	&::before, &::after
+		content: ""
+		display: block
+		position: absolute
+		border: 0 solid $border-color
+
+.products
+	padding-right: 1px
+
+	&::before
+		top: 0
+		left: 0
+		+size(0, 9999px)
+		border-left-width: 1px
+
+	&::after
+		left: 0
+		bottom: 0
+		+size(9999px, 0)
+		border-bottom-width: 1px
+
+.products__list, .products__item
+	&::before
+		top: 0
+		left: 0
+		+size(9999px, 0)
+		border-bottom-width: 1px
+
+	&::after
+		right: -1px
+		top: 0
+		+size(0, 9999px)
+		border-right-width: 1px
+
+// дополнительные бордеры нужны для safari END
+/* products list end
 
 /* main sections
 .main-section
@@ -352,7 +726,7 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 /* promo slider
 .main-section--promo
 	height: calc(100vh - #{$header-height})
-	min-height: 820px
+	min-height: 700px
 	padding-top: 0
 	padding-bottom: 0
 
@@ -523,404 +897,6 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 				border-color: $base-color
 
 /* promo slider end
-
-/* product labels
-.i
-
-	svg
-		$size: 20px
-		display: block
-		position: absolute
-		left: 50%
-		top: 50%
-		width: $size
-		height: $size
-		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
-
-		path
-			fill: currentColor
-
-.product__labels
-	position: relative
-
-.product__label
-	$size: 34px
-
-	display: block
-	width: $size
-	height: $size
-	border-radius: round($size/2)
-	color: white
-	text-indent: -9999px
-	overflow: hidden
-	background-color: $base-color
-	background-repeat: no-repeat
-	background-position: center
-	background-size: 20px auto
-
-	& ~ .product__label
-		margin-top: 10px
-
-.product__label--new
-	background-image: url(../../img/icon-new.svg)
-
-.product__label--hit
-	background-image: url(../../img/icon-like.svg)
-
-.product__label--share
-	background-image: url(../../img/icon-share.svg)
-
-.product__label--sale
-	background-image: url(../../img/icon-sale.svg)
-
-/* product labels end
-
-/* product item
-.products__inner
-	position: relative
-	display: block
-	text-decoration: none
-
-	border: 1px solid $border-color
-
-	a
-		text-decoration: none
-		color: $text-color
-
-	+clear
-
-	.product__labels
-		position: absolute
-		left: $products-grid-space
-		top: $products-grid-space
-		z-index: 1
-
-.products__visual
-	float: left
-	width: calc(100% - #{$product-content-width})
-	padding-right: $product-visual-space
-
-	.page--has-m-aside &
-		+media('<desk-hd')
-			padding-top: 50px
-			width: calc(100% - #{$product-content-width--sm})
-
-		+media('<desk-md')
-			padding-top: 0
-			width: calc(100% - #{$product-content-width})
-
-	&, .page--has-m-aside &
-		+media('<mob-lg')
-			padding-top: 50px
-			width: calc(100% - #{$product-content-width--sm})
-
-		+media('<mob-md')
-			float: none
-			width: 100%
-			padding-right: 0
-			padding-top: 0
-			margin-bottom: 3rem
-
-.products__figure
-	display: block
-	position: relative
-	max-width: 240px // ограничиваем ширину изображения продукта
-	+push-auto
-	text-decoration: none
-	color: inherit
-
-	+media('<mob-md')
-		max-width: 160px
-
-	&:before
-		+pseudo-block-relative()
-		+ratio(3, 4)
-
-.products__img
-	+cover-abs()
-
-	img
-		display: block
-		width: 100%
-		height: 100%
-		max-width: none
-		+object-fit(scale-down)
-
-.products__title, .products__content, .products__footer
-	float: right
-	clear: right
-	width: $product-content-width
-	margin-bottom: $bottom-space--middle
-
-	.page--has-m-aside &
-		+media('<desk-hd')
-			width: $product-content-width--sm
-
-		+media('<desk-md')
-			width: $product-content-width
-
-	&, .page--has-m-aside &
-		+media('<mob-lg')
-			width: $product-content-width--sm
-
-		+media('<mob-md')
-			float: none
-			clear: none
-			width: 100%
-			margin-bottom: 2rem
-
-.products__content, .products__footer
-	&:last-child
-		margin-bottom: 0
-
-.products__title
-	overflow: hidden
-
-	a
-		padding-top: 0.5em
-		text-decoration: none
-		color: inherit
-		transition: inherit
-
-	.products__model
-		display: none
-
-	//hover
-	.no-touchevents a:hover &
-		color: $base-color
-
-		.products__model
-			color: $text-color-light
-
-.products__model
-	+font-normal
-	color: $text-color-light
-	letter-spacing: $letter-spacing
-
-	&::before
-		content: "/ "
-
-// list of characteristics
-.products__dl
-	margin-bottom: $bottom-space
-
-	&:last-child
-		margin-bottom: 0
-
-.products__di
-	position: relative
-	padding: 5px 0
-	border-bottom: 1px dashed $text-color-light
-	+clear
-
-.products__dt
-	float: left
-	width: $product-dt
-	color: $text-color-light
-	padding-right: 10px
-
-.products__dd
-	margin-left: $product-dt
-
-// colors
-.products__dd
-	.color-pics
-		+clear-spacing
-		margin-top: -10px
-		padding-top: 8px
-
-// footer
-.products__footer
-	+clear
-
-// price
-.products__price
-	float: left
-	width: $product-dt
-	padding-right: 10px
-
-	.cur
-		display: block
-		line-height: 30px
-		color: $base-color
-
-		.val
-			+font-bold
-			font-size: 16px
-			letter-spacing: 0.025em
-
-		.unit
-			+font-normal
-			font-size: 12px
-			letter-spacing: 0.05em
-
-// btn to basket
-.btn-to-basket, .btn-from-basket
-	$btn-space: 10px
-	//====================
-	+display-inline-block-top
-	//position: absolute
-	//right: 0
-	//top: 0
-	cursor: default
-	color: inherit
-	text-align: center
-	white-space: nowrap
-	+clear-spacing
-	user-select: none
-
-	//svg, span
-		+display-inline-block-middle
-	svg
-		display: block
-		float: left
-
-	.svg-ico-basket
-		+size(22px)
-
-	.svg-ico-basket-add
-		+size(32px, 22px)
-
-	path
-		fill: currentColor
-
-	span
-		display: block
-		overflow: hidden
-		padding-right: $btn-space
-		+font(1.6rem, round-float(20/16, 2))
-		letter-spacing: $letter-spacing
-		text-align: left
-		white-space: normal
-
-	svg + span
-		padding: 2px 0 0 $btn-space
-
-// hover
-a.btn-to-basket
-	cursor: pointer
-
-	.no-touchevents &:hover
-		color: $link-color
-
-.btn-from-basket
-	&, .grid-view &
-		display: none
-
-	.touchevents &
-		color: $base-color
-
-	&:hover
-		color: $base-color
-
-/* grid view
-.grid-view
-	.products__list
-		+grid-parent($products-grid-space)
-		+clear-spacing
-
-		+media('<mob-lg')
-			+grid-parent($products-grid-space--md)
-
-	.products__item
-		+grid-item(4, $products-grid-space, $products-space)
-
-		.page--has-m-aside &
-			+media('<desk-md')
-				+grid-item-responsive(3, $products-grid-space, $products-space)
-
-			+media('<desk-sm')
-				+grid-item-responsive(3, $products-grid-space, $products-space--md)
-
-		&, .page--has-m-aside &
-			+media('<mob-lg')
-				+grid-item-responsive(2, $products-grid-space--md, $products-space--md)
-
-	//+media('<mob-md')
-		+grid-item-responsive(1, $products-grid-space--md, $products-space--md)
-
-	.products__visual, .products__title, .products__content, .products__footer
-		float: none
-		width: auto
-
-	.products__visual
-		padding: 0
-		margin-bottom: $bottom-space--middle
-
-		+media('<mob-lg')
-			padding-top: 40px
-
-		&:last-child
-			margin-bottom: 0
-
-	.products__title
-		//+padding-horizontal($grid-space)
-		+font-normal
-		+font(16px, round-float(24/16, 2))
-		letter-spacing: $letter-spacing
-		text-align: center
-		text-transform: none
-		max-width: 260px
-		margin: 0 auto 1.5rem
-
-		+media('<mob-md')
-			font-size: 13px
-
-		.products__model
-			display: inline
-
-	.products__content
-		display: none
-
-	// price
-	.products__price
-		text-align: center
-		float: none
-		width: auto
-		padding: 0
-
-	.btn-to-basket,
-	.btn-from-basket
-		span
-			display: none
-
-	.btn-to-basket
-		// hide
-		display: none
-
-		.touchevents &
-			display: inline-block
-
-	.products__inner:hover .btn-to-basket
-		display: inline-block
-
-/* grid view end
-/* product item end
-
-/* products list
-.products
-	overflow: hidden
-	margin-bottom: $bottom-space--large
-
-	&:last-child
-		margin-bottom: 0
-
-.products__list
-	+grid-parent($products-space)
-	+clear-spacing
-
-	+media('<desk-lg')
-		+grid-parent($products-space--md)
-
-.products__item
-	+grid-item(2, $products-space)
-	+font($font-size, $line-height)
-	letter-spacing: $letter-spacing
-
-	+media('<desk-lg')
-		+grid-item-responsive(2, $products-space--md, 5rem)
-
-/* products list end
 
 /* parts
 $width: 25%
@@ -1182,7 +1158,7 @@ $width: 25%
 				color: inherit
 				text-decoration: none
 
-			.product__labels
+			.prod__labels
 				position: absolute
 				left: $space
 				top: $space

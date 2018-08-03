@@ -1,68 +1,53 @@
 <article class="products__item">
-	<div class="products__inner">
+	<div class="prod">
 		@@if (context.labels.new || context.labels.hit || context.labels.share || context.labels.sale) {
-		<div class="product__labels">
-			@@if (context.labels.new) {<div class="product__label product__label--new">@@labels.new</div>}
-			@@if (context.labels.hit) {<div class="product__label product__label--hit">@@labels.hit</div>}
-			@@if (context.labels.share) {<div class="product__label product__label--share">@@labels.share</div>}
-			@@if (context.labels.sale) {<div class="product__label product__label--sale">@@labels.sale</div>}
+		<div class="prod__labels">
+			@@if (context.labels.new) {<div class="prod__label prod__label--new">@@labels.new</div>}
+			@@if (context.labels.hit) {<div class="prod__label prod__label--hit">@@labels.hit</div>}
+			@@if (context.labels.share) {<div class="prod__label prod__label--share">@@labels.share</div>}
+			@@if (context.labels.sale) {<div class="prod__label prod__label--sale">@@labels.sale</div>}
 		</div>
 		}
-		<a href="#!">
-			<div class="products__visual">
-				<div class="products__figure">
-					<div class="products__img">
-						@@if (context.src) {
-						<img src="img/@@src" alt="@@title" />
-						}
+		<a href="#!" class="prod__inner">
+
+			<figure class="prod__figure">
+				@@if (context.src) {<img src="img/@@src" alt="@@title" />}
+				@@if (!context.src) {<img src="img/no-image.jpg" alt="@@title" />}
+			</figure>
+
+			<div class="prod__code"><span>@@code</span></div>
+			<div class="prod__title"><span>@@title</span></div>
+
+			<span class="prod__info">
+				<div class="prod__body">
+					<div class="prod__dl-list">
+						@@if (context.ch){@@for (var key in ch){
+						<div class="prod__dl-list__di">
+							<div class="prod__dl-list__dt">`+key+`:</div>
+							<div class="prod__dl-list__dd">`+ch[key]+`</div>
+						</div>
+						}}
 					</div>
 				</div>
-			</div>
-			<div class="products__code"><span>@@code</span></div>
-			<div class="products__title"><span>@@title</span></div>
+			</span>
 		</a>
 
-		<div class="products__content">
-			<div class="products__dl">
-				@@if (context.ch) {
-					@@for (var key in ch) {
-					<div class="products__di">
-						<div class="products__dt">`+key+`:</div>
-						<div class="products__dd">`+ch[key]+`</div>
-					</div>
-					}
-				}
-				@@if (context.colors) {
-				<div class="products__di">
-					<div class="products__dt">Цвет</div>
-					<div class="products__dd">
-						<div class="color-pics">
-						@@for (var i = 0; i < colors.length; i++) {
-							<div class="color-pic" style="background-color: `+colors[i]+`;">`+colors[i]+`</div>
-						}
-						</div>
-					</div>
-				</div>
-				}
-			</div>
-		</div>
-
-		<div class="products__footer">
-			@@if (context.price) {
-			<div class="products__price">
-				<div class="cur"><strong class="val">@@price</strong> <span class="unit">@@priceUnit</span></div>
-				<div class="old"><strong class="val">@@old</strong> <span class="unit">@@oldUnit</span></div>
+		<div class="prod__foot">
+			@@if (context.price || context.old) {
+			<div class="prod__price">
+				@@if(context.price){<div class="prod__price__cur"><strong class="prod__price__cur__val">@@price</strong> <span class="prod__price__cur__unit">@@priceUnit</span></div>}
+				@@if(context.old){<div class="prod__price__old"><strong class="prod__price__old__val">@@old</strong> <span class="prod__price__cur__unit">@@oldUnit</span></div>}
 			</div>
 			}
 			@@if (!context.price) {
-			<div class="products__price">
+			<div class="prod__price">
 				<div class="no">Цену уточняйте</div>
 			</div>
 			}
 		</div>
 
-		<div class="products__shop">
-			<a href="#!" class="btn-default">Где купить</a>
+		<div class="prod__add-info align-center">
+			@@include("_tpl_btn.html", {"value": "Где купить"})
 		</div>
 	</div>
 </article>

@@ -68,12 +68,11 @@
 		<div class="main-section__heading layout-flood">
 			<h2><span>Популярные моделы</span></h2>
 		</div>
-		<div class="layout-flood">
-			<div class="products grid-view">
-				<section class="products__list">
-					@@loop("_tpl_products--items.html", "includes/json/products--items.json")
-				</section>
-			</div>
+		<div class="products">
+			<section class="products__list">
+				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+			</section>
 		</div>
 	</section>
 

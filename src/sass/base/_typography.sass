@@ -296,7 +296,7 @@ $columns-gap: 2em
 		p + #{$tags},
 		ul + #{$tags},
 		ol + #{$tags}
-			margin-top: round-float($bottom-space--medium, 1)
+			margin-top: round-float($bottom-space--article, 1)
 
 /* list
 .#{$user-content}
@@ -477,12 +477,12 @@ table
 /* user spacer
 .user-spacer
 	display: block
-	height: $bottom-space--large
+	height: $bottom-space--section
 	+font(0, 0)
 	+clear
 
 	+media('<desk-lg')
-		height: $bottom-space--middle
+		height: $bottom-space--element
 
 /* user spacer end
 
@@ -505,7 +505,7 @@ table
 	text-decoration: none
 
 	+media('<desk-lg')
-		margin-bottom: $bottom-space--middle
+		margin-bottom: $bottom-space--element
 
 	+media('<tab-lg')
 		display: none

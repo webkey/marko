@@ -403,15 +403,13 @@
 							"taTag": "h4"
 						})
 						<div class="layout-text buttonsWrap">
-							<a href="#" class="btn-default">Link</a>
-							<br>
-							<!--==============================-->
-							<button class="btn-default">Button</button>
-							<br>
-							<!--==============================-->
-							<input class="btn-default" type="submit" value="Type submit">
-							<input class="btn-default" type="button" value="Type button">
-							<input class="btn-default" type="reset" value="Type reset">
+							@@include("_tpl_btn.html", {"value": "Used tag «a»"})
+							<br><!--==============================-->
+							@@include("_tpl_btn.html", {"type": "button!", "value": "«Button»"})
+							<br><!--==============================-->
+							@@include("_tpl_btn.html", {"type": "submit", "value": "Type «Submit»"})
+							@@include("_tpl_btn.html", {"type": "button", "value": "Type «Button»"})
+							@@include("_tpl_btn.html", {"type": "reset", "value": "Type «Reset»"})
 						</div>
 
 						<!--==============================-->

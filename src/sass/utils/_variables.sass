@@ -145,10 +145,14 @@ $line-height-h6: round-float($line-height*1.25, 2) !default
 
 // Spaces
 $bottom-space: round-float($font-size*$line-height, 1) !default
-$bottom-space--large: round-float($font-size*$line-height*3, 1) !default
-$bottom-space--medium: round-float($font-size*$line-height*2.0, 1) !default
-$bottom-space--middle: round-float($font-size*$line-height*1.5, 1) !default
-$bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
+//$bottom-space--section: round-float($font-size*$line-height*3, 1) !default
+$bottom-space--section: 8rem !default
+//$bottom-space--article: round-float($font-size*$line-height*2.0, 1) !default
+$bottom-space--article: 5rem !default
+//$bottom-space--element: round-float($font-size*$line-height*1.5, 1) !default
+$bottom-space--element: 3rem !default
+//$bottom-space--row: round-float($font-size*$line-height*0.75, 1) !default
+$bottom-space--row: 1rem !default
 
 
 // Colors
@@ -161,8 +165,8 @@ $base-color-alt: #282828 !default
 $bg-color: #e5e5e5 !default
 $bg-color-alt: #fff !default
 // ----------------------------------------------------
-$text-color: #262626 !default
-$text-color-light: gray !default
+$text-color: #282828 !default
+$text-color-light: #b2b2b2 !default
 $title-color: #262626 !default
 // ----------------------------------------------------
 $link-color: $text-color !default
@@ -246,21 +250,14 @@ $parts-animation-speed-out: 0.45s
 
 // Products
 // ==========================================================================
-$products-space: 74px !default
-$products-space--md: 50px !default
-$products-space--sm: 30px !default
-$products-space--mob: 20px !default
-$products-grid-space: 30px !default
-$products-grid-space--md: 20px !default
-$product-content-width: 315px !default // или 50%
-$product-content-width--sm: 260px !default // или 50%
-$product-visual-space: 20px !default
-$product-dt: 120px !default
+$products-space: 0 0 !default // v h
+$products-grid-space: 30px 30px !default // v h
+$products-grid-space--md: 20px 20px !default // v h
 
 
 // Header
 // ==========================================================================
-$header-height: 130px !default
+$header-height: 60px !default
 $header-height--sm: 100px !default
 $header-bg: #fff !default
 $header-shadow: 0 3px 6px rgba(black, 0.16) !default

@@ -51,6 +51,7 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 });
 
 /// Таск для переноса normalize
+/// Run before "Default task"
 gulp.task('normalize', function () {
 	return gulp.src('src/libs/normalize-scss/sass/**/*.+(scss|sass)')
 		.pipe(stripCssComments())
@@ -58,7 +59,7 @@ gulp.task('normalize', function () {
 		.pipe(gulp.dest('src/_temp/'));
 });
 
-gulp.task('sassCompilation', ['normalize'], function () { // Создаем таск для компиляции sass файлов
+gulp.task('sassCompilation', function () { // Создаем таск для компиляции sass файлов
 	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
