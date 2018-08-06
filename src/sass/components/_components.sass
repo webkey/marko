@@ -70,100 +70,151 @@
 
 /* user form end
 
-/* swiper slider
-$swiper-button-size: 52px, 22px
-$swiper-button-size--md: 40px, 16px
-$swiper-arrow-weight: 2px // толщина "древка" и линий "острея"
-$swiper-arrow-width: nth($swiper-button-size, 1) - (round($swiper-arrow-weight/2)) // длинна "древка" стрелки должно быть меньше длинны кнопки на несколько пискелов, чтобы не перекрывать "острие"
-$swiper-arrow-width--md: nth($swiper-button-size--md, 1) - (round($swiper-arrow-weight/2))
-$swiper-arrow-size: 14px // размер линий "острея"
-$swiper-arrow-size--md: 10px // размер линий "острея"
+/* slider
+$slider-button-size: 46px 46px // h w
+$slider-button-size--md: 46px 46px // h w
+$slider-arrow-size: 34px
+$slider-arrow-size--md: 24px
 
-.swiper-button-prev, .swiper-button-next, .def-arrows--prev, .def-arrows--next
-	overflow: hidden
-	text-indent: -9999px
-	+size(nth($swiper-button-size, 1), nth($swiper-button-size, 2))
-	margin-top: -#{round(nth($swiper-button-size, 2)/2)}
+// slider arrows
+.slider-arrows
+	height: 0
+	position: absolute
+	width: 100%
+	left: 0
+	bottom: 100%
+	margin-bottom: $bottom-space--article
+	pointer-events: none
+
+.slider-arrows__holder
+	position: relative
+
+.slider-arrow
+	position: absolute
+	top: 50%
+	+size(nth($slider-button-size, 1), nth($slider-button-size, 2))
+	margin-top: -#{round(nth($slider-button-size, 2)/2)}
+	color: $base-color
 	will-change: transform
-	//background: rgba(255, 127, 80, 0.51) // для тестирования, чтобы видеть контуры кнопки
-	background: none
+	//background: rgba(91, 255, 176, 0.51)
+	// для тестирования, чтобы видеть контуры кнопки
+	//background: none
+	z-index: 5
+	cursor: pointer
 	user-select: none
 	-webkit-tap-highlight-color: transparent
 
+	.slider-arrows &
+		left: auto
+		top: auto
+		bottom: 0
+		pointer-events: auto
+		margin: round((50 - nth($slider-button-size, 1))/2) 0
+
 	+media('<tab-lg')
-		+size(nth($swiper-button-size--md, 1), nth($swiper-button-size--md, 2))
-		margin-top: -#{round(nth($swiper-button-size--md, 2)/2)}
+		+size(nth($slider-button-size--md, 1), nth($slider-button-size--md, 2))
+		margin-top: -#{round(nth($slider-button-size--md, 2)/2)}
 
-	&::before, &::after
-		+pseudo()
-		border: $swiper-arrow-weight solid $text-color
-		transform: none
-
-	&::before
-		+position(50%)
-		+size($swiper-arrow-width, 0)
-		border-left: none
-		border-right: none
-		border-bottom: none
-		margin: -#{round($swiper-arrow-weight/2)} 0 0 -#{round($swiper-arrow-width/2)}
-
-		+media('<tab-lg')
-			+size($swiper-arrow-width--md, 0)
-			margin: -#{round($swiper-arrow-weight/2)} 0 0 -#{round($swiper-arrow-width--md/2)}
-
-	&::after
-		+size($swiper-arrow-size)
-		border-bottom: none
+	svg
+		display: block
+		position: absolute
+		left: 50%
 		top: 50%
+		width: $slider-arrow-size
+		height: $slider-arrow-size
+		margin: -#{round($slider-arrow-size/2)} 0 0 -#{round($slider-arrow-size/2)}
+		// transition
+		$prop: opacity
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
 
-		+media('<tab-lg')
-			+size($swiper-arrow-size--md)
+		& + svg
+			opacity: 0
 
-// hover & disabled
-.swiper-button-prev, .swiper-button-next
+	path
+		fill: currentColor
+
+// prev arrow
+.slider-arrow_prev
+	left: 0
+
+	.slider-arrows &
+		right: nth($slider-button-size, 2)
+
+// next arrow
+.slider-arrow_next
+	right: 0
+
+	.slider-arrows &
+		right: 0
+
+// hover, disabled, active
+.slider-arrow
 
 	// hover
 	&:not(.swiper-button-disabled):hover
-		&::before, &::after
-			border-color: $base-color
+		svg
+			& + svg
+				opacity: 1
+
+	// active
+	&:not(.swiper-button-disabled):active
+		svg
+			transform: translate(0, 1px)
 
 	// disabled
 	&.swiper-button-disabled
 		pointer-events: auto
+		cursor: default
+		opacity: 0.33
 
-.def-arrows--prev, .def-arrows--next
+
+/* slider pagination
+$slider-pag-size: 10px 10px // h w
+
+.swiper-pagination-bullet
+	display: inline-block
+	vertical-align: top
+	+size(#{nth($slider-pag-size, 2)}, #{nth($slider-pag-size, 1)})
+	border-radius: 0
+	border: 1px solid currentColor
+	color: $base-color
+	opacity: 1
+	transform: skew($skew, 0)
+	margin: 4px
+
+	background: none
+
+.swiper-pagination-bullet-active
+	background-color: currentColor
+
+/* slider end
+
+/* tape-slider
+.tape-slider
 	position: relative
+	margin-bottom: $bottom-space--article
 
-	// hover
-	&:not(.def-arrows--disabled):hover
-		&::before, &::after
-			border-color: $base-color
+	&:last-child
+		margin-bottom: 0
 
-	// disabled
-	&.def-arrows--disabled
-		pointer-events: auto
+	.swiper-container
+		border: 1px solid $border-color
+		margin-left: -2px
+		margin-right: -1px
 
-// prev arrow
-.swiper-button-prev, .def-arrows--prev
-	&::after
-		left: 0
-		border-right: none
-		transform-origin: left top
-		transform: rotate(-45deg)
+	.swiper-slide
+		border: 0 solid $border-color
+		border-left-width: 1px
 
-// next arrow
-.swiper-button-next, .def-arrows--next
-	&::after
-		right: 0
-		border-left: none
-		transform: rotate(45deg)
-		transform-origin: right top
+	.swiper-pagination
+		margin-top: $bottom-space--article
+		position: relative
+		line-height: 0
 
-.swiper-button-prev.swiper-button-disabled
-	pointer-events: auto
-	cursor: default
-
-/* swiper slider end
+/* tape-slider end
 
 ///* breadcrumbs
 //.breadcrumbs
@@ -340,13 +391,14 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 	background-color: $base-color
 	background-repeat: no-repeat
 	background-position: center
-	background-size: 20px auto
+	background-size: 16px auto
 
 	& ~ .prod__label
 		margin-top: 10px
 
 .prod__label--new
 	background-image: url(../../img/icon-new.svg)
+	background-size: 20px auto
 
 .prod__label--hit
 	background-image: url(../../img/icon-like.svg)
@@ -356,6 +408,7 @@ $swiper-arrow-size--md: 10px // размер линий "острея"
 
 .prod__label--sale
 	background-image: url(../../img/icon-sale.svg)
+	background-size: 14px auto
 
 /* product labels end
 
@@ -602,14 +655,14 @@ a.prod__inner
 /* product item end
 
 /* products list
-.main-section--collections
+.main-section--products
 	overflow: hidden
 
 .products
 	overflow: hidden
-	margin-bottom: $bottom-space--section
+	margin-bottom: $bottom-space--article
 
-	.main-section--collections &
+	.main-section--products &
 		margin-left: -2px
 		margin-right: -2px
 
@@ -630,7 +683,7 @@ a.prod__inner
 
 	// Оставить 10 елементов
 	// Остальные скрыть
-	.main-section--collections &
+	.main-section--products &
 		&:nth-child(n + 11)
 			display: none
 
@@ -690,7 +743,7 @@ a.prod__inner
 
 .main-section__heading
 	position: relative
-	margin-bottom: 5rem
+	margin-bottom: $bottom-space--article
 
 	h1, h2, h3
 		+font-normal
@@ -720,6 +773,11 @@ a.prod__inner
 .main-enter
 	position: relative
 	overflow: hidden
+	margin-bottom: $bottom-space--article
+	background-color: rgba($img-mask-bg, 0.5)
+
+	&:last-child
+		margin-bottom: 0
 
 /* main enter end
 
@@ -731,6 +789,7 @@ a.prod__inner
 	padding-bottom: 0
 
 .promo-slider
+	$slider-button-size: 60px 64px
 	//width: 600px
 	height: 100%
 	//background-color: $bg-color-alt
@@ -740,58 +799,47 @@ a.prod__inner
 		color: $text-color
 		padding-bottom: 60px
 
-.promo-slider__prev, .promo-slider__next, .promo-slider__pagination, .promo-slider__item__content
-	//filter: drop-shadow(1px 1px rgba(white, 0.5))
-	user-select: none
+	// arrows, pagination
+	.slider-arrow
+		top: calc((100% - 25%) / 2)
+		color: white
+		+size(nth($slider-button-size, 1), nth($slider-button-size, 2))
+		margin-top: -#{round(nth($slider-button-size, 2)/2)}
 
-.promo-slider__prev, .promo-slider__next
-	color: inherit
-
-	&::before, &::after
-		border-color: currentColor
-
-		+media('<mob-lg')
-			border-color: currentColor
-
-.promo-slider
-	.promo-slider__pagination
-		position: absolute
-		top: 0
-		left: 0
-		bottom: auto
-		width: auto
-		min-width: 35px
-		padding-right: 20px
-		+font-italic
-		+font(20px, 1)
-
-		+media('<mob-lg')
+		&::before, &::after
+			content: ""
+			display: block
 			position: absolute
-			width: auto
-			min-width: 85px
-			+padding-horizontal(25px)
-			transform: translate(-50%, 0)
-			+font-italic
-			+font(18px, 1)
-			text-align: center
-			color: $text-color
+			width: 100%
+			height: 100%
+			left: 0
+			top: 0
+			background-color: $base-color
+			z-index: -1
 
 		&::after
-			+pseudo()
-			left: 100%
-			top: 50%
-			+size(100px, 0)
-			border-top: 1px solid black
-			margin-top: -1px
+			transform: skew($skew, 0)
 
-			+media('<desk-sm')
-				width: 50px
+	.slider-arrow_prev
+		&::after
+			transform-origin: bottom right
 
-			+media('<mob-lg')
-				content: none
+	.slider-arrow_next
+		&::after
+			transform-origin: top left
+
+	.swiper-pagination
+		line-height: 0
+		bottom: 25%
+		margin-bottom: $bottom-space--article
+
+	.swiper-pagination-bullet
+		vertical-align: top
+		color: white
 
 .promo-slider__item
 	display: flex
+	flex-direction: column
 	text-align: center
 	justify-content: center
 	align-items: center
@@ -801,6 +849,15 @@ a.prod__inner
 	overflow: hidden
 
 	+image-mask
+
+	&::after
+		position: relative
+		content: ""
+		display: block
+		width: 100%
+		height: 25%
+		pointer-events: none
+		z-index: -1
 
 .promo-slider__item__img
 	position: absolute
@@ -895,6 +952,25 @@ a.prod__inner
 
 			span
 				border-color: $base-color
+
+.slider-progress
+	display: block
+	position: absolute
+	left: 0
+	bottom: 25%
+	height: 3px
+	width: 100%
+	background-color: rgba(white, 0.25)
+	z-index: 5
+
+.slider-progress__load
+	position: absolute
+	left: -100%
+	top: 0
+	width: 100%
+	height: 100%
+	background-color: $base-color
+	transform: translate(38%, 0)
 
 /* promo slider end
 
@@ -1212,8 +1288,6 @@ $width: 25%
 
 // hover
 .main-enter
-	background-color: rgba($img-mask-bg, 0.8)
-
 	.main-section--promo
 		// transition
 		$prop: opacity
@@ -1275,3 +1349,129 @@ $width: 25%
 
 /* parts end
 
+/* collections
+.main-section--collections
+	overflow: hidden
+
+.collection-slider__item
+	display: block
+	text-decoration: none
+	color: inherit
+	padding: $grid-space
+	+font(1.8rem, round-float(30/18, 2))
+
+	&:first-child
+		border-left-width: 0
+
+.collection-slider__item__inner
+	display: block
+	text-decoration: none
+	margin: 0 auto
+	width: 250px
+	max-width: 100%
+
+.collection-slider__item__img
+	text-align: center
+	margin-bottom: $bottom-space--element
+
+	&:last-child
+		margin-bottom: 0
+
+	img
+		margin: 0 auto
+
+.collection-slider__item__title
+	+font-black
+	+font(2.4rem, round-float(30/24, 2))
+	color: inherit
+	text-align: center
+	margin-bottom: $bottom-space--element
+
+	&:last-child
+		margin-bottom: 0
+
+/* collections end
+
+/* news
+.main-section--news
+	overflow: hidden
+
+.news-slider
+	position: relative
+	margin-bottom: $bottom-space--article
+
+	&:last-child
+		margin-bottom: 0
+
+	.swiper-container
+		overflow: visible
+
+	.swiper-pagination
+		margin-top: $bottom-space--article
+		position: relative
+		line-height: 0
+
+	// arrows, pagination
+	.slider-arrows,
+	.swiper-pagination
+		position: absolute
+		margin-bottom: 0
+		margin-top: $bottom-space--article
+		top: 100%
+
+	.slider-arrows
+		bottom: auto
+
+		.slider-arrow
+			bottom: auto
+			top: 0
+
+	.swiper-pagination
+		display: flex
+		align-items: center
+		left: 0
+		height: 50px
+
+.news-slider__item
+	padding-right: nth($grid-space, 2)
+
+	&:nth-child(even)
+		padding-top: 120px
+
+.news-slider__item__inner
+	display: block
+	position: relative
+	text-decoration: none
+	width: 240px
+	max-width: 100%
+	color: inherit
+
+.news-slider__item__date
+	position: absolute
+	left: 0
+	bottom: 0
+	transform-origin: left bottom
+	transform: rotate(-90deg)
+	color: #bfbfbf
+	padding-bottom: 1em
+
+.news-slider__item__img
+	position: relative
+	margin-bottom: $bottom-space--element
+
+.news-slider__item__title
+	+font-bold
+	+font(2.4rem, round-float(30/24, 2))
+	// transition
+	$prop: color
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+// hover
+.news-slider__item__inner
+	&:hover
+		.news-slider__item__title
+			color: $base-color
+
+/* news end

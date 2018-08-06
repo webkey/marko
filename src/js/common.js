@@ -122,8 +122,8 @@ function slidersInit() {
 	if ($promoSlider.length) {
 		$promoSlider.each(function () {
 			var $thisSlider = $(this);
-			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
-			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisBtnNext = $('.slider-arrow_next-js', $thisSlider);
+			var $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider);
 			var $thisPag = $('.swiper-pagination', $thisSlider);
 
 			new Swiper($thisSlider, {
@@ -140,7 +140,8 @@ function slidersInit() {
 
 				// Pagination
 				pagination: $thisPag,
-				paginationType: 'bullets'
+				paginationType: 'bullets',
+				paginationClickable: true
 			});
 		});
 	}
@@ -150,8 +151,8 @@ function slidersInit() {
 	if ($tapeSlider.length) {
 		$tapeSlider.each(function () {
 			var $thisSlider = $(this),
-				$thisBtnNext = $('.swiper-button-next', $thisSlider),
-				$thisBtnPrev = $('.swiper-button-prev', $thisSlider),
+				$thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
+				$thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
 				$thisPag = $('.swiper-pagination', $thisSlider),
 				// slidesLength = $('.swiper-slide', $thisSlider).length,
 				perView = 4;
@@ -159,7 +160,7 @@ function slidersInit() {
 			// console.log("slidesLength: ", slidesLength);
 			// console.log("perView: ", perView);
 
-			var mySwiper = new Swiper($thisSlider, {
+			var mySwiper = new Swiper($('.swiper-container', $thisSlider), {
 				// slidesPerView: 'auto',
 				slidesPerView: perView,
 				// slidesPerGroup: 2,
@@ -185,6 +186,89 @@ function slidersInit() {
 
 				// Pagination
 				pagination: $thisPag,
+				paginationClickable: true,
+				// paginationType: 'fraction',
+				// Responsive breakpoints
+				breakpoints: {
+					1919: {
+						// slidesOffsetBefore: 71,
+						// spaceBetween: 30
+					},
+					1599: {
+						// slidesOffsetBefore: 41
+					},
+					1199: {
+						// slidesOffsetBefore: 30
+					},
+					639: {
+						// slidesOffsetBefore: 20
+					},
+					479: {
+						// slidesOffsetBefore: 0,
+						slidesPerView: 1
+					}
+				},
+				// events
+				onInit: function (swiper) {
+					$(swiper.slides).matchHeight({
+						byRow: true, property: 'height', target: null, remove: false
+					});
+				}
+			});
+
+			// $('h2').on('click', function () {
+			// 	console.log(1);
+			// 	mySwiper.detachEvents();
+			// });
+			// $('.parts__item__thumb').on('click', function () {
+			// 	console.log(2);
+			// 	mySwiper.update();
+			// 	mySwiper.attachEvents();
+			// })
+		});
+	}
+
+	/*news slider*/
+	var $newsSlider = $('.news-slider-js');
+	if ($newsSlider.length) {
+		$newsSlider.each(function () {
+			var $thisSlider = $(this),
+				$thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
+				$thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
+				$thisPag = $('.swiper-pagination', $thisSlider),
+				// slidesLength = $('.swiper-slide', $thisSlider).length,
+				perView = 3;
+
+			// console.log("slidesLength: ", slidesLength);
+			// console.log("perView: ", perView);
+
+			var mySwiper = new Swiper($('.swiper-container', $thisSlider), {
+				// slidesPerView: 'auto',
+				slidesPerView: perView,
+				// slidesPerGroup: 2,
+				// autoHeight: true,
+				// Optional parameters
+				loop: false,
+				// Keyboard
+				keyboardControl: true,
+				// additional slide offset in the beginning of the container
+				// slidesOffsetBefore: 91,
+				// spaceBetween: 65,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				// navigation: {
+				// 	nextEl: $thisBtnNext,
+				// 	prevEl: $thisBtnPrev
+				// },
+
+				// Pagination
+				pagination: $thisPag,
+				paginationClickable: true,
 				// paginationType: 'fraction',
 				// Responsive breakpoints
 				breakpoints: {

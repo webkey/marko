@@ -49,16 +49,15 @@
 		background-color: $base-color
 		z-index: -1
 		$scaleX: 1
-		$x: -20deg
-		$y: 0
-		transform: scale($scaleX, 1) skew($x, $y)
-		transform: scale3d($scaleX, 1, 1) skewX($x)
+		transform: scale($scaleX, 1) skew($skew, 0)
+		transform: scale3d($scaleX, 1, 1) skewX($skew)
 		// transition
 		$prop: max-width
 		will-change: $prop
 		transition:
 			property: $prop
 			duration: $animation-speed
+			timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55)
 
 	&::before
 		left: calc(50% - 2px)

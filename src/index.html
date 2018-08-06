@@ -188,7 +188,7 @@
 									<div class="promo-slider__item__title" data-swiper-parallax="-400">Распродажа весенней коллекции и скидки на всю коллекцию
 										<div class="nobr">«Весна-лето»</div>
 									</div>
-									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+									<div class="promo-slider__item__footer">
 										<a href="#!" class="btn-default-alt">Подробнее</a>
 									</div>
 								</div>
@@ -199,7 +199,7 @@
 								</div>
 								<div class="promo-slider__item__content">
 									<div class="promo-slider__item__title" data-swiper-parallax="-400">Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии</div>
-									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+									<div class="promo-slider__item__footer">
 										<a href="#!" class="btn-default-alt">Подробнее</a>
 									</div>
 								</div>
@@ -210,7 +210,7 @@
 								</div>
 								<div class="promo-slider__item__content">
 									<div class="promo-slider__item__title" data-swiper-parallax="-400">Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно</div>
-									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+									<div class="promo-slider__item__footer">
 										<a href="#!" class="btn-default-alt">Подробнее</a>
 									</div>
 								</div>
@@ -221,16 +221,16 @@
 								</div>
 								<div class="promo-slider__item__content">
 									<div class="promo-slider__item__title" data-swiper-parallax="-400">В школу вместе с «Марко»! -20% на школьную коллекцию</div>
-									<div class="promo-slider__item__footer" data-swiper-parallax="-200">
+									<div class="promo-slider__item__footer">
 										<a href="#!" class="btn-default-alt">Подробнее</a>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- pagination -->
-						<div class="promo-slider__pagination swiper-pagination"></div>
+						<div class="swiper-pagination"></div>
 						<!-- navigation buttons -->
-						<div class="promo-slider__prev swiper-button-prev">
+						<div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
 							<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
 </svg>
@@ -238,11 +238,14 @@
     <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
 </svg>
 						</div>
-						<div class="promo-slider__next swiper-button-next">
+						<div class="slider-arrow slider-arrow_next slider-arrow_next-js">
 							<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
 							<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
 </svg>
+						</div>
+						<div class="slider-progress">
+							<div class="slider-progress__load"></div>
 						</div>
 					</div>
 				</section>
@@ -514,65 +517,125 @@
 				<div class="main-section__heading layout-flood">
 					<h2><span>Коллекции</span></h2>
 				</div>
-				<div class="tape-slider swiper-container tape-slider-js">
-					<div class="swiper-wrapper">
-						<div class="collection-slider__item swiper-slide">
-							<div class="collection-slider__item__img">
-								<img src="img/img-collection-01.png" alt="MarkoSport" />
+				<div class="collection-slider tape-slider tape-slider-js">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-01.png" alt="MarkoSport" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoSport</div>
+										<div class="collection-slider__item__text">Коллекция <a href="#!">мужской</a> и <a href="#!">женской</a> обуви. Это обувь для тех, у кого спорт живет в душе. Покупатели коллекции независимы и уверенны в себе.</div>
+									</div>
+								</div>
 							</div>
-							<div class="collection-slider__item__content">
-								<div class="collection-slider__item__title">MarkoSport</div>
-								<div class="collection-slider__item__text">Коллекция <a href="#!">мужской</a> и <a href="#!">женской</a> обуви. Это обувь для тех, у кого спорт живет в душе. Покупатели коллекции независимы и уверенны в себе.</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-02.png" alt="MarkoBoots" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoBoots</div>
+										<div class="collection-slider__item__text">Коллекция мужской, женской и детской обуви Обладает высокими теплозащитными свойствами и надежной защитой от влаги и загрязнений.</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="collection-slider__item swiper-slide">
-							<div class="collection-slider__item__img">
-								<img src="img/img-collection-02.png" alt="MarkoBoots" />
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-03.png" alt="MarkoOptima" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoOptima</div>
+										<div class="collection-slider__item__text">Коллекция мужской и женской обуви из искусственных материалов. Оптимальное соотношение цены и высокого качества.</div>
+									</div>
+								</div>
 							</div>
-							<div class="collection-slider__item__content">
-								<div class="collection-slider__item__title">MarkoBoots</div>
-								<div class="collection-slider__item__text">Коллекция мужской, женской и детской обуви Обладает высокими теплозащитными свойствами и надежной защитой от влаги и загрязнений.</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-04.png" alt="HomeMarko" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">HomeMarko</div>
+										<div class="collection-slider__item__text">Коллекция мужской и женской домашней обуви, созданная дарить уют, тепло и комфорт.</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="collection-slider__item swiper-slide">
-							<div class="collection-slider__item__img">
-								<img src="img/img-collection-03.png" alt="MarkoOptima" />
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-01.png" alt="MarkoSport" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoSport</div>
+										<div class="collection-slider__item__text">Коллекция <a href="#!">мужской</a> и <a href="#!">женской</a> обуви. Это обувь для тех, у кого спорт живет в душе. Покупатели коллекции независимы и уверенны в себе.</div>
+									</div>
+								</div>
 							</div>
-							<div class="collection-slider__item__content">
-								<div class="collection-slider__item__title">MarkoOptima</div>
-								<div class="collection-slider__item__text">Коллекция мужской и женской обуви из искусственных материалов. Оптимальное соотношение цены и высокого качества.</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-02.png" alt="MarkoBoots" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoBoots</div>
+										<div class="collection-slider__item__text">Коллекция мужской, женской и детской обуви Обладает высокими теплозащитными свойствами и надежной защитой от влаги и загрязнений.</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="collection-slider__item swiper-slide">
-							<div class="collection-slider__item__img">
-								<img src="img/img-collection-04.png" alt="HomeMarko" />
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-03.png" alt="MarkoOptima" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">MarkoOptima</div>
+										<div class="collection-slider__item__text">Коллекция мужской и женской обуви из искусственных материалов. Оптимальное соотношение цены и высокого качества.</div>
+									</div>
+								</div>
 							</div>
-							<div class="collection-slider__item__content">
-								<div class="collection-slider__item__title">HomeMarko</div>
-								<div class="collection-slider__item__text">Коллекция мужской и женской домашней обуви, созданная дарить уют, тепло и комфорт.</div>
+							<div class="collection-slider__item swiper-slide">
+								<div class="collection-slider__item__inner">
+									<div class="collection-slider__item__img">
+										<img src="img/img-collection-04.png" alt="HomeMarko" />
+									</div>
+									<div class="collection-slider__item__content">
+										<div class="collection-slider__item__title">HomeMarko</div>
+										<div class="collection-slider__item__text">Коллекция мужской и женской домашней обуви, созданная дарить уют, тепло и комфорт.</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 					<!-- pagination -->
 					<div class="swiper-pagination"></div>
 					<!-- navigation buttons -->
-					<div class="promo-slider__prev swiper-button-prev">
-						<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+					<div class="slider-arrows">
+						<div class="layout-flood push-auto">
+							<div class="slider-arrows__holder">
+								<div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
+									<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
 </svg>
-						<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+									<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
 </svg>
-					</div>
-					<div class="promo-slider__next swiper-button-next">
-						<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
-						<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+								</div>
+								<div class="slider-arrow slider-arrow_next slider-arrow_next-js">
+									<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
+									<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
 </svg>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
-			<section class="main-section main-section--collections">
+			<section class="main-section main-section--products">
 				<div class="main-section__heading layout-flood">
 					<h2><span>Популярные моделы</span></h2>
 				</div>
@@ -1108,69 +1171,141 @@
 						</article>
 					</section>
 				</div>
+				<div class="align-center">
+					<a href="#!" class="btn-default">Смотреть каталог</a>
+				</div>
 			</section>
-			<section class="main-section main-section--collections">
+			<section class="main-section main-section--news">
 				<div class="main-section__heading layout-flood">
 					<h2><span>Новости</span></h2>
 				</div>
-				<div class="layout-flood">
-					<div class="tape-slider swiper-container tape-slider-js">
+				<div class="layout-flood news-slider news-slider-js">
+					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<div class="collection-slider__item swiper-slide">
-								<div class="collection-slider__item__img">
-									<img src="img/img-news-01.jpg" alt="Ещё один фирменный магазин «Марко» в Кобрине." />
-								</div>
-								<div class="collection-slider__item__content">
-									<div class="collection-slider__item__title">Ещё один фирменный магазин «Марко» в Кобрине.</div>
-									<div class="collection-slider__item__text"></div>
-								</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="17 Апреля 2017time">17 Апреля 2017</time>
+										<img src="img/img-news-01.jpg" alt="Ещё один фирменный магазин «Марко» в Кобрине." />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Ещё один фирменный магазин «Марко» в Кобрине.</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
 							</div>
-							<div class="collection-slider__item swiper-slide">
-								<div class="collection-slider__item__img">
-									<img src="img/img-news-02.jpg" alt="Фирменный магазин «Марко» - теперь и в Саранске!" />
-								</div>
-								<div class="collection-slider__item__content">
-									<div class="collection-slider__item__title">Фирменный магазин «Марко» - теперь и в Саранске!</div>
-									<div class="collection-slider__item__text"></div>
-								</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="11 марта 2017time">11 марта 2017</time>
+										<img src="img/img-news-02.jpg" alt="Фирменный магазин «Марко» - теперь и в Саранске!" />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Фирменный магазин «Марко» - теперь и в Саранске!</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
 							</div>
-							<div class="collection-slider__item swiper-slide">
-								<div class="collection-slider__item__img">
-									<img src="img/img-news-03.jpg" alt="Первый фирменный магазин «Марко» в Рогачёве." />
-								</div>
-								<div class="collection-slider__item__content">
-									<div class="collection-slider__item__title">Первый фирменный магазин «Марко» в Рогачёве.</div>
-									<div class="collection-slider__item__text"></div>
-								</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="21 Февраля 2017time">21 Февраля 2017</time>
+										<img src="img/img-news-03.jpg" alt="Первый фирменный магазин «Марко» в Рогачёве." />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Первый фирменный магазин «Марко» в Рогачёве.</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
 							</div>
-							<div class="collection-slider__item swiper-slide">
-								<div class="collection-slider__item__img">
-									<img src="img/img-news-04.jpg" alt="Новый фирменный магазин «Марко» в Воронеже!" />
-								</div>
-								<div class="collection-slider__item__content">
-									<div class="collection-slider__item__title">Новый фирменный магазин «Марко» в Воронеже!</div>
-									<div class="collection-slider__item__text"></div>
-								</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="17 Января 2017time">17 Января 2017</time>
+										<img src="img/img-news-04.jpg" alt="Новый фирменный магазин «Марко» в Воронеже!" />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Новый фирменный магазин «Марко» в Воронеже!</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
 							</div>
-						</div>
-						<!-- pagination -->
-						<div class="swiper-pagination"></div>
-						<!-- navigation buttons -->
-						<div class="promo-slider__prev swiper-button-prev">
-							<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
-</svg>
-							<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
-</svg>
-						</div>
-						<div class="promo-slider__next swiper-button-next">
-							<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
-							<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
-</svg>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="17 Апреля 2017time">17 Апреля 2017</time>
+										<img src="img/img-news-01.jpg" alt="Ещё один фирменный магазин «Марко» в Кобрине." />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Ещё один фирменный магазин «Марко» в Кобрине.</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
+							</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="11 марта 2017time">11 марта 2017</time>
+										<img src="img/img-news-02.jpg" alt="Фирменный магазин «Марко» - теперь и в Саранске!" />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Фирменный магазин «Марко» - теперь и в Саранске!</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
+							</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="21 Февраля 2017time">21 Февраля 2017</time>
+										<img src="img/img-news-03.jpg" alt="Первый фирменный магазин «Марко» в Рогачёве." />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Первый фирменный магазин «Марко» в Рогачёве.</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
+							</div>
+							<div class="news-slider__item swiper-slide">
+								<a href="#!" class="news-slider__item__inner">
+									<div class="news-slider__item__img">
+										<time class="news-slider__item__date" datetime="17 Января 2017time">17 Января 2017</time>
+										<img src="img/img-news-04.jpg" alt="Новый фирменный магазин «Марко» в Воронеже!" />
+									</div>
+									<div class="news-slider__item__content">
+										<div class="news-slider__item__title">Новый фирменный магазин «Марко» в Воронеже!</div>
+										<div class="news-slider__item__text"></div>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
+					<!-- pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- navigation buttons -->
+					<div class="slider-arrows">
+						<div class="layout-flood push-auto">
+							<div class="slider-arrows__holder">
+								<div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
+									<svg class="svg-ico-arrow-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path class="" transform="translate(-1 24) rotate(-90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path>
+</svg>
+									<svg class="svg-ico-arrow-left-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(25 24) rotate(-180)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+								</div>
+								<div class="slider-arrow slider-arrow_next slider-arrow_next-js">
+									<svg class="svg-ico-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path transform="translate(25, 0) rotate(90)" d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"></path></svg>
+									<svg class="svg-ico-arrow-right-alt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path transform="translate(-1 0)" xmlns="http://www.w3.org/2000/svg" d="M8 5v14l11-7z"/>
+</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="align-center">
+					<a href="#!" class="btn-default">Все новости</a>
 				</div>
 			</section>
 		</div>

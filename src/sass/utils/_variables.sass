@@ -176,6 +176,11 @@ $border-color: #e6e6e6 !default
 $mark-color: #ee1c25 !default
 
 
+// Skew
+// ==========================================================================
+$skew: -20deg
+
+
 // Class of typography styles
 // ==========================================================================
 // @example Sass - Использование
@@ -193,7 +198,7 @@ $user-content: user-content !default
 $page-layout-space: 18px 30px !default // v h
 $page-layout-space--mob: 10px 10px !default // v h
 // максимальная ширина сайта
-$page-layout-width: 1800px !default
+$page-layout-width: 1920px !default
 // минимальная ширина сайта
 $page-layout-min: 320px !default
 // минимальные отступы у текствого блока
@@ -206,9 +211,9 @@ $text-layout-width: 800px !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 1440px !default
 // отступы внутри блочных элементов
-$grid-space: 28px 30px !default // v h
-$grid-space--lg: 18px 20px !default // v h
-$grid-space--sm: 8px 10px !default // v h
+$grid-space: 30px 30px !default // v h
+$grid-space--lg: 20px 20px !default // v h
+$grid-space--sm: 10px 10px !default // v h
 // отступы в дефолтных списках
 $list-space: 30px
 
@@ -222,7 +227,7 @@ $z-i-cover: 2 !default // приподнять над остальным кон�
 
 // Main section
 // ==========================================================================
-$main-section-space-vertical: 40px 50px
+$main-section-space-vertical: $bottom-space--article $bottom-space--article
 
 
 // Image mask

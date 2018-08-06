@@ -30,7 +30,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 	;
 
 var path = {
-	'dist': 'dist'
+	'dist': '1'
 };
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
