@@ -1,4 +1,9 @@
+@@if(!context.light || context.light == '@@light'){
 <div class="@@key__tab @@key__tab-js">
 	<a href="@@href"><span>@@txt</span></a>
 	<span class="@@key__angle @@key-handler-js"><i>&nbsp;</i></span>
 </div>
+}
+@@if(context.light && context.light != '@@light'){
+<a href="@@href">@@txt</a>
+}

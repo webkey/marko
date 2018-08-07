@@ -103,17 +103,13 @@ html
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-flood
-	max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
-	+padding-horizontal((nth($text-layout-space, 2)))
+	max-width: #{$flood-layout-width + (nth($page-layout-space, 2))*2}
+	+padding-horizontal((nth($page-layout-space, 2)))
 	+push-auto
 
 	+media('<tab-lg')
-		max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
-		+padding-horizontal((nth($text-layout-space--md, 2)))
-
-	+media('<tab-sm')
-		max-width: #{$flood-layout-width + (nth($text-layout-space--sm, 2))*2}
-		+padding-horizontal((nth($text-layout-space--sm, 2)))
+		max-width: #{$flood-layout-width + (nth($page-layout-space--mob, 2))*2}
+		+padding-horizontal((nth($page-layout-space--mob, 2)))
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
@@ -721,67 +717,142 @@ a.nav-opener
 /* === NAVIGATION end ===
 
 /* === FOOTER ===
+// footer layout
 .footer
-	//margin: 0 auto
 	position: relative
-	clear: both
-	z-index: 5
-	+font(16px, round-float(24/16, 3))
-	color: $text-color
-	border-top: 1px solid $border-color
-
-	background-color: lightgreen
-
-.footer__holder
-	overflow: hidden
-	cursor: default
-	padding: $footer-grid-space
-
-/* footer bottom
-.footer-bottom
-	position: relative
-	// обрезать вытянутый маржинами по горизонтале дочерний элемент
+	z-index: $z-i-footer
+	background-color: white
 	overflow: hidden
 
-.footer-bottom__holder
+	.font-large
+		+font-bold
+		font-size: 2.4rem
+
+.footer-row
 	position: relative
 	display: flex
-	flex-wrap: wrap
-	+margin-horizontal(-#{round(nth($grid-space, 2)/2)})
-	margin-bottom: -#{round(nth($grid-space, 1)/2)}
+	justify-content: space-between
+	+padding-vertical(10rem)
+	min-height: 1px
 
-.footer-bottom__col
-	text-align: center
-	+padding-horizontal(round(nth($grid-space, 2)/2))
-	margin-bottom: #{round(nth($grid-space, 1)/2)}
-	// для браузеров не поддерживающих display: flex
-	display: inline-block
-	vertical-align: top
-	width: calc(33.33% - 5px)
+	+media('<tab-lg')
+		+padding-vertical(5rem)
 
 	+media('<mob-lg')
-		min-width: 100%
+		display: block
+
+.footer-col
+	width: calc(100% / 6)
+	// для браузеров не поддерживающих display: flex
+	display: inline-block
+	//display: flex
+	justify-content: flex-start
+
+	+media('<mob-lg')
+		display: block
+		width: 100%
+		margin-bottom: 20px
+		padding: 0
+
+		&:last-child
+			margin-bottom: 0
+
+	&:nth-child(2)
+		width: calc(100% / 6 * 4)
 
 	&:first-child
 		+media('>=mob-lg')
+			padding-right: nth($grid-space, 2)
+			justify-content: flex-start
 			text-align: left
 
 	&:last-child
 		+media('>=mob-lg')
+			padding-left: nth($grid-space, 2)
+			justify-content: flex-end
 			text-align: right
 
+	p:last-child
+		margin-bottom: 0
+
+// copyright
+.copyright
 	a
-		color: inherit
 		text-decoration: none
 
-		.no-touchevents &:hover
-			text-decoration: underline
+		&:hover
+			color: $base-color
 
-/* footer bottom end
+// footer logo
+.footer-logo
+	display: block
+	width: 175px
+	max-width: 100%
+
+// footer navigation
+.footer-nav
+	overflow: hidden
+
+.footer-nav__list
+	+clear-spacing
+
+	&, & ul
+		list-style: none
+		margin: 0
+		padding: 0
+
+	&
+		margin: -$bottom-space--article -#{nth($grid-space, 2)} $bottom-space--element 0
+
+	&:last-child
+		margin-bottom: 0
+
+	a
+		text-decoration: none
+		color: inherit
+		// transition
+		$prop: color
+		transition:
+			property: $prop
+			duration: $animation-speed
+
+		&:hover
+			color: $base-color
+
+	& > li
+		width: calc(100% / 4)
+		display: inline-block
+		vertical-align: top
+		+font($font-size, $line-height)
+		letter-spacing: $letter-spacing
+		padding-right: nth($grid-space, 2)
+		margin-top: $bottom-space--article
+
+		& > a
+			display: inline-block
+			vertical-align: top
+			+font-bold
+			+font(2.4rem, round-float(30/24, 2))
+
+			& + ul
+				margin-top: $bottom-space--element
+
+		ul
+			& > li
+				margin-top: $bottom-space--row
+
+				ul
+					display: none
+
+				li
+					font-size: 0.85em
+					padding-left: 1em
+
+/* footer navigation end
 
 /* developer
 .developer
-	display: inline-block
+	display: block
 
 	a
 		text-decoration: none

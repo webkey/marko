@@ -61,7 +61,7 @@
 			<div class="swiper-pagination"></div>
 			<!-- navigation buttons -->
 			<div class="slider-arrows">
-				<div class="layout-flood push-auto">
+				<div class="max-wrap-flood push-auto">
 					<div class="slider-arrows__holder">
 						<div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
 							@@include("includes/svg/icon-arrow-left.svg")
@@ -92,11 +92,11 @@
 		</div>
 	</section>
 
-	<section class="main-section main-section--news">
+	<section class="main-section main-section--news layout">
 		<div class="main-section__heading layout-flood">
 			<h2><span>Новости</span></h2>
 		</div>
-		<div class="layout-flood news-slider news-slider-js">
+		<div class="max-wrap-flood news-slider news-slider-js">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 					@@loop("_tpl_news--items.html", "includes/json/news--items.json")
@@ -107,7 +107,7 @@
 			<div class="swiper-pagination"></div>
 			<!-- navigation buttons -->
 			<div class="slider-arrows">
-				<div class="layout-flood push-auto">
+				<div class="max-wrap-flood push-auto">
 					<div class="slider-arrows__holder">
 						<div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
 							@@include("includes/svg/icon-arrow-left.svg")

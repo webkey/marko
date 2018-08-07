@@ -1,3 +1,5 @@
+@@if(!context.light || context.light == '@@light'){
+
 @@if(context.pos === "start") {
 @@if(context.dropLevel === '(==========2==========)') { <div class="@@key__drop @@key-drop-js"><ul class="sub-@@key__list">}
 @@if(context.dropLevel === '(==========3==========)') { <div class="@@key__drop @@key-drop-js"><ul class="sub-@@key__list">}
@@ -8,4 +10,20 @@
 @@if(context.pos === "end") {
 </ul></div>
 @@if(context.dropLevel != '(==========2==========)') {</li>}
+}
+
+}
+@@if(context.light && context.light != '@@light'){
+
+@@if(context.pos === "start") {
+@@if(context.dropLevel === '(==========2==========)') { <ul>}
+@@if(context.dropLevel === '(==========3==========)') { <ul>}
+@@if(context.dropLevel === '(==========4==========)') { <ul>}
+@@if(context.dropLevel === '(==========5==========)') { <ul>}
+}
+
+@@if(context.pos === "end") {
+</ul>
+@@if(context.dropLevel != '(==========2==========)') {</li>}
+}
 }

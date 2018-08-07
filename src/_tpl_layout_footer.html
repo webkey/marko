@@ -1,28 +1,68 @@
 <footer class="footer">
-	<div class="max-wrap layout">
-		<div class="footer__holder">
-			<!--footer bottom-->
-			<div class="footer-bottom">
-				<div class="footer-bottom__holder">
-					<div class="footer-bottom__col">
-						<span class="copyright">&copy; <a href="index.html">Project</a> 2018</span>
+	<div class="subscribe layout">
+		<div class="subs-form max-wrap-flood push-auto">
+			<form action="!#" method="post">
+				<div class="input-wrap">
+					<div class="label-holder">
+						<label for="subs"><b>Нравится наша продукция?</b> Подпишитесь и будьте первыми в курсе самых последних событий.</label>
 					</div>
-					<div class="footer-bottom__col">
-						<a href="tel:8 000 111-22-33">8 000 111-22-33</a> / <a href="mailto:email@project.com">email@project.com</a>
-					</div>
-					<div class="footer-bottom__col">
-						<!--developer-->
-						<div class="developer">
-							<a href="http://astronim.by/" target="_blank">
-								<span class="developer__label">Разработка сайта <i>—</i></span>
-								<span class="developer__logo">Astronim*Support</span>
-							</a>
+					<div class="form-fields">
+						<div class="input-holder">
+							<input id="subs" type="email" placeholder="E-mail" required>
+							<button>Подписаться</button>
 						</div>
-						<!--developer end-->
+						<div class="subs-success"><span>Спасибо за подписку!</span></div>
+						<div class="subs-error">Введите корректный адрес</div>
 					</div>
 				</div>
+			</form>
+		</div>
+	</div>
+	<div class="footer-group layout">
+		<div class="footer-row max-wrap-flood push-auto">
+			<div class="footer-col">
+				<p>
+					<a class="footer-logo" href="index.html">
+						<img src="img/logo.png" alt="Marco">
+					</a>
+				</p>
+				<p class="copyright">
+					&copy; <a href="index.html">ООО «Белорусская кожевенно-обувная компания «Марко»</a>, <span class="nobr">2011-2018</span>
+				</p>
+				<div class="social-networks">
+					<div class="social-networks__list">
+						@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
+					</div>
+				</div>
+				<p>
+					<a href="mailto:post@marko.by">post@marko.by</a>
+				</p>
+				<p>
+					Республика Беларусь,<br>
+					г. Витебск, инд. 210033,<br>
+					пр-т Фрунзе, д. 85.
+				</p>
 			</div>
-			<!--footer bottom end-->
+			<div class="footer-col">
+				<div class="footer-nav">
+					@@include('_tpl_nav-constructor.html', {
+						"currentItem": "",
+						"bsKey": "footer-nav",
+						"light": "true"
+					})
+				</div>
+			</div>
+			<div class="footer-col">
+				<p>
+					<a class="font-large nobr" href="tel:+375 (21) 255-58-54"><span class="text-light">+375 (21)</span> 255-58-54</a>
+				</p>
+				<div class="developer">
+					<a href="http://astronim.by/" target="_blank">
+						<span class="developer__label">Разработано –</span>
+						<span class="developer__logo">Astronim*Support</span>
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </footer>

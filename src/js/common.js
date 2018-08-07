@@ -987,6 +987,12 @@ function toggleShutters() {
  * !Form validation
  * */
 function formValidation() {
+	$.validator.setDefaults({
+		submitHandler: function(form) {
+			$(form).addClass('form-success')
+		}
+	});
+
 	$('.user-form form').validate({
 		errorClass: "error",
 		validClass: "success",
@@ -1007,6 +1013,31 @@ function formValidation() {
 				.removeClass(errorClass)
 				.addClass(successClass)
 				.closest('form').find('label[for="' + $(element).attr('id') + '"]')
+				.removeClass(errorClass)
+				.addClass(successClass);
+		}
+	});
+
+	$('.subs-form form').validate({
+		errorClass: "error",
+		validClass: "success",
+		errorElement: false,
+		errorPlacement: function(error,element) {
+			return true;
+		},
+		highlight: function(element, errorClass, successClass) {
+			$(element)
+				.removeClass(successClass)
+				.addClass(errorClass)
+				.closest('.input-holder')
+				.removeClass(successClass)
+				.addClass(errorClass);
+		},
+		unhighlight: function(element, errorClass, successClass) {
+			$(element)
+				.removeClass(errorClass)
+				.addClass(successClass)
+				.closest('.input-holder')
 				.removeClass(errorClass)
 				.addClass(successClass);
 		}

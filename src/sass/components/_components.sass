@@ -384,16 +384,15 @@ $slider-pag-size: 10px 10px // h w
 	vertical-align: top
 	+font(14px, 1.5)
 	letter-spacing: normal
-	margin: 0 -4px -10px
+	margin: 0 -20px -10px 0
 
 .social-networks__item
 	float: left
-	margin: 0 4px 10px
+	margin: 0 20px 10px 0
 
 	a
 		display: block
 		position: relative
-		+size(40px)
 		color: inherit
 		transition:
 			property: color, border-color
@@ -403,8 +402,8 @@ $slider-pag-size: 10px 10px // h w
 			+hide-text
 
 		svg
-			+centering-transform-abs
-			+size(14px)
+			display: block
+			+size(20px)
 
 		path
 			fill: currentColor
@@ -447,6 +446,10 @@ $slider-pag-size: 10px 10px // h w
 
 			svg
 				+size(20px)
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
 
 			// hover
 			&:hover
@@ -1515,8 +1518,8 @@ $width: 25%
 	overflow: hidden
 
 .news-slider
+	margin: 0 auto $bottom-space--article
 	position: relative
-	margin-bottom: $bottom-space--article
 
 	&:last-child
 		margin-bottom: 0
@@ -1593,3 +1596,186 @@ $width: 25%
 			color: $base-color
 
 /* news end
+
+/* subscription form
+.subscribe
+	background-color: #282828
+	color: white
+	+padding-vertical(4rem)
+
+.subs-form
+	$subs-form-size: 50px 100% // h w
+	$subs-form-border-radius: 0
+
+	text-align: left
+
+	.input-wrap
+		display: flex
+		align-items: center
+		margin: 0
+
+	.label-holder
+		width: 50%
+		margin: 0 17px 0 0
+
+	.label-holder, label
+		+font-normal
+		+font(1.8rem, round-float(22/18, 2))
+		color: inherit
+
+	label
+		b
+			display: block
+			+font-normal
+			+font(3.0rem, round-float(30/18, 2))
+
+	.form-fields
+		width: 50%
+		position: relative
+
+		+media('<mob-lg')
+			width: 100%
+
+	.input-holder
+		position: relative
+		height: nth($subs-form-size, 1)
+		padding-right: 165px
+		$prop: opacity
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: 0.25s
+
+		input
+			height: nth($subs-form-size, 1)
+			font-size: 16px
+			line-height: nth($subs-form-size, 1)
+			padding: 0 20px
+			border-radius: 0
+
+			&:-webkit-autofill
+				-webkit-box-shadow: 0 0 0 30px $form-bg-color inset
+
+			&:-webkit-autofill
+				-webkit-text-fill-color: $text-color
+
+	.form-success .input-holder
+		opacity: 0
+		visibility: hidden
+		$scale: 0.76
+		transform: scale($scale)
+		transform: scale3d($scale, $scale, 1)
+		pointer-events: none
+
+	input[type='submit'], button
+		display: inline-block
+		vertical-align: top
+		height: nth($subs-form-size, 1)
+		width: 165px
+		min-width: 0
+		padding: 0 10px
+		position: absolute
+		top: 0
+		right: 0
+		border: none
+		+font-bold
+		font-size: 18px
+		line-height: nth($subs-form-size, 1)
+		letter-spacing: 0.1em
+		text-align: center
+		color: white
+		cursor: pointer
+		box-shadow: none
+		background-color: $base-color
+		border-radius: 0
+
+	.subs-success
+		position: absolute
+		+position(0)
+		+size(100%)
+		opacity: 0
+		pointer-events: none
+		background-color: $base-color
+		transform: scale(0.76, 0.76) translateZ(0)
+		border-radius: $subs-form-border-radius
+		//text-indent: -9999px
+		//overflow: hidden
+		text-align: center
+		color: white
+		font-size: 16px
+		line-height: nth($subs-form-size, 1)
+
+		transition:
+			property: opacity, visibility, transform
+			duration: 0.25s
+
+		span
+			position: relative
+			display: inline-block
+			vertical-align: top
+			//position: absolute
+			//+position(50%)
+			//+size(24px, 16px)
+			//margin: -8px 0 0 -12px
+
+			&::before, &::after
+				+pseudo()
+				+size(0, 2px)
+				left: 0
+				top: 50%
+				background-color: currentColor
+				$prop: width
+				will-change: $prop
+				transition:
+					property: $prop
+					duration: 0.12s
+					timing-function: linear
+
+			&::before
+				margin: -3px 0 0 -29px
+				transform: rotate(45deg) translateZ(0)
+				transform-origin: 0 8px
+				transition-delay: 0.12s
+
+			&::after
+				transform: rotate(-50deg) translateZ(0)
+				transform-origin: 0 16px
+				margin: -1px 0 0 -8px
+
+	.form-success .subs-success
+		opacity: 1
+		visibility: visible
+		transform: scale(1, 1) translateZ(0)
+
+		span
+			&::before
+				width: 8px
+				transition:
+					delay: 0s
+					timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05)
+
+			&::after
+				width: 16px
+				transition-delay: 0.12s
+
+	.subs-error
+		position: absolute
+		top: 100%
+		left: 0
+		+size(100%, 14px)
+		+font(10px, 14px)
+		color: $form-error-color
+		+truncate(100%)
+		opacity: 0
+		z-index: -1
+		user-select: none
+		pointer-events: none
+
+		transition:
+			property: opacity
+			duration: 0.1s
+
+	.error ~ .subs-error
+		opacity: 1
+
+/* subscription form end
