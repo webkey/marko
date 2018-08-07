@@ -1,0 +1,27 @@
+[
+  {
+	"class": "fb",
+	"svg": "@@include('includes/svg/icon-soc--facebook.svg')",
+	"title": "Facebook"
+  },
+  {
+	"class": "vk",
+	"svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	"title": "Vkontakte"
+  },
+  {
+	"class": "ok",
+	"svg": "@@include('includes/svg/icon-soc--odnoklassniki.svg')",
+	"title": "Odnoklassniki"
+  },
+  {
+	"class": "youtube",
+	"svg": "@@include('includes/svg/icon-soc--youtube.svg')",
+	"title": "Youtube"
+  },
+  {
+	"class": "instagram",
+	"svg": "@@include('includes/svg/icon-soc--instagram.svg')",
+	"title": "Instagram"
+  }
+]

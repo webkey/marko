@@ -2,6 +2,17 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* ms-drop
+.ms-drop__drop-js
+	opacity: 0
+	visibility: hidden
+
+	.is-open &
+		opacity: 1
+		visibility: visible
+
+/* ms-drop end
+
 /* user form
 .user-form
 	margin-bottom: $bottom-space
@@ -360,6 +371,90 @@ $slider-pag-size: 10px 10px // h w
 
 ///* feature list end
 
+/* social networks
+.social-networks
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.social-networks__list
+	position: relative
+	display: inline-block
+	vertical-align: top
+	+font(14px, 1.5)
+	letter-spacing: normal
+	margin: 0 -4px -10px
+
+.social-networks__item
+	float: left
+	margin: 0 4px 10px
+
+	a
+		display: block
+		position: relative
+		+size(40px)
+		color: inherit
+		transition:
+			property: color, border-color
+			duration: $animation-speed
+
+		span
+			+hide-text
+
+		svg
+			+centering-transform-abs
+			+size(14px)
+
+		path
+			fill: currentColor
+
+		&:hover
+			color: $base-color
+
+			//&.fb
+				color: $facebook-color
+
+			//&.vk
+				color: $vkontakte-color
+
+			//&.ok
+				color: $odnoklassniki-color
+
+			//&.youtube
+				color: $youtube-color
+
+			//&.instagram
+				color: $instagram-color-end
+
+// in header
+.header
+	.social-networks
+		position: absolute
+		left: 0
+		top: 0
+		margin: 0
+		text-align: center
+
+	.social-networks__item
+		margin: 0
+
+		a
+			+size($header-height)
+			background: none
+			border: 0 solid transparent
+			border-width: 2px 0
+
+			svg
+				+size(20px)
+
+			// hover
+			&:hover
+				border-bottom-color: currentColor
+
+
+/* social networks end
+
 /* product labels
 .i
 	svg
@@ -404,7 +499,7 @@ $slider-pag-size: 10px 10px // h w
 	background-image: url(../../img/icon-like.svg)
 
 .prod__label--share
-	background-image: url(../../img/icon-share.svg)
+	background-image: url(../../img/icon-act.svg)
 
 .prod__label--sale
 	background-image: url(../../img/icon-sale.svg)
@@ -783,7 +878,7 @@ a.prod__inner
 
 /* promo slider
 .main-section--promo
-	height: calc(100vh - #{$header-height})
+	height: calc(100vh - #{$header-height} - #{$nav-height})
 	min-height: 700px
 	padding-top: 0
 	padding-bottom: 0
@@ -1206,6 +1301,26 @@ $width: 25%
 			property: $prop
 			duration: $parts-animation-speed-out
 
+		&::before
+			$color: black
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 26px
+			+linear-gradient(to bottom, rgba($color, 0.1) 0%, rgba($color, 0) 100%)
+			opacity: 0
+			pointer-events: none
+			z-index: 5
+			// transition
+			$prop: opacity
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $parts-animation-speed-out
+
 		& > li
 			position: relative
 			flex-grow: 1
@@ -1346,6 +1461,9 @@ $width: 25%
 			transition:
 				duration: $parts-animation-speed
 				//delay: $parts-animation-speed
+
+			&::before
+				opacity: 1
 
 /* parts end
 

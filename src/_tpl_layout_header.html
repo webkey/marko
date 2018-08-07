@@ -10,11 +10,19 @@
 			<img style="display: none;" class="logo-print" src="img/logo.png" alt="Azbooks">
 		</div>
 		<!--logo end-->
+
+		<div class="social-networks">
+			<div class="social-networks__list">
+				@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
+			</div>
+		</div>
+
+		@@include('_tpl_user-options.html')
 	</div>
 </header>
 
 <!--search-->
-<div class="search-panel search-form-js">
+<!--<div class="search-panel search-form-js">
 	<div class="search-panel__layout max-wrap layout">
 		<form class="search-form" action="#" method="post" data-tc-stop>
 			<div class="search-form__field input-wrap">
@@ -33,12 +41,12 @@
 			@@include("includes/svg/icon-cross.svg")
 		</a>
 	</div>
-</div>
+</div>-->
 <!--search end-->
 
 <!--navigation-->
-<nav class="nav shutter--nav-js" data-tc-stop>
-	<div class="nav__layout max-wrap layout">
+<nav class="nav shutter--nav-js">
+	<div class="nav__layout max-wrap layout" data-tc-stop>
 		@@include('_tpl_nav-constructor.html', {
 			"currentItem": "@@currentItem",
 			"bsKey": "nav"
