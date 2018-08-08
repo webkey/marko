@@ -1,15 +1,6 @@
 <header class="header">
 	<div class="max-wrap layout header__holder">
-		<!--logo-->
-		<div class="logo">
-			@@if(!context.logoNoLink){<a href="index.html">}
-			@@if(context.logoNoLink){<span>}
-			<em>Azbooks</em>
-			@@if(context.logoNoLink){</span>}
-			@@if(!context.logoNoLink){</a>}
-			<img style="display: none;" class="logo-print" src="img/logo.png" alt="Azbooks">
-		</div>
-		<!--logo end-->
+		<div class="logo">@@if(!context.logoNoLink){<a href="index.html">} @@if(context.logoNoLink){<span>}<em>Marko</em>@@if(context.logoNoLink){</span>} @@if(!context.logoNoLink){</a>}<img style="display: none;" class="logo-print" src="img/logo.png" alt="Marko"></div>
 
 		<div class="social-networks">
 			<div class="social-networks__list">
@@ -20,29 +11,6 @@
 		@@include('_tpl_user-options.html')
 	</div>
 </header>
-
-<!--search-->
-<!--<div class="search-panel search-form-js">
-	<div class="search-panel__layout max-wrap layout">
-		<form class="search-form" action="#" method="post" data-tc-stop>
-			<div class="search-form__field input-wrap">
-				<input type="search" class="search-form__input field-effects-js"/>
-				<div class="search-form__btn">
-					@@include("includes/svg/icon-search.svg")
-					<span>Find</span>
-					<input type="submit" value="">
-				</div>
-			</div>
-		</form>
-		<a href="#" class="search-opener search-opener-js">
-			@@include("includes/svg/icon-search.svg")
-		</a>
-		<a href="#" class="search-closer search-closer-js">
-			@@include("includes/svg/icon-cross.svg")
-		</a>
-	</div>
-</div>-->
-<!--search end-->
 
 <!--navigation-->
 <nav class="nav shutter--nav-js">

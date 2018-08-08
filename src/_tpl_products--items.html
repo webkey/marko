@@ -8,7 +8,7 @@
 			@@if (context.labels.sale) {<div class="prod__label prod__label--sale">@@labels.sale</div>}
 		</div>
 		}
-		<a href="#!" class="prod__inner">
+		<a href="#" class="prod__inner">
 
 			<figure class="prod__figure">
 				@@if (context.src) {<img src="img/@@src" alt="@@title" />}
@@ -18,7 +18,7 @@
 			<div class="prod__code"><span>@@code</span></div>
 			<div class="prod__title"><span>@@title</span></div>
 
-			<span class="prod__info">
+			<div class="prod__info">
 				<div class="prod__body">
 					<div class="prod__dl-list">
 						@@if (context.ch){@@for (var key in ch){
@@ -29,7 +29,7 @@
 						}}
 					</div>
 				</div>
-			</span>
+			</div>
 		</a>
 
 		<div class="prod__foot">

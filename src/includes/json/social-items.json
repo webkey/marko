@@ -1,26 +1,31 @@
 [
   {
 	"class": "fb",
+	"href": "https://www.facebook.com/markoholding/",
 	"svg": "@@include('includes/svg/icon-soc--facebook.svg')",
 	"title": "Facebook"
   },
   {
 	"class": "vk",
+	"href": "https://vk.com/markoholding",
 	"svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
 	"title": "Vkontakte"
   },
   {
 	"class": "ok",
+	"href": "http://ok.ru/group/52464883859655",
 	"svg": "@@include('includes/svg/icon-soc--odnoklassniki.svg')",
 	"title": "Odnoklassniki"
   },
   {
 	"class": "youtube",
+	"href": "https://www.youtube.com/channel/UCR90-TJR5cfT4kem7OWTGxg",
 	"svg": "@@include('includes/svg/icon-soc--youtube.svg')",
 	"title": "Youtube"
   },
   {
 	"class": "instagram",
+	"href": "https://www.instagram.com/markoholding",
 	"svg": "@@include('includes/svg/icon-soc--instagram.svg')",
 	"title": "Instagram"
   }
