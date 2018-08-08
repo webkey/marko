@@ -337,7 +337,11 @@ function slidersInit() {
 				pagination: $thisPag,
 				paginationType: 'bullets',
 				paginationClickable: true
-			}).on('slideChangeStart', function () {
+			});
+
+			return false;
+
+			slider.on('slideChangeStart', function () {
 				startProgressbar();
 				isPause = true;
 			});

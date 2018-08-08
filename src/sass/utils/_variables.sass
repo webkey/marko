@@ -6,7 +6,7 @@
 // ==========================================================================
 
 // Medium query
-$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1280px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
 
 // Fonts style
 // ==========================================================================
@@ -264,18 +264,22 @@ $products-grid-space--md: 20px 20px !default // v h
 // Header
 // ==========================================================================
 $header-height: 80px !default
+$header-height--md: 60px !default
 $header-height--sm: 50px !default
 $header-bg: #fff !default
 $header-shadow: 0 3px 6px rgba(black, 0.16) !default
 
 // Logo
-$logo-size: 165px 50px !default
-$logo-size--mob: 110px 34px !default
+$logo-size: 50px 165px !default // h w
+$logo-size--md: auto 132px !default // h w
+$logo-size--mob: auto 110px !default // h w
 
 // Search form
-$search-form--size: 40px 320px !default // h w
-$search-form--size--sm: 40px 100% !default // h w
+$search-form--size: 40px, 320px !default // h w
+$search-form--size--md: 40px, 260px !default // h w
+$search-form--size--sm: 40px, 100% !default // h w
 $search-form--opener-size: $header-height !default // h w
+$search-form--opener-size--md: $header-height--md !default // h w
 $search-form--opener-size--sm: $header-height--sm !default // h w
 
 // Nav

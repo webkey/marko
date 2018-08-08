@@ -2,10 +2,10 @@
 	<div class="promo-slider__item__img" data-swiper-parallax="700">
 		<img src="@@src" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
 	</div>
-	<div class="promo-slider__item__content">
+	<a href="#" class="promo-slider__item__content">
 		<div class="promo-slider__item__title" data-swiper-parallax="-400">@@title</div>
 		<div class="promo-slider__item__footer">
-			@@include("_tpl_btn.html", {"value": "Подробнее", "classes": "btn-default-alt"})
+			<span class="btn-default-alt">Подробнее</span>
 		</div>
-	</div>
+	</a>
 </div>
