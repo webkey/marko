@@ -1,5 +1,5 @@
 <ul class="@@bsKey__list@@if(!context.light || context.light == '@@light'){ @@bsKey__list-js}">
-	<li class="@@if(currentItem === 'Главная'){current}">
+	<li class="has-drop@@if(currentItem === 'Главная'){ current}">
 		@@include('_tpl_nav-LINK--full.html', { "txt": "Каталог", "href": "#", "key": "@@bsKey", "light": "@@light" })
 		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey", "light": "@@light" })
 	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Женская обувь", "href": "#", "key": "@@bsKey", "light": "@@light" })</li>

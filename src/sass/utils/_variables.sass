@@ -86,7 +86,7 @@ $line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
 	font-size: $font-size-h1
 	line-height: $line-height-h1
 
-	+media('<tab-lg')
+	+media('<desk-sm')
 		font-size: $font-size-h1--md
 		line-height: $line-height-h1--md
 
@@ -108,7 +108,7 @@ $line-height-h2--sm: round-float(($line-height-h1--sm*1.01),2) !default
 	font-size: $font-size-h2
 	line-height: $line-height-h2
 
-	+media('<tab-lg')
+	+media('<desk-sm')
 		font-size: $font-size-h2--md
 		line-height: $line-height-h2--md
 
@@ -195,7 +195,8 @@ $user-content: user-content !default
 // ==========================================================================
 
 // отступы для всего сайта
-$page-layout-space: 18px 30px !default // v h
+$page-layout-space: 50px 60px !default // v h
+$page-layout-space--md: 20px 30px !default // v h
 $page-layout-space--mob: 10px 10px !default // v h
 // максимальная ширина сайта
 $page-layout-width: 1920px !default
@@ -276,7 +277,7 @@ $logo-size--mob: auto 110px !default // h w
 
 // Search form
 $search-form--size: 40px, 320px !default // h w
-$search-form--size--md: 40px, 260px !default // h w
+$search-form--size--md: 40px, 280px !default // h w
 $search-form--size--sm: 40px, 100% !default // h w
 $search-form--opener-size: $header-height !default // h w
 $search-form--opener-size--md: $header-height--md !default // h w
@@ -285,7 +286,8 @@ $search-form--opener-size--sm: $header-height--sm !default // h w
 // Nav
 $nav-width: 320px !default
 $nav-height: 49px
-$nav-space: 20px 30px !default
+$nav-space: 8px 24px !default
+$nav-space--sm: 8px 15px !default
 $nav-space--mob: 12px 15px !default
 $nav-arrow-size: 60px !default
 $nav-text-color: $text-color !default
