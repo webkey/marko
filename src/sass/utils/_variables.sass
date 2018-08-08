@@ -389,6 +389,26 @@ $multiple-item-space: 3px !default
 	text-indent: 0
 	outline: none
 
+// Select Arrow
+=selectArrow()
+	&::before, &::after
+		content: ''
+		position: absolute
+		right: 22px
+		top: 50%
+		width: 8px
+		height: 2px
+		background-color: $text-color
+		margin-top: -1px
+		z-index: 1
+
+	&::before
+		transform: rotate(45deg)
+
+	&::after
+		transform: rotate(-45deg)
+		right: 17px
+
 // States
 =form-success()
 	color: $form-success-color

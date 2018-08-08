@@ -15,24 +15,8 @@
 .select2-container--default .select2-selection .select2-selection__rendered
 	+selects-font
 
-.select,
 .select2-container--default .select2-selection--single .select2-selection__arrow b
-	&::before, &::after
-		content: ''
-		position: absolute
-		right: 22px
-		top: 50%
-		+size(8px, 2px)
-		background-color: $text-color
-		margin-top: -1px
-		z-index: 1
-
-	&::before
-		transform: rotate(45deg)
-
-	&::after
-		transform: rotate(-45deg)
-		right: 17px
+	+selectArrow
 
 .select2-container--default
 	.select2-selection--single
