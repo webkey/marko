@@ -1,5 +1,5 @@
 /**
- * !resize only width
+ * !Resize only width
  * */
 var resizeByWidth = true;
 
@@ -14,11 +14,10 @@ $(window).resize(function () {
 });
 
 /**
- * !device detected
+ * !Detected touchscreen devices
  * */
-var DESKTOP = device.desktop();
-var MOBILE = device.mobile();
-var TABLET = device.tablet();
+var TOUCH = Modernizr.touchevents;
+var DESKTOP = !TOUCH;
 
 /**
  * !Tooltip
@@ -311,14 +310,20 @@ function slidersInit() {
 	var $promoSlider = $('.promo-slider-js');
 	if ($promoSlider.length) {
 		$promoSlider.each(function () {
-			var $thisSlider = $(this);
-			var $thisBtnNext = $('.slider-arrow_next-js', $thisSlider);
-			var $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider);
-			var $thisPag = $('.swiper-pagination', $thisSlider);
+			var $thisSlider = $(this),
+				$thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
+				$thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
+				$thisPag = $('.swiper-pagination', $thisSlider);
+			var time = 8;
+			var $bar,
+				slider,
+				isPause,
+				tick,
+				percentTime;
 
-			new Swiper($thisSlider, {
+			slider = new Swiper($thisSlider, {
 				// Optional parameters
-				loop: false,
+				loop: true,
 				// Keyboard
 				keyboardControl: true,
 				// Parallax
@@ -332,8 +337,56 @@ function slidersInit() {
 				pagination: $thisPag,
 				paginationType: 'bullets',
 				paginationClickable: true
+			}).on('slideChangeStart', function () {
+				startProgressbar();
+				isPause = true;
 			});
+
+			$bar = $('.slider-progress .progress');
+
+			$('.main-enter').on({
+				mouseenter: function() {
+					isPause = true;
+				},
+				mouseleave: function() {
+					isPause = false;
+				}
+			});
+
+			function startProgressbar() {
+				resetProgressbar();
+				percentTime = 0;
+				isPause = false;
+				tick = setInterval(interval, 10);
+			}
+
+			function interval() {
+				if(isPause === false) {
+					percentTime += 1 / (time+0.1);
+					$bar.css({
+						// width: percentTime+"%",
+						'-ms-transform'     : 'translateX(' + percentTime + '%)',
+						'transform'         : 'translateX(' + percentTime + '%)'
+					});
+					if(percentTime >= 100) {
+						slider.slideNext();
+						startProgressbar();
+					}
+				}
+			}
+
+			function resetProgressbar() {
+				$bar.css({
+					// width: 0+'%',
+					'-ms-transform'     : 'translateX(0%)',
+					'transform'         : 'translateX(0%)'
+				});
+				clearTimeout(tick);
+			}
+
+			startProgressbar();
 		});
+
 	}
 
 	/*tape slider*/
@@ -350,7 +403,7 @@ function slidersInit() {
 			// console.log("slidesLength: ", slidesLength);
 			// console.log("perView: ", perView);
 
-			var mySwiper = new Swiper($('.swiper-container', $thisSlider), {
+			new Swiper($('.swiper-container', $thisSlider), {
 				// slidesPerView: 'auto',
 				slidesPerView: perView,
 				// slidesPerGroup: 2,
@@ -425,25 +478,14 @@ function slidersInit() {
 			var $thisSlider = $(this),
 				$thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
 				$thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
-				$thisPag = $('.swiper-pagination', $thisSlider),
-				// slidesLength = $('.swiper-slide', $thisSlider).length,
-				perView = 3;
+				$thisPag = $('.swiper-pagination', $thisSlider);
 
-			// console.log("slidesLength: ", slidesLength);
-			// console.log("perView: ", perView);
-
-			var mySwiper = new Swiper($('.swiper-container', $thisSlider), {
-				// slidesPerView: 'auto',
-				slidesPerView: perView,
-				// slidesPerGroup: 2,
-				// autoHeight: true,
+			new Swiper($('.swiper-container', $thisSlider), {
+				slidesPerView: 3,
 				// Optional parameters
 				loop: false,
 				// Keyboard
 				keyboardControl: true,
-				// additional slide offset in the beginning of the container
-				// slidesOffsetBefore: 91,
-				// spaceBetween: 65,
 				// Ratio to trigger swipe to next/previous slide during long swipes
 				longSwipesRatio: 0.1,
 				longSwipesMs: 200,
@@ -451,32 +493,12 @@ function slidersInit() {
 				// Navigation arrows
 				nextButton: $thisBtnNext,
 				prevButton: $thisBtnPrev,
-				// navigation: {
-				// 	nextEl: $thisBtnNext,
-				// 	prevEl: $thisBtnPrev
-				// },
 
 				// Pagination
 				pagination: $thisPag,
 				paginationClickable: true,
-				// paginationType: 'fraction',
-				// Responsive breakpoints
 				breakpoints: {
-					1919: {
-						// slidesOffsetBefore: 71,
-						// spaceBetween: 30
-					},
-					1599: {
-						// slidesOffsetBefore: 41
-					},
-					1199: {
-						// slidesOffsetBefore: 30
-					},
-					639: {
-						// slidesOffsetBefore: 20
-					},
 					479: {
-						// slidesOffsetBefore: 0,
 						slidesPerView: 1
 					}
 				},
@@ -487,16 +509,6 @@ function slidersInit() {
 					});
 				}
 			});
-
-			// $('h2').on('click', function () {
-			// 	console.log(1);
-			// 	mySwiper.detachEvents();
-			// });
-			// $('.parts__item__thumb').on('click', function () {
-			// 	console.log(2);
-			// 	mySwiper.update();
-			// 	mySwiper.attachEvents();
-			// })
 		});
 	}
 }

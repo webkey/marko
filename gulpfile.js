@@ -105,8 +105,8 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
-		'src/libs/device.js/lib/device.min.js' // определение устройств
-		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
+		// 'src/libs/device.js/lib/device.min.js' // определение устройств
+		'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
 		, 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
