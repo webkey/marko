@@ -93,8 +93,23 @@ html
 /* user form end
 
 /* slider
-$slider-button-size: 46px 46px // h w
-$slider-arrow-size: 34px
+.swiper-container,
+.swiper-pagination,
+.slider-arrows
+	opacity: 0
+	pointer-events: none
+	// transition
+	$prop: opacity
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	.is-loaded &,
+	&.is-loaded,
+	.no-js &
+		opacity: 1
+		pointer-events: auto
 
 // slider arrows
 .slider-arrows
@@ -106,13 +121,20 @@ $slider-arrow-size: 34px
 	margin-bottom: $bottom-space--article
 	pointer-events: none
 
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--article--mob
+		display: none
+
 .slider-arrows__holder
 	position: relative
 
 .slider-arrow
 	position: absolute
 	top: 50%
-	+size(nth($slider-button-size, 1), nth($slider-button-size, 2))
+	+size(nth($slider-button-size, 2), nth($slider-button-size, 1))
 	margin-top: -#{round(nth($slider-button-size, 2)/2)}
 	color: $base-color
 	will-change: transform
@@ -131,6 +153,12 @@ $slider-arrow-size: 34px
 		pointer-events: auto
 		margin: round((50 - nth($slider-button-size, 1))/2) 0
 
+		+media('<desk-sm')
+			margin: round((38 - nth($slider-button-size, 1))/2) 0
+
+		+media('<mob-sm')
+			margin: round((30 - nth($slider-button-size, 1))/2) 0
+
 	svg
 		display: block
 		position: absolute
@@ -145,6 +173,12 @@ $slider-arrow-size: 34px
 		transition:
 			property: $prop
 			duration: $animation-speed
+
+		+media('<desk-sm')
+			width: $slider-arrow-size--mob
+			height: $slider-arrow-size--mob
+			margin: -#{round($slider-arrow-size--mob/2)} 0 0 -#{round($slider-arrow-size--mob/2)}
+
 
 		& + svg
 			opacity: 0
@@ -211,28 +245,52 @@ $slider-pag-size: 10px 10px // h w
 	background-color: currentColor
 
 /* slider end
-
 /* tape-slider
 .tape-slider
 	position: relative
 	margin-bottom: $bottom-space--article
 
+	background: url(../../img/preloader.svg) no-repeat center
+	background-size: 40px
+
+	&.is-loaded
+		background-image: none
+
+	+media('<desk-sm')
+		+padding-horizontal(nth($page-layout-space--md, 2))
+		margin-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($page-layout-space--mob, 2))
+		margin-bottom: $bottom-space--article--mob
+
 	&:last-child
 		margin-bottom: 0
 
 	.swiper-container
-		border: 1px solid $border-color
-		margin-left: -2px
-		margin-right: -1px
+		+media('>=desk-sm')
+			border: 1px solid $border-color
+			margin-left: -2px
+			margin-right: -1px
 
 	.swiper-slide
 		border: 0 solid $border-color
 		border-left-width: 1px
+		background-color: $bg-color-alt
+
+		+media('<desk-sm')
+			border-width: 1px
 
 	.swiper-pagination
 		margin-top: $bottom-space--article
 		position: relative
 		line-height: 0
+
+		+media('<desk-sm')
+			margin-top: $bottom-space--article--md
+
+		+media('<mob-lg')
+			margin-top: $bottom-space--article--mob
 
 /* tape-slider end
 
@@ -501,8 +559,7 @@ $slider-pag-size: 10px 10px // h w
 	$size: 34px
 
 	display: block
-	width: $size
-	height: $size
+	+size($size)
 	border-radius: round($size/2)
 	color: white
 	text-indent: -9999px
@@ -512,12 +569,21 @@ $slider-pag-size: 10px 10px // h w
 	background-position: center
 	background-size: 16px auto
 
+	+media('<mob-lg')
+		$size: 26px
+		+size($size)
+		border-radius: round($size/2)
+		background-size: 14px auto
+
 	& ~ .prod__label
 		margin-top: 10px
 
 .prod__label--new
 	background-image: url(../../img/icon-new.svg)
 	background-size: 20px auto
+
+	+media('<mob-lg')
+		background-size: 18px auto
 
 .prod__label--hit
 	background-image: url(../../img/icon-like.svg)
@@ -528,6 +594,9 @@ $slider-pag-size: 10px 10px // h w
 .prod__label--sale
 	background-image: url(../../img/icon-sale.svg)
 	background-size: 14px auto
+
+	+media('<mob-lg')
+		background-size: 12px auto
 
 /* product labels end
 
@@ -543,9 +612,16 @@ $slider-pag-size: 10px 10px // h w
 a.prod__inner
 	display: block
 	height: 100%
+	min-height: 150px
 	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 80px
 	text-decoration: none
 	color: inherit
+
+	+media('<desk-sm')
+		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 80px
+
+	+media('<mob-lg')
+		padding: nth($products-grid-space--mob, 1) nth($products-grid-space--mob, 2) 70px
 
 .prod__labels
 	position: absolute
@@ -553,17 +629,25 @@ a.prod__inner
 	top: nth($products-grid-space, 2)
 	z-index: 1
 
+	+media('<desk-sm')
+		left: nth($products-grid-space--md, 2)
+		top: nth($products-grid-space--md, 2)
+
+	+media('<mob-lg')
+		left: nth($products-grid-space--mob, 2)
+		top: nth($products-grid-space--mob, 2)
+
 .prod__figure
 	position: relative
 	max-width: 240px // ограничиваем ширину изображения продукта
 	padding: 0
 	margin: 0 auto $bottom-space--element
 
-	+media('<mob-lg')
-		margin-top: 40px // a place for labels
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
 
-	+media('<mob-md')
-		max-width: 160px
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--element--mob
 
 	&:last-child
 		margin-bottom: 0
@@ -592,6 +676,11 @@ a.prod__inner
 	max-width: 260px
 	margin: 0 auto
 
+	+media('<desk-sm')
+		+font(16px, round-float(19/16, 2))
+		letter-spacing: 0.05em
+		margin-bottom: 5px
+
 .prod__code
 	color: $text-color-light
 
@@ -602,7 +691,7 @@ a.prod__inner
 	&:last-child
 		margin-bottom: 0
 
-// info (show hover hover)
+// info (show hover)
 .prod__info
 	position: absolute
 	left: 0
@@ -620,12 +709,26 @@ a.prod__inner
 	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 180px
 	transform: translate(-50%, -50%)
 
+	+media('<desk-sm')
+		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 180px
+
+	+media('<mob-lg')
+		padding: nth($products-grid-space--mob, 1) nth($products-grid-space--mob, 2) 180px
+
 // list of characteristics
 .prod__dl-list
 	margin-bottom: $bottom-space--element
 	font-size: 1.8rem
 	line-height: round-float(22/18, 2)
 	text-align: center
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
+		font-size: 1.6rem
+		line-height: round-float(18/16, 2)
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--element--mob
 
 	&:last-child
 		margin-bottom: 0
@@ -634,9 +737,15 @@ a.prod__inner
 	position: relative
 	margin-top: 14px
 
+	+media('<desk-sm')
+		margin-top: 6px
+
 .prod__dl-list__dt
 	display: block
 	color: $text-color-light
+
+	+media('<desk-sm')
+		font-size: 1.4rem
 
 // footer
 .prod__foot
@@ -646,6 +755,12 @@ a.prod__inner
 	width: 100%
 	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
 	z-index: 5
+
+	+media('<desk-sm')
+		padding: 0 nth($products-grid-space--md, 2)  nth($products-grid-space--md, 1)
+
+	+media('<mob-lg')
+		padding: 0 nth($products-grid-space--mob, 2)  nth($products-grid-space--mob, 1)
 
 // price
 .prod__price
@@ -658,9 +773,16 @@ a.prod__inner
 	display: inline-block
 	+margin-horizontal(7px)
 
+	+media('<mob-lg')
+		display: block
+		+margin-horizontal(0)
+
 .prod__price__cur__val
 	+font-black
 	font-size: 24px
+
+	+media('<desk-sm')
+		font-size: 20px
 
 .prod__price__old
 	color: $base-color
@@ -675,6 +797,9 @@ a.prod__inner
 		top: 0
 		margin-right: 5px
 
+		+media('<mob-lg')
+			display: none
+
 .prod__price__old__val
 	+font-normal
 
@@ -687,7 +812,14 @@ a.prod__inner
 	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
 	z-index: 5
 
-// hover animation
+	+media('<desk-sm')
+		padding: 0 nth($products-grid-space--md, 2)  nth($products-grid-space--md, 1)
+
+	+media('<mob-lg')
+		padding: 0 nth($products-grid-space--mob, 2)  nth($products-grid-space--mob, 1)
+
+// Hover animation. Only no-touch
+
 .prod
 	$animation-speed: 0.53s
 	$animation-elements: ".prod__labels, .prod__figure, .prod__dl-list__di, .prod__code, .prod__title, .prod__foot, .prod__add-info"
@@ -782,6 +914,12 @@ a.prod__inner
 	overflow: hidden
 	margin-bottom: $bottom-space--article
 
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--article--mob
+
 	.main-section--products &
 		margin-left: -2px
 		margin-right: -2px
@@ -804,8 +942,11 @@ a.prod__inner
 	+media('<desk-md')
 		+grid-item-responsive(4, nth($products-space, 2), nth($products-space, 1))
 
-	+media('<mob-lg')
+	+media('<tab-sm')
 		+grid-item-responsive(3, nth($products-space, 2), nth($products-space, 1))
+
+	+media('<mob-lg')
+		+grid-item-responsive(2, nth($products-space, 2), nth($products-space, 1))
 
 	// Оставить 10 елементов
 	// Остальные скрыть
@@ -815,7 +956,19 @@ a.prod__inner
 
 		// Оставить 8 елементов
 		// Остальные скрыть
-		+media('<desk-lg')
+		+media('<desk-sm', '>=tab-sm')
+			&:nth-child(n + 9)
+				display: none
+
+		// Оставить 9 елементов
+		// Остальные скрыть
+		+media('<tab-sm', '>=mob-lg')
+			&:nth-child(n + 10)
+				display: none
+
+		// Оставить 8 елементов
+		// Остальные скрыть
+		+media('<mob-lg')
 			&:nth-child(n + 9)
 				display: none
 
@@ -867,15 +1020,30 @@ a.prod__inner
 	padding-top: nth($main-section-space-vertical, 1)
 	padding-bottom: nth($main-section-space-vertical, 2)
 
+	+media('<desk-sm')
+		padding-top: nth($main-section-space-vertical--md, 1)
+		padding-bottom: nth($main-section-space-vertical--md, 2)
+
+	+media('<mob-lg')
+		padding-top: nth($main-section-space-vertical--mob, 1)
+		padding-bottom: nth($main-section-space-vertical--mob, 2)
+
 .main-section__heading
 	position: relative
 	margin-bottom: $bottom-space--article
 
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--article--mob
+
 	h1, h2, h3
 		+font-normal
-		font-size: 4.8rem
-		line-height: round-float(52/48, 2)
 		color: $text-color
+
+		&
+			+font-h1
 
 		& > span
 			display: inline-block
@@ -883,15 +1051,16 @@ a.prod__inner
 			position: relative
 
 			&::after
-				content: ""
-				display: block
-				position: absolute
-				left: 100%
-				bottom: 10px
-				width: 100px
-				height: 2px
-				background-color: currentColor
-				margin-left: 20px
+				+media('>=desk-sm')
+					content: ""
+					display: block
+					position: absolute
+					left: 100%
+					bottom: 10px
+					width: 100px
+					height: 2px
+					background-color: currentColor
+					margin-left: 20px
 
 /* main sections end
 
@@ -899,8 +1068,12 @@ a.prod__inner
 .main-enter
 	position: relative
 	overflow: hidden
-	margin-bottom: $bottom-space--article
+	margin-bottom: nth($main-section-space-vertical, 2)
 	background-color: rgba($img-mask-bg, 0.5)
+
+	+media('<desk-sm')
+		//margin-bottom: nth($main-section-space-vertical--md, 2)
+		margin-bottom: 0
 
 	&:last-child
 		margin-bottom: 0
@@ -918,25 +1091,36 @@ a.prod__inner
 		height: calc(100vh - #{$header-height--md} - #{$nav-height})
 
 	+media('<desk-sm')
-		height: calc(100vh - #{$header-height--sm})
+		//height: calc(100vh - #{$header-height--sm})
+		height: 575px
+		min-height: 0
+
+	+media('<tab-lg')
+		height: 385px
+
+	+media('<mob-lg')
+		height: 192px
 
 .promo-slider
-	$slider-button-size: 60px 64px
 	//width: 600px
 	height: 100%
 	//background-color: $bg-color-alt
 	color: white
 
-	+media('<mob-lg')
-		color: $text-color
-		padding-bottom: 60px
-
 	// arrows, pagination
 	.slider-arrow
 		top: calc((100% - 25%) / 2)
 		color: white
-		+size(nth($slider-button-size, 1), nth($slider-button-size, 2))
-		margin-top: -#{round(nth($slider-button-size, 2)/2)}
+		+size(nth($slider-promo-button-size, 2), nth($slider-promo-button-size, 1))
+		margin-top: -#{round(nth($slider-promo-button-size, 1)/2)}
+
+		+media('<desk-sm')
+			top: calc(100% / 2)
+			+size(nth($slider-promo-button-size--mob, 2), nth($slider-promo-button-size--mob, 1))
+			margin-top: -#{round(nth($slider-promo-button-size--mob, 1)/2)}
+
+		+media('<mob-lg')
+			display: none
 
 		&::before, &::after
 			content: ""
@@ -968,6 +1152,13 @@ a.prod__inner
 		+media('<desk-ml')
 			margin-bottom: 2rem
 
+		+media('<desk-sm')
+			bottom: 0
+			margin-bottom: $bottom-space--article--md
+
+		+media('<desk-sm')
+			margin-bottom: $bottom-space--article--mob
+
 	.swiper-pagination-bullet
 		vertical-align: top
 		color: white
@@ -985,6 +1176,12 @@ a.prod__inner
 
 	+image-mask
 
+	+media('<desk-sm')
+		+padding-horizontal(nth($slider-promo-button-size--mob, 2) + 50)
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($page-layout-space--mob, 2))
+
 	&::after
 		position: relative
 		content: ""
@@ -994,6 +1191,9 @@ a.prod__inner
 		pointer-events: none
 		z-index: -1
 
+		+media('<desk-sm')
+			display: none
+
 .promo-slider__item__img
 	position: absolute
 	+size(100%)
@@ -1001,53 +1201,41 @@ a.prod__inner
 	background-color: $bg-color-alt
 	z-index: -2
 
-	+media('<mob-lg')
-		position: relative
-		+size(auto)
-		+position(auto)
-		z-index: auto
-
-	&::before
-		content: none
-		display: block
-		+ratio(172, 85)
-
-		+media('<mob-lg')
-			content: ""
-
 	img
 		display: block
 		+size(100%)
 		max-width: none
 		+object-fit(cover)
 
-		+media('<mob-lg')
-			position: absolute
-			left: 0
-			top: 0
-
 .promo-slider__item__content
 	display: block
 	color: inherit
 	text-decoration: none
 	width: 960px
+	max-width: 100%
 	text-align: center
 
 	+media('<desk-ml')
 		width: 800px
 
+	+media('<tab-lg')
+		width: 480px
+
 .promo-slider__item__title
 	$font-size: 60px
-	$line-height: round-float(72/60, 2)
+	$line-height: 70px
 	$font-size--md: 56px
-	$line-height--md: round-float(62/56, 2)
+	$line-height--md: 62px
 	$font-size--sm: 48px
-	$line-height--sm: round-float(58/48, 2)
+	$line-height--sm: 58px
+	$font-size--tab: 30px
+	$line-height--tab: 36px
+	$font-size--mob: 18px
+	$line-height--mob: 22px
 	// ===============
 	display: block
 	overflow: hidden
-	max-width: 100%
-	max-height: round($font-size*$line-height*3) // maximum 3 line
+	max-height: round($line-height*3) // maximum 3 line
 	margin-bottom: 5rem
 	+font-black
 	+font($font-size, $line-height)
@@ -1057,18 +1245,31 @@ a.prod__inner
 	+media('<desk-lg')
 		font-size: $font-size--md
 		line-height: $line-height--md
-		max-height: round($font-size--md*$line-height--md*3) // maximum 3 line
+		max-height: round($line-height--md*3) // maximum 3 line
 
 	+media('<desk-ml')
 		font-size: $font-size--sm
 		line-height: $line-height--sm
-		max-height: round($font-size--sm*$line-height--sm*3) // maximum 3 line
+		max-height: round($line-height--sm*3) // maximum 3 line
 		margin-bottom: 2rem
+
+	+media('<tab-lg')
+		font-size: $font-size--tab
+		line-height: $line-height--tab
+		max-height: round($line-height--tab*4) // maximum 4 line
+
+	+media('<mob-lg')
+		font-size: $font-size--mob
+		line-height: $line-height--mob
+		max-height: round($line-height--mob*5) // maximum 5 line
 
 	&:last-child
 		margin-bottom: 0
 
 .promo-slider__item__footer
+	+media('<tab-lg')
+		display: none
+
 	.more-link
 		+display-inline-block-top
 		text-decoration: none
@@ -1095,6 +1296,9 @@ a.prod__inner
 	background-color: rgba(white, 0.25)
 	z-index: 5
 
+	+media('<desk-sm')
+		display: none
+
 	.progress
 		position: absolute
 		left: -100%
@@ -1112,7 +1316,6 @@ $width: 25%
 
 .main-section--parts
 	position: relative
-	pointer-events: none
 	padding-top: 0
 	padding-bottom: 0
 
@@ -1120,24 +1323,39 @@ $width: 25%
 		display: flex
 		flex-direction: column
 		justify-content: flex-end
-		position: absolute
-		width: 100%
-		height: 100%
-		left: 0
-		bottom: 0
-		z-index: 5
+
+		+media('>=desk-sm')
+			position: absolute
+			width: 100%
+			height: 100%
+			left: 0
+			bottom: 0
+			z-index: 5
+			pointer-events: none
 
 .parts
-	height: 25%
-	pointer-events: auto
+	+media('>=desk-sm')
+		height: 25%
+		pointer-events: auto
 
 .parts__list
-	height: 100%
+	+media('>=desk-sm')
+		height: 100%
 
 .parts__item
-	height: 100%
 	float: left
-	width: 25%
+	width: calc(100% / 4)
+
+	+media('>=desk-sm')
+		height: 100%
+
+	+media('<desk-sm')
+		position: relative
+		width: calc(100% / 2)
+		z-index: 1
+
+	+media('<mob-md')
+		width: 100%
 
 .parts__item__img
 	position: absolute
@@ -1159,6 +1377,9 @@ $width: 25%
 		property: $prop
 		duration: $parts-animation-speed-out
 
+	+media('<desk-sm')
+		opacity: 1
+
 	+image-mask
 
 	img
@@ -1177,23 +1398,34 @@ $width: 25%
 	z-index: 10
 
 	&::before
-		content: ""
-		display: block
-		position: absolute
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		z-index: -1
-		background-color: $base-color
-		opacity: 0
-		// transition
-		$prop: opacity, transform
-		will-change: $prop
-		transition:
-			property: $prop
-			duration: $parts-animation-speed-out
-			//delay: $parts-animation-speed
+		+media('>=desk-sm')
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+			z-index: -1
+			background-color: $base-color
+			opacity: 0
+			// transition
+			$prop: opacity, transform
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $parts-animation-speed-out
+				//delay: $parts-animation-speed
+
+		+media('<desk-sm')
+			content: ""
+			display: block
+			pointer-events: none
+			+ratio(435, 186)
+
+		+media('<mob-md')
+			padding: 0
+			height: 100px
 
 	.p1, .p2
 		display: block
@@ -1205,6 +1437,7 @@ $width: 25%
 		left: 0
 		top: 0
 		height: 100%
+		width: 50%
 		padding: 0 10px
 		z-index: 1
 		+font-bold
@@ -1218,6 +1451,9 @@ $width: 25%
 		transition:
 			property: $prop
 			duration: $parts-animation-speed-out
+
+		+media('<desk-sm')
+			width: 100%
 
 		.t, .l
 			width: 100%
@@ -1240,6 +1476,9 @@ $width: 25%
 			+media('<desk-ml')
 				font-size: 2rem
 
+			+media('<desk-sm')
+				font-size: 2.4rem
+
 		.l
 			opacity: 0.5
 			font-size: 1.8rem
@@ -1249,6 +1488,10 @@ $width: 25%
 			+media('<desk-ml')
 				+font-normal
 				font-size: 1.6rem
+
+			+media('<desk-sm')
+				opacity: 1
+				font-size: 1.8rem
 
 		svg
 			$width: 40px
@@ -1282,20 +1525,22 @@ $width: 25%
 				fill: currentColor
 
 	.p1
-		width: 50%
-		left: 0
+		+media('>desk-sm')
+			left: 0
 
-		.t, .l
-			$x: 50%
-			transform: translate($x, 0)
-			transform: translateX($x)
+			.t, .l
+				$x: 50%
+				transform: translate($x, 0)
+				transform: translateX($x)
 
 	.p2
-		width: 50%
 		left: 50%
 		border-left-width: 1px
 		opacity: 0
 		pointer-events: none
+
+		+media('<desk-sm')
+			display: none
 
 		&::before
 			$size: 120px
@@ -1323,7 +1568,7 @@ $width: 25%
 			transform: translateX($x)
 
 	.p1, .p2
-		&:hover
+		.no-touchevents &:hover
 			//background-color: #343434
 
 			svg
@@ -1343,6 +1588,9 @@ $width: 25%
 	z-index: 1
 	width: $width
 	pointer-events: none
+
+	+media('<desk-sm')
+		display: none
 
 	& > ul
 		display: flex
@@ -1496,12 +1744,13 @@ $width: 25%
 			property: $prop
 			duration: $animation-speed
 
-	.no-touchevents &:hover
-		.main-section--promo
-			opacity: 0
+	+media('>=desk-sm')
+		.no-touchevents &:hover
+			.main-section--promo
+				opacity: 0
 
-			&:hover
-				opacity: 1
+				&:hover
+					opacity: 1
 
 .parts__item:hover
 	.parts__item__img
@@ -1556,12 +1805,18 @@ $width: 25%
 .main-section--collections
 	overflow: hidden
 
+	+media('<desk-sm')
+		background-color: $bg-color
+
 .collection-slider__item
 	display: block
 	text-decoration: none
 	color: inherit
 	padding: $grid-space
 	+font(1.8rem, round-float(30/18, 2))
+
+	+media('<desk-sm')
+		padding: $grid-space--md
 
 	&:first-child
 		border-left-width: 0
@@ -1577,6 +1832,12 @@ $width: 25%
 	text-align: center
 	margin-bottom: $bottom-space--element
 
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--element--mob
+
 	&:last-child
 		margin-bottom: 0
 
@@ -1590,6 +1851,12 @@ $width: 25%
 	text-align: center
 	margin-bottom: $bottom-space--element
 
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--element--mob
+
 	&:last-child
 		margin-bottom: 0
 
@@ -1599,9 +1866,18 @@ $width: 25%
 .main-section--news
 	overflow: hidden
 
+	+media('<desk-sm')
+		padding-top: 0
+
 .news-slider
 	margin: 0 auto $bottom-space--article
 	position: relative
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space--article--mob
 
 	&:last-child
 		margin-bottom: 0
@@ -1614,6 +1890,12 @@ $width: 25%
 		position: relative
 		line-height: 0
 
+		+media('<desk-sm')
+			margin-top: $bottom-space--article--md
+
+		+media('<mob-lg')
+			margin-top: $bottom-space--article--mob
+
 	// arrows, pagination
 	.slider-arrows,
 	.swiper-pagination
@@ -1621,6 +1903,12 @@ $width: 25%
 		margin-bottom: 0
 		margin-top: $bottom-space--article
 		top: 100%
+
+		+media('<desk-sm')
+			margin-top: $bottom-space--article--md
+
+		+media('<mob-lg')
+			margin-top: $bottom-space--article--mob
 
 	.slider-arrows
 		bottom: auto
@@ -1633,13 +1921,28 @@ $width: 25%
 		display: flex
 		align-items: center
 		left: 0
-		height: 50px
+		height: $btn-height
+
+		+media('<desk-sm')
+			height: $btn-height--mob
+
+		+media('<mob-lg')
+			display: block
+			height: auto
+			position: relative
+			text-align: center
 
 .news-slider__item
 	padding-right: nth($grid-space, 2)
 
+	+media('<desk-sm')
+		padding-right: nth($grid-space--md, 2)
+
 	&:nth-child(even)
 		padding-top: 120px
+
+		+media('<desk-sm')
+			padding-top: 0
 
 .news-slider__item__inner
 	display: block
@@ -1650,17 +1953,41 @@ $width: 25%
 	color: inherit
 
 .news-slider__item__date
-	position: absolute
-	left: 0
-	bottom: 0
-	transform-origin: left bottom
-	transform: rotate(-90deg)
+	display: block
 	color: #bfbfbf
-	padding-bottom: 1.4em
+	margin-bottom: $bottom-space--element
+	// transition
+	$prop: transform
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('>=desk-sm')
+		position: absolute
+		left: 0
+		bottom: 0
+		transform-origin: left bottom
+		transform: rotate(-90deg)
+		padding-bottom: 1.4em
+		margin: 0
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
+
+	+media('<mob-md')
+		font-size: 1.6rem
+		margin-bottom: $bottom-space--element--mob
 
 .news-slider__item__img
 	position: relative
 	margin-bottom: $bottom-space--element
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--md
+
+	+media('<desk-sm')
+		margin-bottom: $bottom-space--element--mob
 
 .news-slider__item__title
 	+font-bold
@@ -1670,6 +1997,12 @@ $width: 25%
 	transition:
 		property: $prop
 		duration: $animation-speed
+
+	+media('<desk-sm')
+		+font(2.0rem, round-float(24/20, 2))
+
+	+media('<mob-md')
+		font-size: 1.6rem
 
 // hover
 .news-slider__item__inner
@@ -2328,21 +2661,20 @@ input.search-form__input
 	max-width: $page-layout-width
 
 .layout
-	+padding-horizontal(nth($page-layout-space, 2))
 	+push-auto
 
-	+media('<mob-lg')
-		+padding-horizontal(nth($page-layout-space--mob, 2))
-
-.layout-space
+.layout-space, .layout
 	+padding-horizontal(nth($page-layout-space, 2))
+
+	+media('<desk-sm')
+		+padding-horizontal(nth($page-layout-space--md, 2))
 
 	+media('<mob-lg')
 		+padding-horizontal(nth($page-layout-space--mob, 2))
 
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
-.layout-article
+//.layout-article
 	padding: $text-layout-space
 
 	+media('<desk-sm')
@@ -2361,6 +2693,9 @@ input.search-form__input
 		+padding-horizontal(0)
 		+push-auto
 
+		+media('<desk-sm')
+			max-width: $flood-layout-width--md
+
 	// элеметы без отступов по бокам
 	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
 	.layout-full-width, .layout-wide
@@ -2377,12 +2712,6 @@ input.search-form__input
 .max-wrap-text
 	//max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
 	max-width: $text-layout-width
-
-//+media('<tab-lg')
-	max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
-
-//+media('<tab-sm')
-	max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
 
 // выравнивание текстовых элементов на внутренней (текстовой) странице
 // и их максимальная ширина
@@ -2404,11 +2733,11 @@ input.search-form__input
 	//max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
 	max-width: $flood-layout-width
 
-//+media('<tab-lg')
-	max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
+	+media('<desk-sm')
+		max-width: $flood-layout-width--md
 
-//+media('<tab-sm')
-	max-width: #{$flood-layout-width + (nth($text-layout-space--mob, 2))*2}
+	+media('<mob-lg')
+		max-width: $flood-layout-width--mob
 
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
@@ -2418,14 +2747,28 @@ input.search-form__input
 	+push-auto
 
 	+media('<desk-sm')
-		max-width: #{$flood-layout-width + (nth($page-layout-space--mob, 2))*2}
+		max-width: #{$flood-layout-width--md + (nth($page-layout-space--md, 2))*2}
+		+padding-horizontal((nth($page-layout-space--md, 2)))
+
+	+media('<mob-lg')
+		max-width: #{$flood-layout-width--mob + (nth($page-layout-space--mob, 2))*2}
 		+padding-horizontal((nth($page-layout-space--mob, 2)))
+
+	.layout &
+		+padding-horizontal(0)
+		max-width: $flood-layout-width
+
+		+media('<desk-sm')
+			max-width: $flood-layout-width--md
+
+		+media('<mob-lg')
+			max-width: $flood-layout-width--mob
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
 
 // элеметы с отступами по бокам
-.layout-wide
+//.layout-wide
 	+padding-horizontal((nth($text-layout-space, 2)))
 
 	+media('<desk-sm')
@@ -2438,7 +2781,7 @@ input.search-form__input
 		max-width: none
 
 // элеметы без отступов по бокам
-.layout-full-width
+//.layout-full-width
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
@@ -2468,9 +2811,14 @@ input.search-form__input
 .main
 	flex-shrink: 1
 	flex-grow: 1
+	padding-bottom: $bottom-space--article
 
 	+media('<desk-sm')
 		padding-top: $header-height--sm
+		padding-bottom: $bottom-space--article--md
+
+	+media('<mob-lg')
+		padding-bottom: $bottom-space--article--mob
 
 /* === CONTENT end ===
 
@@ -2490,6 +2838,7 @@ input.search-form__input
 		width: 100%
 		min-width: $page-layout-min
 		height: $header-height--sm
+		box-shadow: 0 0 20px rgba(black, 0.2)
 
 .header__holder
 	position: relative
@@ -2561,12 +2910,13 @@ $nav-is-open-class: 'nav-is-open'
 		height: calc(100% - #{$header-height--sm})
 		background-color: white
 		z-index: 9999
-		//$x: -100%
-		$x: 0
+		$x: -100%
+		//$x: 0
 		transform: translate($x, 0) // for old browser
 		transform: translateX($x)
 
-		&.#{$nav-is-open-class} // add js
+		&.#{$nav-is-open-class}, // add js
+		.no-js &
 			$x: 0
 			transform: translate($x, 0) // for old browser
 			transform: translateX($x)
@@ -2648,8 +2998,6 @@ $nav-is-open-class: 'nav-is-open'
 
 // общие стили для подменю навигации
 .nav__drop
-	// display: none
-	// transition
 	$prop: opacity, visibility, transform
 	will-change: $prop
 	transition:
@@ -2658,6 +3006,7 @@ $nav-is-open-class: 'nav-is-open'
 		timing-function: ease-in-out
 
 	+media('>=desk-sm')
+		display: block !important // необходимо перебить inline тиль display: none навешанный javaScript
 		position: absolute
 		left: 0
 		top: 100%
@@ -2672,9 +3021,11 @@ $nav-is-open-class: 'nav-is-open'
 		transform: translate($transform)
 		transform: translate3d($transform, 0)
 
+	+media('<desk-sm')
+		display: none
+
 	.hover > &
 		+media('>=desk-sm')
-			display: block
 			opacity: 1
 			pointer-events: auto
 			//visibility: visible
@@ -2686,6 +3037,7 @@ $nav-is-open-class: 'nav-is-open'
 		display: block
 		opacity: 1
 		visibility: visible
+		pointer-events: auto
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
 .nav__list li.has-drop > .nav__tab > a
@@ -2693,12 +3045,10 @@ $nav-is-open-class: 'nav-is-open'
 		padding-right: (round($nav-arrow-size+10))
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
-.nav__list li.current > .nav__tab
-
-	&
-		a
-			color: $base-color
-			+font-alt-bold
+.nav__list li.current
+	& > .nav__tab a,
+	& > a
+		color: $base-color
 
 // стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
 //.nav__list li
@@ -2846,7 +3196,7 @@ $nav-is-open-class: 'nav-is-open'
 				color: white
 
 	.nav__drop
-
+		top: -1px
 		left: 100%
 
 		+media('<desk-sm')
@@ -2859,11 +3209,11 @@ $nav-is-open-class: 'nav-is-open'
 /* nav list
 // nav opener btn
 a.nav-opener
-	$btn-menu-bg: rgba(lightgreen, 0.5)
+	$btn-menu-bg: white
 	$btn-menu-color: $base-color
 	$btn-menu-size: $header-height--sm
-	$btn-menu-lines-width: 30px
-	$btn-menu-lines-height: 3px
+	$btn-menu-lines-width: 24px
+	$btn-menu-lines-height: 2px
 	$btn-menu-lines-space: 5px
 	$btn-menu-lines-color: $base-color
 	$btn-menu-animation-speed: $animation-speed
@@ -2906,7 +3256,8 @@ a.nav-opener
 		+size($user-options-cross-width, $user-options-cross-height)
 		background-color: $user-options-cross-color
 		+position(50%)
-		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
+		margin-top: -#{round($user-options-cross-height / 2)}
+		margin-left: -#{round($user-options-cross-width / 2)}
 		will-change: opacity, transform
 		opacity: 0
 		transition:
@@ -2922,7 +3273,8 @@ a.nav-opener
 		top: 50%
 		+size($btn-menu-lines-width, $btn-menu-lines-height)
 		background-color: $btn-menu-lines-color
-		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
+		margin-top: -#{round($btn-menu-lines-height / 2 - 2)}
+		margin-left: -#{round($btn-menu-lines-width / 2 - 2)}
 		backface-visibility: hidden
 		transition:
 			property: opacity
@@ -2931,7 +3283,7 @@ a.nav-opener
 
 		&::before, &::after
 			+pseudo()
-			left: 0
+			left: -3px
 			+size($btn-menu-lines-width, $btn-menu-lines-height)
 			background-color: $btn-menu-lines-color
 			backface-visibility: hidden
@@ -3074,14 +3426,22 @@ a.nav-opener
 		width: calc(100% / 6 * 4)
 
 	&:first-child
+		padding-right: nth($grid-space, 2)
+
+		+media('<desk-sm')
+			padding-right: nth($grid-space--md, 2)
+
 		+media('>=mob-lg')
-			padding-right: nth($grid-space, 2)
 			justify-content: flex-start
 			text-align: left
 
 	&:last-child
+		padding-left: nth($grid-space, 2)
+
+		+media('<desk-sm')
+			padding-left: nth($grid-space--md, 2)
+
 		+media('>=mob-lg')
-			padding-left: nth($grid-space, 2)
 			justify-content: flex-end
 			text-align: right
 
@@ -3117,6 +3477,12 @@ a.nav-opener
 	&
 		margin: -$bottom-space--article -#{nth($grid-space, 2)} $bottom-space--element 0
 
+		+media('<desk-sm')
+			margin: -$bottom-space--article--md -#{nth($grid-space--md, 2)} $bottom-space--element--md 0
+
+		+media('<mob-lg')
+			margin: -$bottom-space--article--mob -#{nth($grid-space--mob, 2)} $bottom-space--element--mob 0
+
 	&:last-child
 		margin-bottom: 0
 
@@ -3142,6 +3508,14 @@ a.nav-opener
 		padding-right: nth($grid-space, 2)
 		margin-top: $bottom-space--article
 
+		+media('<desk-sm')
+			margin-top: $bottom-space--article--md
+			padding-right: nth($grid-space--md, 2)
+
+		+media('<desk-sm')
+			margin-top: $bottom-space--article--mob
+			padding-right: nth($grid-space--mob, 2)
+
 		& > a
 			display: inline-block
 			vertical-align: top
@@ -3150,6 +3524,12 @@ a.nav-opener
 
 			& + ul
 				margin-top: $bottom-space--element
+
+				+media('<desk-sm')
+					margin-top: $bottom-space--element--md
+
+				+media('<mob-lg')
+					margin-top: $bottom-space--element--mob
 
 		ul
 			& > li

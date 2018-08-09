@@ -336,7 +336,11 @@ function slidersInit() {
 				// Pagination
 				pagination: $thisPag,
 				paginationType: 'bullets',
-				paginationClickable: true
+				paginationClickable: true,
+				// events
+				onInit: function (swiper) {
+					$(swiper.container).closest($thisSlider).addClass('is-loaded');
+				}
 			});
 
 			return false;
@@ -400,16 +404,15 @@ function slidersInit() {
 			var $thisSlider = $(this),
 				$thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
 				$thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
-				$thisPag = $('.swiper-pagination', $thisSlider),
+				$thisPag = $('.swiper-pagination', $thisSlider)
 				// slidesLength = $('.swiper-slide', $thisSlider).length,
-				perView = 4;
-
+			;
 			// console.log("slidesLength: ", slidesLength);
 			// console.log("perView: ", perView);
 
 			new Swiper($('.swiper-container', $thisSlider), {
 				// slidesPerView: 'auto',
-				slidesPerView: perView,
+				slidesPerView: 4,
 				// slidesPerGroup: 2,
 				// autoHeight: true,
 				// Optional parameters
@@ -437,21 +440,16 @@ function slidersInit() {
 				// paginationType: 'fraction',
 				// Responsive breakpoints
 				breakpoints: {
-					1919: {
-						// slidesOffsetBefore: 71,
-						// spaceBetween: 30
+					1279: {
+						spaceBetween: 20
 					},
-					1599: {
-						// slidesOffsetBefore: 41
+					1023: {
+						slidesPerView: 3
 					},
-					1199: {
-						// slidesOffsetBefore: 30
+					859: {
+						slidesPerView: 2
 					},
-					639: {
-						// slidesOffsetBefore: 20
-					},
-					479: {
-						// slidesOffsetBefore: 0,
+					519: {
 						slidesPerView: 1
 					}
 				},
@@ -460,6 +458,7 @@ function slidersInit() {
 					$(swiper.slides).matchHeight({
 						byRow: true, property: 'height', target: null, remove: false
 					});
+					$(swiper.container).closest($thisSlider).addClass('is-loaded');
 				}
 			});
 
@@ -502,8 +501,14 @@ function slidersInit() {
 				pagination: $thisPag,
 				paginationClickable: true,
 				breakpoints: {
-					479: {
-						slidesPerView: 1
+					1279: {
+						slidesPerView: 4
+					},
+					899: {
+						slidesPerView: 3
+					},
+					639: {
+						slidesPerView: 2
 					}
 				},
 				// events
@@ -511,6 +516,7 @@ function slidersInit() {
 					$(swiper.slides).matchHeight({
 						byRow: true, property: 'height', target: null, remove: false
 					});
+					$(swiper.container).closest($thisSlider).addClass('is-loaded');
 				}
 			});
 		});
@@ -669,6 +675,150 @@ function initHoverClass() {
 		});
 	}
 }
+
+/**
+ * !Multi accordion jquery plugin
+ * */
+(function ($) {
+	var MultiAccordion = function (settings) {
+		var options = $.extend({
+			collapsibleAll: false, // если установить значение true, сворачиваются идентичные панели НА СТРАНИЦЕ, кроме текущего
+			resizeCollapsible: false, // если установить значение true, при ресайзе будут соворачиваться все элементы
+			container: null, // общий контейнер
+			item: null, // непосредственный родитель открывающегося элемента
+			handler: null, // открывающий элемента
+			handlerWrap: null, // если открывающий элемент не является непосредственным соседом открывающегося элемента, нужно указать элемент, короный является оберткой открывающего элемета и лежит непосредственно перед открывающимся элементом (условно, является табом)
+			panel: null, // открывающийся элемент
+			openClass: 'active', // класс, который добавляется при открытии
+			currentClass: 'current', // класс текущего элемента
+			animateSpeed: 300, // скорость анимации
+			collapsible: false // сворачивать соседние панели
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.container);
+		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$handlerWrap = $(options.handlerWrap, container);
+		this._animateSpeed = options.animateSpeed;
+		this.$totalCollapsible = $(options.totalCollapsible);
+		this._resizeCollapsible = options.resizeCollapsible;
+
+		this.modifiers = {
+			active: options.openClass,
+			current: options.currentClass
+		};
+
+		this.bindEvents();
+		this.totalCollapsible();
+		this.totalCollapsibleOnResize();
+
+	};
+
+	MultiAccordion.prototype.totalCollapsible = function () {
+		var self = this;
+		self.$totalCollapsible.on('click', function () {
+			self.$panel.slideUp(self._animateSpeed, function () {
+				self.$container.trigger('accordionChange');
+			});
+			self.$item.removeClass(self.modifiers.active);
+		})
+	};
+
+	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
+		var self = this;
+		$(window).on('resize', function () {
+			if (self._resizeCollapsible) {
+				self.$panel.slideUp(self._animateSpeed, function () {
+					self.$container.trigger('accordionChange');
+				});
+				self.$item.removeClass(self.modifiers.active);
+			}
+		});
+	};
+
+	MultiAccordion.prototype.bindEvents = function () {
+		var self = this;
+		var $container = this.$container;
+		var $item = this.$item;
+		var panel = this.options.panel;
+
+		$container.on('click', self.options.handler, function (e) {
+			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
+			var $currentItem = $currentHandler.closest($item);
+
+			if ($currentItem.has($(panel)).length) {
+				e.preventDefault();
+
+				if ($currentHandler.next(panel).is(':visible')) {
+					self.closePanel($currentItem);
+
+					return;
+				}
+
+				if (self.options.collapsibleAll) {
+					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
+				}
+
+				if (self.options.collapsible) {
+					self.closePanel($currentItem.siblings());
+				}
+
+				self.openPanel($currentItem, $currentHandler);
+			}
+		})
+	};
+
+	MultiAccordion.prototype.closePanel = function ($currentItem) {
+		var self = this;
+		var panel = self.options.panel;
+		var openClass = self.modifiers.active;
+
+		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
+			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+		});
+
+		$currentItem
+			.find(self.$item)
+			.removeClass(openClass);
+	};
+
+	MultiAccordion.prototype.openPanel = function ($currentItem, $currentHandler) {
+		var self = this;
+		var panel = self.options.panel;
+
+		$currentItem.addClass(self.modifiers.active);
+
+		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
+		});
+	};
+
+	window.MultiAccordion = MultiAccordion;
+}(jQuery));
+
+/**
+ * !Navigation accordion initial
+ * */
+function navAccordionInit() {
+
+	var navMenu = '.nav__list-js';
+
+	if ($(navMenu).length) {
+		new MultiAccordion({
+			container: navMenu,
+			item: 'li',
+			handler: '.nav-handler-js',
+			handlerWrap: '.nav__tab-js',
+			panel: '.nav__drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200,
+			collapsible: true
+		});
+	}
+}
+
 
 /**
  * !Equal height of blocks by maximum height of them
@@ -1080,6 +1230,7 @@ $(document).ready(function () {
 	inputFocusClass();
 	inputHasValueClass();
 	slidersInit();
+	navAccordionInit();
 	initHoverClass();
 	equalHeight();
 	toggleShutters();

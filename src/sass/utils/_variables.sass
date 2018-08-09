@@ -76,11 +76,11 @@ $letter-spacing: 0.05em !default
 $font-size-h1: 4.8rem !default
 $line-height-h1: round-float(6.0rem/$font-size-h1, 2) !default
 // ----------------------------------------------------
-$font-size-h1--md: 3.6rem !default
-$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 2) !default
+$font-size-h1--md: 3.0rem !default
+$line-height-h1--md: round-float(3.8rem/$font-size-h1--md, 2) !default
 // ----------------------------------------------------
-$font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
+$font-size-h1--sm: 2.6rem !default
+$line-height-h1--sm: round-float(3.2rem/$font-size-h1--sm, 2) !default
 // ----------------------------------------------------
 =font-h1()
 	font-size: $font-size-h1
@@ -147,10 +147,15 @@ $line-height-h6: round-float($line-height*1.25, 2) !default
 $bottom-space: round-float($font-size*$line-height, 1) !default
 //$bottom-space--section: round-float($font-size*$line-height*3, 1) !default
 $bottom-space--section: 8rem !default
+$bottom-space--section--md: 5rem !default
 //$bottom-space--article: round-float($font-size*$line-height*2.0, 1) !default
 $bottom-space--article: 5rem !default
+$bottom-space--article--md: 3rem !default
+$bottom-space--article--mob: 2.5rem !default
 //$bottom-space--element: round-float($font-size*$line-height*1.5, 1) !default
 $bottom-space--element: 3rem !default
+$bottom-space--element--md: 2rem !default
+$bottom-space--element--mob: 1.5rem !default
 //$bottom-space--row: round-float($font-size*$line-height*0.75, 1) !default
 $bottom-space--row: 1.5rem !default
 
@@ -162,7 +167,7 @@ $bottom-space--row: 1.5rem !default
 $base-color: #ee1c25 !default
 $base-color-alt: #282828 !default
 // ----------------------------------------------------
-$bg-color: #e5e5e5 !default
+$bg-color: #f2f2f2 !default
 $bg-color-alt: #fff !default
 // ----------------------------------------------------
 $text-color: #282828 !default
@@ -197,7 +202,7 @@ $user-content: user-content !default
 // отступы для всего сайта
 $page-layout-space: 50px 60px !default // v h
 $page-layout-space--md: 20px 30px !default // v h
-$page-layout-space--mob: 10px 10px !default // v h
+$page-layout-space--mob: 15px 15px !default // v h
 // максимальная ширина сайта
 $page-layout-width: 1920px !default
 // минимальная ширина сайта
@@ -211,10 +216,12 @@ $text-layout-space--mob: 8px 10px !default // v h
 $text-layout-width: 800px !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 1440px !default
+$flood-layout-width--md: 1440px !default
+$flood-layout-width--mob: 1440px !default
 // отступы внутри блочных элементов
 $grid-space: 30px 30px !default // v h
-$grid-space--lg: 20px 20px !default // v h
-$grid-space--sm: 10px 10px !default // v h
+$grid-space--md: 20px 20px !default // v h
+$grid-space--mob: 10px 10px !default // v h
 // отступы в дефолтных списках
 $list-space: 30px
 
@@ -230,6 +237,19 @@ $z-i-cover: 2 !default // приподнять над остальным кон�
 // Main section
 // ==========================================================================
 $main-section-space-vertical: $bottom-space--article $bottom-space--article
+$main-section-space-vertical--md: $bottom-space--article--md $bottom-space--article--md
+$main-section-space-vertical--mob: $bottom-space--article--mob $bottom-space--article--mob
+
+
+// Sliders
+// ==========================================================================
+$slider-button-size: 46px 46px // h w
+$slider-button-size--mob: 46px 46px // h w
+$slider-arrow-size: 34px
+$slider-arrow-size--mob: 28px
+// Promo Slider
+$slider-promo-button-size: 60px 64px // h w
+$slider-promo-button-size--mob: 50px 50px // h w
 
 
 // Image mask
@@ -245,8 +265,8 @@ $img-mask-bg: #2d2c2c
 		background-size: 25% 25%
 		z-index: -1
 
-		+media('<mob-lg')
-			content: none
+		+media('<desk-sm')
+			background-image: none
 
 // Partials
 // ==========================================================================
@@ -260,6 +280,7 @@ $parts-animation-speed-out: 0.45s
 $products-space: 0 0 !default // v h
 $products-grid-space: 30px 30px !default // v h
 $products-grid-space--md: 20px 20px !default // v h
+$products-grid-space--mob: 10px 10px !default // v h
 
 
 // Header
@@ -306,7 +327,12 @@ $footer-grid-space: 30px 0 !default // v h
 // Buttons
 // ==========================================================================
 
+$btn-font-size: 18px !default
+$btn-font-size--mob: 18px !default
+$btn-line-height: 22px !default
+$btn-line-height--mob: 22px !default
 $btn-height: 50px !default
+$btn-height--mob: 40px !default
 $btn-bg-color: $base-color !default
 $btn-bg-hover-color: darken($btn-bg-color, 20%) !default
 $btn-text-color: white !default

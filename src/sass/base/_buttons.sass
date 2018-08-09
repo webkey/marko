@@ -26,7 +26,7 @@
 	position: relative
 	+font-normal
 	color: $text-color
-	padding: 14px 26px
+	padding: floor(($btn-height - $btn-line-height) / 2) 26px ceil(($btn-height - $btn-line-height) / 2)
 	border: none
 	background: transparent
 	box-shadow: none
@@ -37,6 +37,12 @@
 	transition:
 		property: $prop
 		duration: $animation-speed
+
+	.touchevents &
+		color: white
+
+	+media('<desk-sm')
+		padding: floor(($btn-height--mob - $btn-line-height--mob) / 2) 20px ceil(($btn-height--mob - $btn-line-height--mob) / 2)
 
 	&::before, &::after
 		content: ""
@@ -69,8 +75,12 @@
 		right: calc(50% - 2px)
 
 	&, & > span
-		+font(18px, 22px)
+		+font($btn-font-size, $btn-line-height)
 		letter-spacing: 0.1em
+
+		+media('<desk-sm')
+			+font($btn-font-size--mob, $btn-line-height--mob)
+			letter-spacing: 0.05em
 
 	// hover
 	.no-touchevents &:not(:disabled):not(.disabled):not(data-disabled)
