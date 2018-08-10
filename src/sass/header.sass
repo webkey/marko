@@ -1,0 +1,17 @@
+@import utils/variables
+@import utils/mixins
+@import ../libs/include-media/dist/include-media
+
+.visuals
+	margin-top: $header-height + $nav-height
+	//min-height: calc(100% - #{$header-height})
+
+	+media('<desk-ml')
+		margin-top: $header-height--md
+		//min-height: calc(100% - #{$header-height--md})
+
+	+media('<desk-sm')
+		margin-top: $header-height--sm
+		//min-height: calc(100% - #{$header-height--sm})
+
+@import components/header

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8">
+	<title>Header</title>
+	<meta name="viewport" content="user-scalable=1">
+	<!--<meta name="viewport" content="width=1024, initial-scale=1.0">-->
+	<!--Theme color-->
+	<meta name="theme-color" content="#ee1c25">
+	<!--SEO-->
+	<meta name="description" content="описание">
+	<meta name="keywords" content="ключевые слова">
+	<meta name="yandex-verification" content="XXXXXXXXXXXXXX">
+	<meta name="google-site-verification" content="XXXXXXXXXXXXXX">
+	<!--The Open Graph protocol-->
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:url" content="http://localhost:3000/index.html">
+	<meta property="og:title" content="Название">
+	<meta property="og:image" content="http://localhost:3000/apple-touch-icon.png">
+	<meta property="og:image:height" content="256">
+	<meta property="og:image:width" content="256">
+	<meta property="og:description" content="Описание">
+	<meta property="og:site_name" content="Расширенное название">
+	<!--Favicon-->
+	<link rel="shortcut icon" href="favicon.ico?rev=@@hash">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=@@hash">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png?rev=@@hash">
+	<!--Style-->
+	<!--!!! Не копировать-->
+	<!--Modernizr-->
+	<!--На внутренний оставить, который уже подключен-->
+	<!--no-touch-->
+	<script src="js/modernizr.min.js"></script>
+	<link rel="stylesheet" href="css/fonts.css?rev=@@hash">
+	<!--Стили для основных оберток с сайта-->
+	<link rel="stylesheet" href="css/index_all_min.css?rev=@@hash">
+
+
+
+	<link rel="stylesheet" href="css/header.css?rev=@@hash">
+</head>
+
+<body class="a">
+
+<div class="wrapper" style="overflow: visible;">
+
+
+	<div class="main" style="min-height: 200vh;">
+
+		<!--HEADER-->
+		@@include('_tpl_layout_header.html', {
+			"currentItem": ""
+		})
+		<!--HEADER end-->
+
+
+		<!--<div class="header" style="background-color: lightgray;">
+			{{Old Header}}
+		</div>
+-->
+		<!-- header -->
+
+
+		<div class="visuals">
+			<div class="inner" style="background-color: lightseagreen;">
+				{{Content}}
+			</div><!-- inner -->
+		</div><!-- visuals -->
+
+		<div class="indBottom">
+
+			<div class="galleryLine" style="background-color: lightcoral;">
+				{{Carousel}}
+			</div>
+
+			<div class="footer" style="background-color: #f084bc;">
+
+				{{Footer}}
+
+			</div> <!-- footer -->
+
+		</div> <!-- indBottom -->
+
+
+
+	</div><!-- main -->
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/libs.min.js"></script>
+<script src="js/common.js?rev=@@hash"></script>
+</body>
+
+</html>

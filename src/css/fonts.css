@@ -1,0 +1,32 @@
+/*======================================================*/
+/* FONTS */
+/*======================================================*/
+@font-face {
+	font-family: "akrobat-regular";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/akrobat/akrobat-regular.eot?") format("eot"), url("../fonts/akrobat/akrobat-regular.woff") format("woff"), url("../fonts/akrobat/akrobat-regular.ttf") format("truetype"), url("../fonts/akrobat/akrobat-regular.svg#akrobat-regular") format("svg");
+}
+
+@font-face {
+	font-family: "akrobat-bold";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/akrobat/akrobat-bold.eot?") format("eot"), url("../fonts/akrobat/akrobat-bold.woff") format("woff"), url("../fonts/akrobat/akrobat-bold.ttf") format("truetype"), url("../fonts/akrobat/akrobat-bold.svg#akrobat-bold") format("svg");
+}
+
+@font-face {
+	font-family: "akrobat-black";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/akrobat/akrobat-black.eot?") format("eot"), url("../fonts/akrobat/akrobat-black.woff") format("woff"), url("../fonts/akrobat/akrobat-black.ttf") format("truetype"), url("../fonts/akrobat/akrobat-black.svg#akrobat-black") format("svg");
+}
+
+@font-face {
+	font-family: "akrobat-light";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/akrobat/akrobat-light.eot?") format("eot"), url("../fonts/akrobat/akrobat-light.woff") format("woff"), url("../fonts/akrobat/akrobat-light.ttf") format("truetype"), url("../fonts/akrobat/akrobat-light.svg#akrobat-light") format("svg");
+}
+
+/*# sourceMappingURL=fonts.css.map */
