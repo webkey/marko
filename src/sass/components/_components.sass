@@ -440,22 +440,31 @@ $slider-pag-size: 10px 10px // h w
 
 /* social networks
 .social-networks
+	overflow: hidden
+	line-height: 0
 	margin-bottom: $bottom-space
 
 	&:last-child
 		margin-bottom: 0
 
 .social-networks__list
-	position: relative
 	display: inline-block
 	vertical-align: top
+	position: relative
 	+font(14px, 1.5)
 	letter-spacing: normal
-	margin: 0 -20px -10px 0
+	margin: 0 -10px
+	+clear
+
+	+media('<tab-lg')
+		margin: 0 -7px
 
 .social-networks__item
 	float: left
-	margin: 0 20px 10px 0
+	margin: 5px 10px
+
+	+media('<tab-lg')
+		margin: 7px
 
 	a
 		display: block
@@ -505,7 +514,12 @@ $slider-pag-size: 10px 10px // h w
 		+media('<desk-sm')
 			left: $header-height--sm
 
+		+media('<tab-sm')
+			display: none
+
 	.social-networks__list
+		display: inline-block
+		vertical-align: top
 		margin: 0
 
 	.social-networks__item
@@ -1818,6 +1832,9 @@ $width: 25%
 	+media('<desk-sm')
 		padding: $grid-space--md
 
+	+media('<mob-lg')
+		font-size: 1.6rem
+
 	&:first-child
 		border-left-width: 0
 
@@ -1856,6 +1873,7 @@ $width: 25%
 
 	+media('<mob-lg')
 		margin-bottom: $bottom-space--element--mob
+		font-size: 2.0rem
 
 	&:last-child
 		margin-bottom: 0
@@ -2018,6 +2036,9 @@ $width: 25%
 	color: white
 	+padding-vertical(4rem)
 
+	+media('<tab-lg')
+		+padding-vertical(1.5rem, 2.5rem)
+
 .subs-form
 	$subs-form-size: 50px 100% // h w
 	$subs-form-border-radius: 0
@@ -2029,27 +2050,48 @@ $width: 25%
 		align-items: center
 		margin: 0
 
+		+media('<tab-lg')
+			display: block
+
 	.label-holder
 		width: 50%
 		margin: 0 17px 0 0
+
+		+media('<tab-lg')
+			width: auto
+			margin: 0 0 17px
+			text-align: center
+
+		+media('<mob-lg')
+			text-align: left
 
 	.label-holder, label
 		+font-normal
 		+font(1.8rem, round-float(22/18, 2))
 		color: inherit
 
+		+media('<mob-lg')
+			font-size: 1.6rem
+
 	label
 		b
 			display: block
 			+font-normal
-			+font(3.0rem, round-float(30/18, 2))
+			+font(3.0rem, round-float(30/30, 2))
+			margin-bottom: 0.2em
 
 	.form-fields
 		width: 50%
 		position: relative
 
+		+media('<tab-lg')
+			width: 600px
+			max-width: 100%
+			+push-auto
+
 		+media('<mob-lg')
 			width: 100%
+			+margin-horizontal(0)
 
 	.input-holder
 		position: relative
@@ -2060,6 +2102,9 @@ $width: 25%
 		transition:
 			property: $prop
 			duration: 0.25s
+
+		+media('<mob-lg')
+			padding-right: $form-input-height
 
 		input
 			height: nth($subs-form-size, 1)
@@ -2105,6 +2150,15 @@ $width: 25%
 		box-shadow: none
 		background-color: $base-color
 		border-radius: 0
+
+		+media('<mob-lg')
+			width: $form-input-height
+			overflow: hidden
+
+			&::before
+				content: attr(data-mob)
+				display: block
+				text-indent: 0
 
 	.subs-success
 		position: absolute
@@ -2419,21 +2473,6 @@ $uo-icon-size--sm: 16px
 /* user options
 
 /* search-form
-//.search-panel
-	position: fixed
-	left: 0
-	top: 0
-	width: 100%
-	min-width: 320px
-	z-index: 20
-
-	&.search-is-open
-		z-index: 25
-
-//.search-panel__layout
-	margin: 0 auto
-	position: relative
-
 .search-form
 	$bg-color: white
 	position: relative
@@ -2444,8 +2483,13 @@ $uo-icon-size--sm: 16px
 	//top: 0
 	height: $header-height
 	background-color: $bg-color
-	//opacity: 0
-	//pointer-events: none
+	// transition
+	//$prop: opacity
+	//will-change: $prop
+	//transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
 
 	+media('<desk-ml')
 		height: $header-height--md
@@ -2453,23 +2497,35 @@ $uo-icon-size--sm: 16px
 	+media('<desk-sm')
 		height: $header-height--sm
 
+	+media('<tab-lg')
+		width: 100%
+		position: fixed
+		left: 0
+		top: $header-height--sm
+		opacity: 0
+		pointer-events: none
+
 	&::before
+		$shadow-color: black
 		content: ""
 		display: none
 		position: absolute
-		top: 0
-		right: 100%
-		height: 100%
-		width: 40px
-		margin: 0 -4px
+		top: 100%
+		left: 0
+		width: 100%
+		height: 20px
+		margin: 0
 		pointer-events: none
-		+linear-gradient(to left, $bg-color 0%, $bg-color 50%, rgba($bg-color, 0) 100%)
+		+linear-gradient(to bottom, rgba($shadow-color, 0.15) 0%, rgba($shadow-color, 0) 100%)
+		
+		+media('<tab-lg')
+			display: block
 
+	// active
 	.search-is-open &
-		display: block
-		//display: flex
-		//opacity: 1
-		//pointer-events: auto
+		+media('<tab-lg')
+			opacity: 1
+			pointer-events: auto
 
 .search-form__field
 	position: relative
@@ -2481,34 +2537,50 @@ $uo-icon-size--sm: 16px
 		height: nth($search-form--size--md, 1)
 		width: nth($search-form--size--md, 2)
 
-	+media('<mob-lg')
-		height: nth($search-form--size--sm, 1)
-		width: nth($search-form--size--sm, 2)
+	+media('<tab-lg')
+		height: nth($search-form--size--mob, 1)
+		width: nth($search-form--size--mob, 2)
 
 	label
 		display: none
 
-	.search-is-open &
-		display: block
-
 input.search-form__input
-	+font(16px, 20px)
-	color: inherit
-	padding: 10px 45px 9px 20px
+	$top-space: floor((nth($search-form--size, 1) - $search-form--line-height) / 2)
+	$bottom-space: ceil((nth($search-form--size, 1) - $search-form--line-height) / 2)
 	height: nth($search-form--size, 1)
+	padding: $top-space 45px $bottom-space 20px
+	+font($search-form--font-size, $search-form--line-height)
+	color: inherit
 	width: 100%
 	border-radius: 0
-	border: 0 solid currentColor
-	border-bottom-width: 1px
+	border: none
 	background-color: $header-bg
-	box-shadow: none
+	box-shadow: 0 1px 0 currentColor
+
+	+media('<desk-ml')
+		$top-space: floor((nth($search-form--size--md, 1) - $search-form--line-height) / 2)
+		$bottom-space: ceil((nth($search-form--size--md, 1) - $search-form--line-height) / 2)
+		height: nth($search-form--size--md, 1)
+		padding: $top-space 45px $bottom-space 20px
+
+	+media('<tab-lg')
+		$top-space: floor((nth($search-form--size--mob, 1) - $search-form--line-height) / 2)
+		$bottom-space: ceil((nth($search-form--size--mob, 1) - $search-form--line-height) / 2)
+		height: nth($search-form--size--mob, 1)
+		padding: $top-space 45px $bottom-space 20px
+		box-shadow: inset 0 1px 0 $border-color
 
 	&, &.error, &.input--has-value
-		box-shadow: none
-		border-color: currentColor !important
+		box-shadow: 0 1px 0 currentColor
+
+		+media('<tab-lg')
+			box-shadow: inset 0 1px 0 $border-color
 
 	&:hover, &:focus
-		border-color: $base-color !important
+		box-shadow: 0 1px 0 $base-color
+
+		+media('<tab-lg')
+			box-shadow: inset 0 1px 0 $border-color
 
 .search-form__btn
 	position: absolute
@@ -2575,11 +2647,12 @@ input.search-form__input
 		+media('<desk-sm')
 			+size($search-form--opener-size--sm)
 
+		+media('<tab-lg')
+			display: flex
+
 		svg
 			display: block
-
-			&.svg-ico-search
-				+size(24px)
+			+size(20px)
 
 		path
 			fill: currentColor
@@ -2591,26 +2664,8 @@ input.search-form__input
 
 		// active
 		&.search-is-open
-			display: none
-
-// active
-//&.search-is-open
-	border-color: white
-
-	svg
-		&.svg-ico-search
-			opacity: 0
-			// transform
-			$scale: 0.5
-			transform: scale($scale)
-			transform: scale3d($scale, $scale, 1)
-
-		&.svg-ico-cross
-			opacity: 1
-			// transform
-			$scale: 1
-			transform: scale($scale)
-			transform: scale3d($scale, $scale, 1)
+			+media('<tab-lg')
+				display: none
 
 .search-closer
 	&, .user-options__item &
@@ -2634,10 +2689,7 @@ input.search-form__input
 
 		svg
 			display: block
-			position: absolute
-			+position(50%)
-			+size(24px)
-			margin: -12px 0 0 -12px
+			+size(16px)
 
 		path
 			fill: currentColor
@@ -2649,7 +2701,8 @@ input.search-form__input
 
 		// active
 		&.search-is-open
-			display: block
+			+media('<tab-lg')
+				display: flex
 
 /* search-form end
 
@@ -2862,6 +2915,10 @@ input.search-form__input
 
 	+media('<desk-sm')
 		width: nth($logo-size--mob, 2)
+
+	+media('<mob-sm')
+		left: $header-height--sm
+		transform: translate(5px, -50%)
 
 	&::before
 		content: ""
@@ -3210,18 +3267,19 @@ $nav-is-open-class: 'nav-is-open'
 // nav opener btn
 a.nav-opener
 	$btn-menu-bg: white
-	$btn-menu-color: $base-color
 	$btn-menu-size: $header-height--sm
 	$btn-menu-lines-width: 24px
 	$btn-menu-lines-height: 2px
 	$btn-menu-lines-space: 5px
 	$btn-menu-lines-color: $base-color
+	$btn-menu-lines-color--mob: currentColor
 	$btn-menu-animation-speed: $animation-speed
 	$btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
 
 	$user-options-cross-width: $btn-menu-lines-width
 	$user-options-cross-height: $btn-menu-lines-height
 	$user-options-cross-color: $btn-menu-lines-color
+	$user-options-cross-color--mob: $btn-menu-lines-color--mob
 
 	// =====================
 
@@ -3247,8 +3305,20 @@ a.nav-opener
 		-webkit-tap-highlight-color: transparent
 
 	& > span
-		+hide-text
-		white-space: normal
+		position: absolute
+		left: 100%
+		top: 0
+		height: 100%
+		+padding-horizontal(5px)
+		+font-bold
+		line-height: $header-height--sm
+		display: none
+
+		+media('<tab-sm')
+			display: block
+
+		+media('<mob-sm')
+			display: none
 
 	// крест
 	&::before, &::after
@@ -3266,6 +3336,9 @@ a.nav-opener
 			delay: 0s
 			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
+		+media('<mob-sm')
+			background-color: $user-options-cross-color--mob
+
 	// бутерброд
 	& > i
 		position: absolute
@@ -3281,6 +3354,9 @@ a.nav-opener
 			duration: $btn-menu-animation-speed
 			delay: $btn-menu-animation-delay
 
+		+media('<mob-sm')
+			background-color: $btn-menu-lines-color--mob
+
 		&::before, &::after
 			+pseudo()
 			left: -3px
@@ -3291,6 +3367,9 @@ a.nav-opener
 				property: transform
 				duration: $btn-menu-animation-speed
 				delay: $btn-menu-animation-delay
+
+			+media('<mob-sm')
+				background-color: $btn-menu-lines-color--mob
 
 		//first line menu
 		&::before
@@ -3403,15 +3482,23 @@ a.nav-opener
 	+media('<desk-sm')
 		+padding-vertical(5rem)
 
+	+media('<tab-lg')
+		+padding-vertical(3rem)
+
 	+media('<mob-lg')
-		display: block
+		flex-wrap: wrap
 
 .footer-col
 	width: calc(100% / 6)
 	// для браузеров не поддерживающих display: flex
 	display: inline-block
-	//display: flex
 	justify-content: flex-start
+
+	+media('<desk-lg')
+		width: calc(100% / 5)
+
+	+media('<desk-sm')
+		width: calc(100% / 3)
 
 	+media('<mob-lg')
 		display: block
@@ -3422,31 +3509,79 @@ a.nav-opener
 		&:last-child
 			margin-bottom: 0
 
+	& > p, & > div
+		+media('<desk-sm')
+			margin-bottom: $bottom-space--row
+
+		&:last-child
+			margin-bottom: 0
+
+
+	&:nth-child(1)
+		padding-right: nth($grid-space, 2)
+		justify-content: flex-start
+		text-align: left
+
+		+media('<desk-sm')
+			display: flex
+			flex-wrap: wrap
+			width: calc(100% / 3 * 2)
+			padding-right: 0
+
+		+media('<mob-lg')
+			text-align: center
+			width: 100%
+
+		& > p, & > div
+			+media('<desk-sm')
+				width: calc(100% / 2)
+				padding-right: nth($grid-space--md, 2)
+				margin-bottom: $bottom-space--row
+
+				&:nth-child(1)
+					display: none
+
+				&:nth-child(2)
+					order: 1
+
+				&:nth-child(3)
+					order: 3
+					margin-bottom: 0
+
+				&:nth-child(4)
+					order: 4
+					margin-bottom: 0
+
+				&:nth-child(5)
+					order: 2
+
+			+media('<mob-lg')
+				width: 100%
+				padding-right: 0
+
+				&:nth-child(3)
+					margin-bottom: $bottom-space--row
+
 	&:nth-child(2)
 		width: calc(100% / 6 * 4)
 
-	&:first-child
-		padding-right: nth($grid-space, 2)
+		+media('<desk-lg')
+			width: calc(100% / 5 * 3)
 
 		+media('<desk-sm')
-			padding-right: nth($grid-space--md, 2)
+			display: none
 
-		+media('>=mob-lg')
-			justify-content: flex-start
-			text-align: left
-
-	&:last-child
+	&:nth-child(3)
 		padding-left: nth($grid-space, 2)
+		justify-content: flex-end
+		text-align: right
 
 		+media('<desk-sm')
 			padding-left: nth($grid-space--md, 2)
 
-		+media('>=mob-lg')
-			justify-content: flex-end
-			text-align: right
-
-	p:last-child
-		margin-bottom: 0
+		+media('<mob-lg')
+			text-align: center
+			padding-left: 0
 
 // copyright
 .copyright
@@ -3508,6 +3643,9 @@ a.nav-opener
 		padding-right: nth($grid-space, 2)
 		margin-top: $bottom-space--article
 
+		+media('<desk-lg')
+			width: calc(100% / 3)
+
 		+media('<desk-sm')
 			margin-top: $bottom-space--article--md
 			padding-right: nth($grid-space--md, 2)
@@ -3548,6 +3686,12 @@ a.nav-opener
 .developer
 	display: block
 
+	+media('<mob-lg')
+		font-size: 14px
+		line-height: 30px
+		border-top: 1px solid $border-color
+		padding-top: $bottom-space--row
+
 	a
 		text-decoration: none
 
@@ -3555,12 +3699,8 @@ a.nav-opener
 			text-decoration: none
 
 .developer__label
-	+media('<mob-lg')
-		display: block
-
-	i
-		+media('<mob-lg')
-			display: none
+	display: inline-block
+	vertical-align: top
 
 .developer__logo
 	+display-inline-block-top

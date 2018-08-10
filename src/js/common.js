@@ -337,13 +337,16 @@ function slidersInit() {
 				pagination: $thisPag,
 				paginationType: 'bullets',
 				paginationClickable: true,
+				breakpoints: {
+					768: {
+						parallax: false
+					}
+				},
 				// events
 				onInit: function (swiper) {
 					$(swiper.container).closest($thisSlider).addClass('is-loaded');
 				}
 			});
-
-			return false;
 
 			slider.on('slideChangeStart', function () {
 				startProgressbar();
@@ -413,7 +416,7 @@ function slidersInit() {
 			new Swiper($('.swiper-container', $thisSlider), {
 				// slidesPerView: 'auto',
 				slidesPerView: 4,
-				// slidesPerGroup: 2,
+				slidesPerGroup: 4,
 				// autoHeight: true,
 				// Optional parameters
 				loop: false,
@@ -421,7 +424,7 @@ function slidersInit() {
 				keyboardControl: true,
 				// additional slide offset in the beginning of the container
 				// slidesOffsetBefore: 91,
-				// spaceBetween: 65,
+				spaceBetween: 0,
 				// Ratio to trigger swipe to next/previous slide during long swipes
 				longSwipesRatio: 0.1,
 				longSwipesMs: 200,
@@ -444,13 +447,24 @@ function slidersInit() {
 						spaceBetween: 20
 					},
 					1023: {
-						slidesPerView: 3
+						slidesPerView: 3,
+						slidesPerGroup: 3,
+						spaceBetween: 20
 					},
 					859: {
-						slidesPerView: 2
+						slidesPerView: 2,
+						slidesPerGroup: 2,
+						spaceBetween: 20
 					},
-					519: {
-						slidesPerView: 1
+					640: {
+						slidesPerView: 2,
+						slidesPerGroup: 2,
+						spaceBetween: 15
+					},
+					420: {
+						slidesPerView: 1,
+						slidesPerGroup: 1,
+						spaceBetween: 0
 					}
 				},
 				// events
