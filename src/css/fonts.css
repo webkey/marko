@@ -9,6 +9,13 @@
 }
 
 @font-face {
+	font-family: "akrobat-semibold";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/akrobat/akrobat-semibold.eot?") format("eot"), url("../fonts/akrobat/akrobat-semibold.woff") format("woff"), url("../fonts/akrobat/akrobat-semibold.ttf") format("truetype"), url("../fonts/akrobat/akrobat-semibold.svg#akrobat-semibold") format("svg");
+}
+
+@font-face {
 	font-family: "akrobat-bold";
 	font-style: normal;
 	font-weight: normal;

@@ -829,7 +829,7 @@ a.prod__inner
 	+font($font-size, $line-height)
 	letter-spacing: $letter-spacing
 
-	+media('<desk-md')
+	+media('<desk-sm')
 		+grid-item-responsive(4, nth($products-space, 2), nth($products-space, 1))
 
 	+media('<tab-sm')
@@ -838,27 +838,31 @@ a.prod__inner
 	+media('<mob-lg')
 		+grid-item-responsive(2, nth($products-space, 2), nth($products-space, 1))
 
-	// Оставить 10 елементов
+	// Оставить 5 елементов
 	// Остальные скрыть
 	.main-section--products &
-		&:nth-child(n + 11)
+		&:nth-child(n + 6)
 			display: none
 
-		// Оставить 8 елементов
+		// Оставить 4 елементов
 		// Остальные скрыть
 		+media('<desk-sm', '>=tab-sm')
-			&:nth-child(n + 9)
+			&:nth-child(n + 5)
 				display: none
 
-		// Оставить 9 елементов
+		// Оставить 6 елементов
 		// Остальные скрыть
-		+media('<tab-sm', '>=mob-lg')
-			&:nth-child(n + 10)
+		//+media('<tab-sm', '>=mob-lg')
+		+media('<tab-sm')
+			&:nth-child(n)
+				display: inline-block
+
+			&:nth-child(n + 7)
 				display: none
 
 		// Оставить 8 елементов
 		// Остальные скрыть
-		+media('<mob-lg')
+		//+media('<mob-lg')
 			&:nth-child(n + 9)
 				display: none
 
@@ -999,13 +1003,15 @@ a.prod__inner
 
 	// arrows, pagination
 	.slider-arrow
-		top: calc((100% - 25%) / 2)
+		//top: calc((100% - 25%) / 2)
+		top: round-float(($hundred-percent - 25) / 2, 2)
 		color: white
 		+size(nth($slider-promo-button-size, 2), nth($slider-promo-button-size, 1))
 		margin-top: -#{round(nth($slider-promo-button-size, 1)/2)}
 
 		+media('<desk-sm')
-			top: calc(100% / 2)
+			//top: calc(100% / 2)
+			top: round-float($hundred-percent / 2, 2)
 			+size(nth($slider-promo-button-size--mob, 2), nth($slider-promo-button-size--mob, 1))
 			margin-top: -#{round(nth($slider-promo-button-size--mob, 1)/2)}
 
@@ -1127,9 +1133,10 @@ a.prod__inner
 	overflow: hidden
 	max-height: round($line-height*3) // maximum 3 line
 	margin-bottom: 5rem
-	+font-black
+	//+font-black
+	+font-semibold
 	+font($font-size, $line-height)
-	letter-spacing: 0.05em
+	letter-spacing: normal
 	text-align: center
 
 	+media('<desk-lg')
@@ -1234,14 +1241,16 @@ $width: 25%
 
 .parts__item
 	float: left
-	width: calc(100% / 4)
+	//width: calc(100% / 4)
+	width: round-float($hundred-percent / 4, 2)
 
 	+media('>=desk-sm')
 		height: 100%
 
 	+media('<desk-sm')
 		position: relative
-		width: calc(100% / 2)
+		//width: calc(100% / 2)
+		width: round-float($hundred-percent / 2, 2)
 		z-index: 1
 
 	+media('<mob-md')
@@ -1330,7 +1339,8 @@ $width: 25%
 		width: 50%
 		padding: 0 10px
 		z-index: 1
-		+font-bold
+		//+font-bold
+		+font-semibold
 		color: inherit
 		text-align: center
 		text-decoration: none
@@ -1357,7 +1367,8 @@ $width: 25%
 		.t
 			font-size: 3rem
 			line-height: round-float(30/30, 2)
-			letter-spacing: 0.05em
+			//letter-spacing: 0.05em
+			letter-spacing: normal
 			margin-bottom: 0.3em
 
 			+media('<desk-lg')
@@ -1373,7 +1384,8 @@ $width: 25%
 			opacity: 0.5
 			font-size: 1.8rem
 			line-height: round-float(30/18, 2)
-			letter-spacing: 0.05em
+			//letter-spacing: 0.05em
+			letter-spacing: normal
 
 			+media('<desk-ml')
 				+font-normal
@@ -1738,7 +1750,8 @@ $width: 25%
 		margin: 0 auto
 
 .collection-slider__item__title
-	+font-black
+	//+font-black
+	+font-bold
 	+font(2.4rem, round-float(30/24, 2))
 	color: inherit
 	text-align: center
@@ -1832,7 +1845,7 @@ $width: 25%
 	+media('<desk-sm')
 		padding-right: nth($grid-space--md, 2)
 
-	&:nth-child(even)
+	//&:nth-child(even)
 		padding-top: 120px
 
 		+media('<desk-sm')
@@ -1863,7 +1876,7 @@ $width: 25%
 		bottom: 0
 		transform-origin: left bottom
 		transform: rotate(-90deg)
-		padding-bottom: 1.4em
+		padding-bottom: 0.4em
 		margin: 0
 
 	+media('<desk-sm')
@@ -2311,51 +2324,78 @@ $width: 25%
 		font-size: 2.4rem
 
 .footer-row
+	$padding-v: 10rem
+	$padding-v--md: 5rem
+	$padding-v--sm: 3rem
 	position: relative
 	display: flex
 	justify-content: space-between
-	+padding-vertical(10rem)
+	+padding-vertical($padding-v, $padding-v + 2)
 	min-height: 1px
 
 	+media('<desk-sm')
-		+padding-vertical(5rem)
+		+padding-vertical($padding-v--md + 2)
 
 	+media('<tab-lg')
-		+padding-vertical(3rem)
+		+padding-vertical($padding-v--sm + 2)
 
 	+media('<mob-lg')
 		flex-wrap: wrap
+		padding-bottom: $padding-v--sm
+
+	.developer
+		position: absolute
+		right: 0
+		top: 100%
+		margin-top: -#{$padding-v + 2}
+
+		+media('<desk-sm')
+			margin-top: -#{$padding-v--md + 2}
+
+		+media('<tab-lg')
+			margin-top: -#{$padding-v--sm + 2}
+
+		+media('<mob-lg')
+			position: relative
+			right: auto
+			top: auto
+			margin-top: 0
 
 .footer-col
-	width: calc(100% / 6)
+	//width: calc(100% / 6)
+	width: round-float($hundred-percent / 6, 2)
 	// для браузеров не поддерживающих display: flex
 	display: inline-block
 	justify-content: flex-start
 
-	+media('<desk-lg')
-		width: calc(100% / 5)
+	+media('<desk-md')
+		//width: calc(100% / 5)
+		width: round-float($hundred-percent / 5, 2)
 
 	+media('<desk-sm')
-		width: calc(100% / 3)
+		//width: calc(100% / 3)
+		width: round-float($hundred-percent / 3, 2)
 
 	+media('<mob-lg')
 		display: block
 		width: 100%
-		margin-bottom: 20px
+		//margin-bottom: 20px
 		padding: 0
 
 		&:last-child
 			margin-bottom: 0
 
-	& > p, & > div
+	& > p, & > div, & > div > p
+		margin-bottom: $bottom-space
+
 		+media('<desk-sm')
 			margin-bottom: $bottom-space--row
 
 		&:last-child
 			margin-bottom: 0
 
-
 	&:nth-child(1)
+		width: round-float($hundred-percent / 6 * 2, 2)
 		padding-right: nth($grid-space, 2)
 		justify-content: flex-start
 		text-align: left
@@ -2363,7 +2403,9 @@ $width: 25%
 		+media('<desk-sm')
 			display: flex
 			flex-wrap: wrap
-			width: calc(100% / 3 * 2)
+			//width: calc(100% / 3 * 2)
+			//width: round-float($hundred-percent / 3 * 2, 2)
+			width: 100%
 			padding-right: 0
 
 		+media('<mob-lg')
@@ -2372,7 +2414,8 @@ $width: 25%
 
 		& > p, & > div
 			+media('<desk-sm')
-				width: calc(100% / 2)
+				//width: calc(100% / 2)
+				width: round-float($hundred-percent / 3, 2)
 				padding-right: nth($grid-space--md, 2)
 				margin-bottom: $bottom-space--row
 
@@ -2384,13 +2427,8 @@ $width: 25%
 
 				&:nth-child(3)
 					order: 3
-					margin-bottom: 0
 
 				&:nth-child(4)
-					order: 4
-					margin-bottom: 0
-
-				&:nth-child(5)
 					order: 2
 
 			+media('<mob-lg')
@@ -2400,16 +2438,21 @@ $width: 25%
 				&:nth-child(3)
 					margin-bottom: $bottom-space--row
 
-	&:nth-child(2)
-		width: calc(100% / 6 * 4)
+				&:nth-child(n)
+					order: initial
 
-		+media('<desk-lg')
-			width: calc(100% / 5 * 3)
+	&:nth-child(2)
+		//width: calc(100% / 6 * 4)
+		width: round-float($hundred-percent / 6 * 4, 2)
+
+		//+media('<desk-md')
+			//width: calc(100% / 5 * 3)
+			width: round-float($hundred-percent / 5 * 3, 2)
 
 		+media('<desk-sm')
 			display: none
 
-	&:nth-child(3)
+	//&:nth-child(3)
 		padding-left: nth($grid-space, 2)
 		justify-content: flex-end
 		text-align: right
@@ -2473,7 +2516,8 @@ $width: 25%
 			color: $base-color
 
 	& > li
-		width: calc(100% / 4)
+		//width: calc(100% / 4)
+		width: round-float($hundred-percent / 4, 2)
 		display: inline-block
 		vertical-align: top
 		+font($font-size, $line-height)
@@ -2481,8 +2525,9 @@ $width: 25%
 		padding-right: nth($grid-space, 2)
 		margin-top: $bottom-space--article
 
-		+media('<desk-lg')
-			width: calc(100% / 3)
+		+media('<desk-md')
+			//width: calc(100% / 3)
+			width: round-float($hundred-percent / 3, 2)
 
 		+media('<desk-sm')
 			margin-top: $bottom-space--article--md
@@ -2520,9 +2565,76 @@ $width: 25%
 
 /* footer navigation end
 
+/* footer social share
+.soc-share
+	overflow: hidden
+	line-height: 0
+	margin-bottom: $bottom-space
+	+clear-spacing
+
+	&:last-child
+		margin-bottom: 0
+
+.soc-share__list
+	position: relative
+
+.soc-share__item
+	margin: 5px 0
+
+.soc-share__item__label,
+.soc-share__item__list
+	display: inline-block
+	vertical-align: top
+	+font($font-size, 20px)
+	letter-spacing: normal
+
+.soc-share__item__label
+	margin: 0 10px 10px 0
+
+	+media('<tab-lg')
+		margin: 0 7px 7px 0
+
+.soc-share__item__list
+	+clear
+
+	& > a
+		display: block
+		float: left
+		margin: 0 10px 10px 0
+		position: relative
+		color: inherit
+		transition:
+			property: color, border-color
+			duration: $animation-speed
+
+		+media('<tab-lg')
+			margin: 0 7px 7px 0
+
+		span
+			+hide-text
+
+		svg
+			display: block
+			+size(20px)
+
+		path
+			fill: currentColor
+
+		&:hover
+			color: $base-color
+
+/* footer social share end
+
 /* developer
 .developer
 	display: block
+
+	.footer .footer-col &, &
+		margin-bottom: 0
+
+		+media('>=mob-lg')
+			width: auto
+			padding: 0
 
 	+media('<mob-lg')
 		font-size: 14px

@@ -498,7 +498,7 @@ function slidersInit() {
 				$thisPag = $('.swiper-pagination', $thisSlider);
 
 			new Swiper($('.swiper-container', $thisSlider), {
-				slidesPerView: 3,
+				slidesPerView: 5,
 				// Optional parameters
 				loop: false,
 				// Keyboard
@@ -515,7 +515,7 @@ function slidersInit() {
 				pagination: $thisPag,
 				paginationClickable: true,
 				breakpoints: {
-					1279: {
+					1600: {
 						slidesPerView: 4
 					},
 					899: {

@@ -1,0 +1,50 @@
+[
+  {
+	"label": "Марко - холдинг:",
+	"vk": {
+	  "class": "vk",
+	  "href": "https://vk.com/marko_holding ",
+	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	  "title": "Vkontakte"
+	}
+  },
+  {
+	"label": "Марко - обувь:",
+	"vk": {
+	  "class": "vk",
+	  "href": "https://vk.com/markoholding",
+	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	  "title": "Vkontakte"
+	},
+	"inst": {
+	  "class": "instagram",
+	  "href": "https://www.instagram.com/markoholding/?hl=ru",
+	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
+	  "title": "Instagram"
+	}
+  },
+  {
+	"label": "Сан Марко - детская обувь:",
+	"vk": {
+	  "class": "vk",
+	  "href": "https://vk.com/san_marko_kids",
+	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	  "title": "Vkontakte"
+	},
+	"inst": {
+	  "class": "instagram",
+	  "href": "https://www.instagram.com/sanmarkokids/?hl=ru",
+	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
+	  "title": "Instagram"
+	}
+  },
+  {
+	"label": "Браво - обувь:",
+	"inst": {
+	  "class": "instagram",
+	  "href": "https://www.instagram.com/bravotrend_official/?hl=ru",
+	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
+	  "title": "Instagram"
+	}
+  }
+]

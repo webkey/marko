@@ -922,7 +922,7 @@ input.search-form__input:hover, input.search-form__input:focus {
 	color: #282828;
 	font-size: 1.8rem;
 	line-height: 1.67;
-	letter-spacing: 0.05em;
+	letter-spacing: normal;
 	text-align: center;
 	background-color: #fff;
 	z-index: 9997;
@@ -1166,7 +1166,7 @@ input.search-form__input:hover, input.search-form__input:focus {
 	height: 100%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	font-family: "akrobat-bold", Helvetica, Arial, sans-serif;
+	font-family: "akrobat-semibold", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	color: #282828;

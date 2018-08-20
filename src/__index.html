@@ -80,11 +80,41 @@
 	<section class="main-section main-section--products">
 		<div class="main-section__heading layout-flood">
 
-			<h2><span>Популярные моделы</span></h2>
+			<h2><span>Женская коллекция</span></h2>
 		</div>
 		<div class="products">
 			<section class="products__list">
 				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+			</section>
+		</div>
+		<div class="align-center">
+			@@include("_tpl_btn.html", {"value": "Смотреть каталог"})
+		</div>
+	</section>
+
+	<section class="main-section main-section--products">
+		<div class="main-section__heading layout-flood">
+
+			<h2><span>Мужскя коллекция</span></h2>
+		</div>
+		<div class="products">
+			<section class="products__list">
+				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
+			</section>
+		</div>
+		<div class="align-center">
+			@@include("_tpl_btn.html", {"value": "Смотреть каталог"})
+		</div>
+	</section>
+
+	<section class="main-section main-section--products">
+		<div class="main-section__heading layout-flood">
+
+			<h2><span>Детская коллекция</span></h2>
+		</div>
+		<div class="products">
+			<section class="products__list">
 				@@loop("_tpl_products--items.html", "includes/json/products--items.json")
 			</section>
 		</div>
