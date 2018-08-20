@@ -4183,15 +4183,15 @@ a.prod__inner {
 	display: flex;
 	-ms-flex-pack: justify;
 	    justify-content: space-between;
-	padding-top: 10rem;
-	padding-bottom: 12rem;
+	padding-top: 5rem;
+	padding-bottom: 7rem;
 	min-height: 1px;
 }
 
 @media (max-width: 1279px) {
 	.footer-row {
-		padding-top: 7rem;
-		padding-bottom: 7rem;
+		padding-top: 6rem;
+		padding-bottom: 6rem;
 	}
 }
 
@@ -4214,12 +4214,12 @@ a.prod__inner {
 	position: absolute;
 	right: 0;
 	top: 100%;
-	margin-top: -12rem;
+	margin-top: -7rem;
 }
 
 @media (max-width: 1279px) {
 	.footer-row .developer {
-		margin-top: -7rem;
+		margin-top: -6rem;
 	}
 }
 
