@@ -827,7 +827,7 @@ input.search-form__input:hover, input.search-form__input:focus {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 165px;
+	width: 210px;
 	height: auto;
 	font-family: "akrobat-regular", Helvetica, Arial, sans-serif;
 	font-weight: normal;
@@ -842,13 +842,13 @@ input.search-form__input:hover, input.search-form__input:focus {
 
 @media (max-width: 1439px) {
 	.header .logo {
-		width: 132px;
+		width: 140px;
 	}
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 991px) {
 	.header .logo {
-		width: 110px;
+		width: 120px;
 	}
 }
 
@@ -856,7 +856,7 @@ input.search-form__input:hover, input.search-form__input:focus {
 	content: "";
 	display: block;
 	height: 0;
-	padding-top: 30.3%;
+	padding-top: 26.67%;
 	background-repeat: no-repeat;
 	background-position: left;
 	background-color: #fff;
