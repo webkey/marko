@@ -508,7 +508,7 @@ a.prod__inner
 	color: inherit
 
 	+media('<desk-sm')
-		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 80px
+		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 70px
 
 	+media('<mob-lg')
 		padding: nth($products-grid-space--mob, 1) nth($products-grid-space--mob, 2) 70px
@@ -592,18 +592,22 @@ a.prod__inner
 	pointer-events: none
 
 .prod__body
-	position: absolute
-	width: 100%
-	left: 50%
-	top: 50%
-	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 180px
-	transform: translate(-50%, -50%)
+	//position: absolute
+	//width: 100%
+	//left: 50%
+	//top: 50%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: nth($products-grid-space, 1) nth($products-grid-space, 2) 140px
+	//transform: translate(-50%, -50%)
 
 	+media('<desk-sm')
-		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 180px
+		padding: nth($products-grid-space--md, 1) nth($products-grid-space--md, 2) 140px
 
 	+media('<mob-lg')
-		padding: nth($products-grid-space--mob, 1) nth($products-grid-space--mob, 2) 180px
+		padding: nth($products-grid-space--mob, 1) nth($products-grid-space--mob, 2) 140px
 
 // list of characteristics
 .prod__dl-list
@@ -643,19 +647,29 @@ a.prod__inner
 	left: 0
 	bottom: 0
 	width: 100%
-	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
+	padding: 0 10px nth($products-grid-space, 1)
 	z-index: 5
 
-	+media('<desk-sm')
-		padding: 0 nth($products-grid-space--md, 2)  nth($products-grid-space--md, 1)
+	//+media('<desk-sm')
+		padding-bottom: nth($products-grid-space--md, 1)
 
 	+media('<mob-lg')
-		padding: 0 nth($products-grid-space--mob, 2)  nth($products-grid-space--mob, 1)
+		padding-bottom: nth($products-grid-space--mob, 1)
+		bottom: auto
+		top: 100%
+		margin-top: -65px
 
 // price
 .prod__price
 	text-align: center
 	line-height: 24px
+
+	.no
+		+font-black
+		font-size: 24px
+
+		+media('<desk-sm')
+			font-size: 20px
 
 .prod__price__cur,
 .prod__price__old
@@ -702,11 +716,11 @@ a.prod__inner
 	padding: 0 nth($products-grid-space, 2)  nth($products-grid-space, 1)
 	z-index: 5
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		padding: 0 nth($products-grid-space--md, 2)  nth($products-grid-space--md, 1)
 
 	+media('<mob-lg')
-		padding: 0 nth($products-grid-space--mob, 2)  nth($products-grid-space--mob, 1)
+		padding: 0 nth($products-grid-space--mob, 2)  30px
 
 // Hover animation. Only no-touch
 
@@ -780,14 +794,16 @@ a.prod__inner
 
 		.prod__foot
 			$x: 0
-			$y: -110px
+			//$y: -120px
+			$y: -70px
 			transform: translate($x, $y)
 			transform: translate3d($x, $y, 0)
 
 		.prod__add-info
 			opacity: 1
 			$x: 0
-			$y: -20px
+			//$y: -20px
+			$y: 0
 			transform: translate($x, $y)
 			transform: translate3d($x, $y, 0)
 
@@ -829,13 +845,16 @@ a.prod__inner
 	+font($font-size, $line-height)
 	letter-spacing: $letter-spacing
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
+	+media('<1550px')
 		+grid-item-responsive(4, nth($products-space, 2), nth($products-space, 1))
 
-	+media('<tab-sm')
+	//+media('<tab-sm')
+	+media('<1150px')
 		+grid-item-responsive(3, nth($products-space, 2), nth($products-space, 1))
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
+	+media('<865px')
 		+grid-item-responsive(2, nth($products-space, 2), nth($products-space, 1))
 
 	// Оставить 5 елементов
@@ -846,14 +865,14 @@ a.prod__inner
 
 		// Оставить 4 елементов
 		// Остальные скрыть
-		+media('<desk-sm', '>=tab-sm')
+		+media('<1550px', '>=1150px')
 			&:nth-child(n + 5)
 				display: none
 
 		// Оставить 6 елементов
 		// Остальные скрыть
 		//+media('<tab-sm', '>=mob-lg')
-		+media('<tab-sm')
+		+media('<1150px')
 			&:nth-child(n)
 				display: inline-block
 
@@ -2286,7 +2305,7 @@ $width: 25%
 	justify-content: space-between
 	align-items: stretch
 	margin: 0 auto
-	min-height: 100%
+	min-height: 100vh
 	max-width: 100%
 	width: $page-layout-width
 	background-color: $bg-color-alt

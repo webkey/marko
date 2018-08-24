@@ -194,6 +194,9 @@ html {
 /* social networks end */
 /* user options */
 .user-options {
+	display: block;
+	display: -ms-flexbox;
+	display: flex;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -201,8 +204,6 @@ html {
 	font-weight: normal;
 	font-style: normal;
 	color: #282828;
-	font-size: 0;
-	letter-spacing: -4px;
 	line-height: 1;
 }
 

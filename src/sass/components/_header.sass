@@ -118,17 +118,20 @@ $uo-icon-size: 20px
 $uo-icon-size--sm: 16px
 
 .user-options
+	display: block
+	display: flex
 	position: absolute
 	right: 0
 	top: 0
 	+font-normal
 	color: $text-color
-	+clear-spacing
+	//+clear-spacing
 	line-height: 1
 
 .user-options__item
 	position: relative
-	+display-inline-block-top
+	display: inline-block
+	vertical-align: top
 	+font($font-size, $line-height)
 	letter-spacing: $letter-spacing
 	min-width: nth($uo-item-size, 2)
