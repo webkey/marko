@@ -3095,7 +3095,7 @@ a.prod__inner {
 	fill: currentColor;
 }
 
-@media (min-width: 1281px) {
+@media (min-width: 1280px) {
 	.parts__item__thumb .p1 {
 		left: 0;
 	}
@@ -4173,6 +4173,8 @@ a.prod__inner {
 	z-index: 5;
 	background-color: white;
 	overflow: hidden;
+	font-size: 1.8rem;
+	line-height: 2.4rem;
 }
 
 .footer .font-large {
@@ -4195,14 +4197,14 @@ a.prod__inner {
 
 @media (max-width: 1279px) {
 	.footer-row {
-		padding-top: 6rem;
+		padding-top: 4rem;
 		padding-bottom: 6rem;
 	}
 }
 
 @media (max-width: 991px) {
 	.footer-row {
-		padding-top: 5rem;
+		padding-top: 3rem;
 		padding-bottom: 5rem;
 	}
 }
@@ -4211,7 +4213,7 @@ a.prod__inner {
 	.footer-row {
 		-ms-flex-wrap: wrap;
 		    flex-wrap: wrap;
-		padding-bottom: 3rem;
+		padding-bottom: 2rem;
 	}
 }
 
@@ -4219,7 +4221,7 @@ a.prod__inner {
 	position: absolute;
 	right: 0;
 	top: 100%;
-	margin-top: -7rem;
+	margin-top: -6rem;
 }
 
 @media (max-width: 1279px) {
@@ -4274,7 +4276,7 @@ a.prod__inner {
 }
 
 .footer-col > p, .footer-col > div, .footer-col > div > p {
-	margin-bottom: 3rem;
+	margin-bottom: 2.5rem;
 }
 
 @media (max-width: 1279px) {
@@ -4376,6 +4378,7 @@ a.prod__inner {
 
 .footer-nav {
 	overflow: hidden;
+	padding-top: 27px;
 }
 
 .footer-nav__list {
@@ -4410,7 +4413,6 @@ a.prod__inner {
 }
 
 .footer-nav__list a {
-	padding-top: 0.5em;
 	text-decoration: none;
 	color: inherit;
 	transition-property: color;
@@ -4426,15 +4428,15 @@ a.prod__inner {
 	display: inline-block;
 	vertical-align: top;
 	font-size: 1.8rem;
-	line-height: 1.67;
+	line-height: 2.4rem;
 	letter-spacing: 0.05em;
 	padding-right: 30px;
-	margin-top: 5rem;
+	margin-top: 4rem;
 }
 
 @media (max-width: 1365px) {
 	.footer-nav__list > li {
-		width: 33.33%;
+		padding-right: 20px;
 	}
 }
 
@@ -4445,9 +4447,9 @@ a.prod__inner {
 	}
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 639px) {
 	.footer-nav__list > li {
-		margin-top: 2.5rem;
+		margin-top: 2rem;
 		padding-right: 10px;
 	}
 }
@@ -4463,23 +4465,21 @@ a.prod__inner {
 }
 
 .footer-nav__list > li > a + ul {
-	margin-top: 3rem;
+	margin-top: 2.5rem;
 }
 
 @media (max-width: 1279px) {
-	.footer-nav__list > li > a + ul {
-		margin-top: 2rem;
-	}
-}
-
-@media (max-width: 639px) {
 	.footer-nav__list > li > a + ul {
 		margin-top: 1.5rem;
 	}
 }
 
 .footer-nav__list > li ul > li {
-	margin-top: 1.5rem;
+	margin-top: 1rem;
+}
+
+.footer-nav__list > li ul > li a {
+	padding-top: 0.5em;
 }
 
 .footer-nav__list > li ul > li ul {
@@ -4510,7 +4510,7 @@ a.prod__inner {
 }
 
 .soc-share__item {
-	margin: 5px 0;
+	margin: 2px 0;
 }
 
 .soc-share__item__label,
@@ -4610,7 +4610,7 @@ a.prod__inner {
 		font-size: 14px;
 		line-height: 30px;
 		border-top: 1px solid #e6e6e6;
-		padding-top: 1.5rem;
+		padding-top: 2rem;
 	}
 }
 
