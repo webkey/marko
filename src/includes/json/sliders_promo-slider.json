@@ -2,26 +2,29 @@
   {
 	"src": "img/img-promo-slider-01.jpg",
 	"srcMob": "img/img-promo-slider-01.jpg",
-	"title": "Распродажа весенней коллекции и скидки на всю коллекцию <div class=\"nobr\">«Весна-лето»</div>",
-	"alt": "Распродажа весенней коллекции и скидки на всю коллекцию «Весна-лето»",
+	"title": "",
+	"alt": "Image Description",
 	"text": ""
   },
   {
-	"src": "img/temp/img_1280_01.jpg",
-	"srcMob": "img/temp/img_1280_01.jpg",
-	"title": "Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии",
+	"src": "img/img-promo-slider-02.jpg",
+	"srcMob": "img/img-promo-slider-02.jpg",
+	"title": "",
+	"alt": "Image Description",
 	"text": ""
   },
   {
-	"src": "img/temp/img_1280_02.jpg",
-	"srcMob": "img/temp/img_1280_02.jpg",
-	"title": "Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно",
+	"src": "img/img-promo-slider-03.jpg",
+	"srcMob": "img/img-promo-slider-03.jpg",
+	"title": "",
+	"alt": "Image Description",
 	"text": ""
   },
   {
-	"src": "img/temp/img_1280_03.jpg",
-	"srcMob": "img/temp/img_1280_03.jpg",
+	"src": "img/img-part-04.jpg",
+	"srcMob": "img/img-part-04.jpg",
 	"title": "В школу вместе с «Марко»! -20% на школьную коллекцию",
+	"alt": "Image Description",
 	"text": ""
   }
 ]

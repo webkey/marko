@@ -82,11 +82,8 @@ html
 /* user form end
 
 /* slider
-.swiper-container,
-.swiper-pagination,
-.slider-arrows
+.swiper-container, .swiper-pagination, .slider-arrows
 	opacity: 0
-	pointer-events: none
 	// transition
 	$prop: opacity
 	will-change: $prop
@@ -94,10 +91,13 @@ html
 		property: $prop
 		duration: $animation-speed
 
-	.is-loaded &,
-	&.is-loaded,
-	.no-js &
+	.is-loaded &, &.is-loaded, .no-js &
 		opacity: 1
+
+.swiper-container, .swiper-pagination-bullet, .slider-arrows
+	pointer-events: none
+
+	.is-loaded &, &.is-loaded, .no-js &
 		pointer-events: auto
 
 // slider arrows
@@ -1005,20 +1005,37 @@ a.prod__inner
 
 	+media('<desk-sm')
 		//height: calc(100vh - #{$header-height--sm})
-		height: 575px
+		//height: 575px
+		position: relative
+		height: auto
 		min-height: 0
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		height: 385px
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		height: 192px
+
+	&::before
+		content: ""
+		display: none
+		+ratio(192, 82)
+
+		+media('<desk-sm')
+			display: block
 
 .promo-slider
 	//width: 600px
 	height: 100%
 	//background-color: $bg-color-alt
 	color: white
+
+	+media('<desk-sm')
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
 
 	// arrows, pagination
 	.slider-arrow
@@ -1123,17 +1140,24 @@ a.prod__inner
 		+object-fit(cover)
 
 .promo-slider__item__content
+	position: relative
 	display: block
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
 	color: inherit
 	text-decoration: none
-	width: 960px
+	//width: 960px
+	width: 100%
 	max-width: 100%
 	text-align: center
+	flex-grow: 1
 
-	+media('<desk-ml')
+	//+media('<desk-ml')
 		width: 800px
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		width: 480px
 
 .promo-slider__item__title
@@ -1151,12 +1175,16 @@ a.prod__inner
 	display: block
 	overflow: hidden
 	max-height: round($line-height*3) // maximum 3 line
-	margin-bottom: 5rem
+	margin-left: auto
+	margin-right: auto
+	//margin-bottom: 5rem
 	//+font-black
 	+font-semibold
 	+font($font-size, $line-height)
 	letter-spacing: normal
 	text-align: center
+	width: 960px
+	max-width: 100%
 
 	+media('<desk-lg')
 		font-size: $font-size--md
@@ -1167,7 +1195,8 @@ a.prod__inner
 		font-size: $font-size--sm
 		line-height: $line-height--sm
 		max-height: round($line-height--sm*3) // maximum 3 line
-		margin-bottom: 2rem
+		//margin-bottom: 2rem
+		width: 800px
 
 	+media('<tab-lg')
 		font-size: $font-size--tab
@@ -1178,11 +1207,20 @@ a.prod__inner
 		font-size: $font-size--mob
 		line-height: $line-height--mob
 		max-height: round($line-height--mob*5) // maximum 5 line
+		width: 480px
 
 	&:last-child
 		margin-bottom: 0
 
 .promo-slider__item__footer
+	position: absolute
+	left: 0
+	bottom: 9rem
+	width: 100%
+
+	+media('<desk-ml')
+		bottom: 5rem
+
 	+media('<tab-lg')
 		display: none
 
@@ -1849,15 +1887,22 @@ $width: 25%
 		overflow: visible
 
 	.swiper-pagination
-		margin-top: $bottom-space--article
+		display: flex
+		align-items: center
+		left: 0
+		height: $btn-height
 		position: relative
 		line-height: 0
+		pointer-events: none
 
 		+media('<desk-sm')
-			margin-top: $bottom-space--article--md
+			height: $btn-height--mob
 
 		+media('<mob-lg')
-			margin-top: $bottom-space--article--mob
+			display: block
+			height: auto
+			position: relative
+			text-align: center
 
 	// arrows, pagination
 	.slider-arrows,
@@ -1879,21 +1924,6 @@ $width: 25%
 		.slider-arrow
 			bottom: auto
 			top: 0
-
-	.swiper-pagination
-		display: flex
-		align-items: center
-		left: 0
-		height: $btn-height
-
-		+media('<desk-sm')
-			height: $btn-height--mob
-
-		+media('<mob-lg')
-			display: block
-			height: auto
-			position: relative
-			text-align: center
 
 .news-slider__item
 	padding-right: nth($grid-space, 2)

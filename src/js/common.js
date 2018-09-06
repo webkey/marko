@@ -353,49 +353,49 @@ function slidersInit() {
 				isPause = true;
 			});
 
-			$bar = $('.slider-progress .progress');
-
-			$('.main-enter').on({
-				mouseenter: function() {
-					isPause = true;
-				},
-				mouseleave: function() {
-					isPause = false;
-				}
-			});
-
-			function startProgressbar() {
-				resetProgressbar();
-				percentTime = 0;
-				isPause = false;
-				tick = setInterval(interval, 10);
-			}
-
-			function interval() {
-				if(isPause === false) {
-					percentTime += 1 / (time+0.1);
-					$bar.css({
-						// width: percentTime+"%",
-						'-ms-transform'     : 'translateX(' + percentTime + '%)',
-						'transform'         : 'translateX(' + percentTime + '%)'
-					});
-					if(percentTime >= 100) {
-						slider.slideNext();
-						startProgressbar();
-					}
-				}
-			}
-
-			function resetProgressbar() {
-				$bar.css({
-					// width: 0+'%',
-					'-ms-transform'     : 'translateX(0%)',
-					'transform'         : 'translateX(0%)'
-				});
-				clearTimeout(tick);
-			}
-
-			startProgressbar();
+			// $bar = $('.slider-progress .progress');
+			//
+			// $('.main-enter').on({
+			// 	mouseenter: function() {
+			// 		isPause = true;
+			// 	},
+			// 	mouseleave: function() {
+			// 		isPause = false;
+			// 	}
+			// });
+			//
+			// function startProgressbar() {
+			// 	resetProgressbar();
+			// 	percentTime = 0;
+			// 	isPause = false;
+			// 	tick = setInterval(interval, 10);
+			// }
+			//
+			// function interval() {
+			// 	if(isPause === false) {
+			// 		percentTime += 1 / (time+0.1);
+			// 		$bar.css({
+			// 			// width: percentTime+"%",
+			// 			'-ms-transform'     : 'translateX(' + percentTime + '%)',
+			// 			'transform'         : 'translateX(' + percentTime + '%)'
+			// 		});
+			// 		if(percentTime >= 100) {
+			// 			slider.slideNext();
+			// 			startProgressbar();
+			// 		}
+			// 	}
+			// }
+			//
+			// function resetProgressbar() {
+			// 	$bar.css({
+			// 		// width: 0+'%',
+			// 		'-ms-transform'     : 'translateX(0%)',
+			// 		'transform'         : 'translateX(0%)'
+			// 	});
+			// 	clearTimeout(tick);
+			// }
+			//
+			// startProgressbar();
 		});
 
 	}

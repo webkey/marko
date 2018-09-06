@@ -3,7 +3,9 @@
 		<img src="@@src" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
 	</div>
 	<a href="#" class="promo-slider__item__content">
+		@@if(context.title){
 		<div class="promo-slider__item__title" data-swiper-parallax="-400">@@title</div>
+		}
 		<div class="promo-slider__item__footer">
 			<span class="btn-default-alt">Подробнее</span>
 		</div>
