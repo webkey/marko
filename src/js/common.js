@@ -348,10 +348,10 @@ function slidersInit() {
 				}
 			});
 
-			slider.on('slideChangeStart', function () {
-				startProgressbar();
-				isPause = true;
-			});
+			// slider.on('slideChangeStart', function () {
+			// 	startProgressbar();
+			// 	isPause = true;
+			// });
 
 			// $bar = $('.slider-progress .progress');
 			//

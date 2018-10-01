@@ -2515,6 +2515,12 @@ a.prod__inner {
 	}
 }
 
+@media (max-width: 639px) {
+	.main-section--promo::before {
+		display: none;
+	}
+}
+
 .promo-slider {
 	height: 100%;
 	color: white;
@@ -2530,19 +2536,32 @@ a.prod__inner {
 	}
 }
 
+@media (max-width: 639px) {
+	.promo-slider {
+		position: relative;
+		left: auto;
+		top: auto;
+		width: auto;
+		height: auto;
+	}
+}
+
 .promo-slider .slider-arrow {
-	top: 37.5%;
+	top: auto;
+	bottom: 140px;
 	color: white;
 	width: 64px;
 	height: 60px;
-	margin-top: -30px;
+	margin-bottom: 60px;
 }
 
 @media (max-width: 1279px) {
 	.promo-slider .slider-arrow {
+		bottom: auto;
 		top: 50%;
 		width: 50px;
 		height: 50px;
+		margin-bottom: 0;
 		margin-top: -25px;
 	}
 }
@@ -2582,8 +2601,8 @@ a.prod__inner {
 
 .promo-slider .swiper-pagination {
 	line-height: 0;
-	bottom: 25%;
-	margin-bottom: 5rem;
+	bottom: 140px;
+	margin-bottom: 3rem;
 }
 
 @media (max-width: 1439px) {
@@ -2595,13 +2614,6 @@ a.prod__inner {
 @media (max-width: 1279px) {
 	.promo-slider .swiper-pagination {
 		bottom: 0;
-		margin-bottom: 3rem;
-	}
-}
-
-@media (max-width: 1279px) {
-	.promo-slider .swiper-pagination {
-		margin-bottom: 2.5rem;
 	}
 }
 
@@ -2633,8 +2645,6 @@ a.prod__inner {
 	top: 0;
 	left: 0;
 	background-color: rgba(45, 44, 44, 0.35);
-	background-image: url(../img/promo-slider-pattern.png);
-	background-size: 25% 25%;
 	z-index: -1;
 }
 
@@ -2653,8 +2663,8 @@ a.prod__inner {
 
 @media (max-width: 639px) {
 	.promo-slider__item {
-		padding-right: 15px;
-		padding-left: 15px;
+		padding: 0;
+		display: block;
 	}
 }
 
@@ -2663,7 +2673,7 @@ a.prod__inner {
 	content: "";
 	display: block;
 	width: 100%;
-	height: 25%;
+	height: 140px;
 	pointer-events: none;
 	z-index: -1;
 }
@@ -2694,6 +2704,30 @@ a.prod__inner {
 	font-family: "object-fit: cover";
 }
 
+@media (max-width: 639px) {
+	.promo-slider__item__img img {
+		height: auto;
+	}
+}
+
+.promo-slider__item__img.for-mob {
+	display: none;
+}
+
+@media (max-width: 639px) {
+	.promo-slider__item__img {
+		position: relative;
+		left: auto;
+		top: auto;
+		width: auto;
+		height: auto;
+		display: none;
+	}
+	.promo-slider__item__img.for-mob {
+		display: block;
+	}
+}
+
 .promo-slider__item__content {
 	position: relative;
 	display: block;
@@ -2712,6 +2746,18 @@ a.prod__inner {
 	text-align: center;
 	-ms-flex-positive: 1;
 	    flex-grow: 1;
+}
+
+@media (max-width: 639px) {
+	.promo-slider__item__content {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
 }
 
 .promo-slider__item__title {
@@ -2772,7 +2818,7 @@ a.prod__inner {
 .promo-slider__item__footer {
 	position: absolute;
 	left: 0;
-	bottom: 9rem;
+	bottom: 8rem;
 	width: 100%;
 }
 
@@ -2814,7 +2860,7 @@ a.prod__inner {
 	display: block;
 	position: absolute;
 	left: 0;
-	bottom: 25%;
+	bottom: 0;
 	height: 3px;
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0.25);
@@ -2869,7 +2915,9 @@ a.prod__inner {
 @media (min-width: 1280px) {
 	.parts {
 		height: 25%;
+		height: 140px;
 		pointer-events: auto;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 	}
 }
 
@@ -2933,8 +2981,6 @@ a.prod__inner {
 	top: 0;
 	left: 0;
 	background-color: rgba(45, 44, 44, 0.35);
-	background-image: url(../img/promo-slider-pattern.png);
-	background-size: 25% 25%;
 	z-index: -1;
 }
 
@@ -3042,6 +3088,7 @@ a.prod__inner {
 
 .parts__item__thumb .p1 .t, .parts__item__thumb .p2 .t {
 	font-size: 3rem;
+	font-size: 2.8rem;
 	line-height: 1;
 	letter-spacing: normal;
 	margin-bottom: 0.3em;
@@ -3092,6 +3139,7 @@ a.prod__inner {
 	display: block;
 	position: absolute;
 	bottom: 20px;
+	bottom: 12px;
 	left: 50%;
 	height: 20px;
 	width: 40px;
@@ -3180,8 +3228,8 @@ a.prod__inner {
 	position: absolute;
 	overflow: hidden;
 	left: 0;
-	bottom: 25%;
-	height: 75%;
+	bottom: 140px;
+	height: calc(100% - 140px);
 	z-index: 1;
 	width: 25%;
 	pointer-events: none;
@@ -3271,6 +3319,12 @@ a.prod__inner {
 	text-decoration: none;
 }
 
+@media (max-height: 800px) {
+	.parts__item__prods > ul > li > a {
+		padding: 15px 30px;
+	}
+}
+
 @media (max-width: 1439px) {
 	.parts__item__prods > ul > li > a {
 		padding: 15px;
@@ -3318,6 +3372,12 @@ a.prod__inner {
 	font-size: 1.8rem;
 	line-height: 2.4rem;
 	color: #000;
+}
+
+@media (max-height: 800px) {
+	.parts__item__prods ul ul {
+		padding-top: 10px;
+	}
 }
 
 @media (max-width: 1439px) {

@@ -1024,6 +1024,9 @@ a.prod__inner
 		+media('<desk-sm')
 			display: block
 
+		+media('<mob-lg')
+			display: none
+
 .promo-slider
 	//width: 600px
 	height: 100%
@@ -1037,18 +1040,30 @@ a.prod__inner
 		width: 100%
 		height: 100%
 
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+
 	// arrows, pagination
 	.slider-arrow
 		//top: calc((100% - 25%) / 2)
-		top: round-float(($hundred-percent - 25) / 2, 2)
+		//top: round-float(($hundred-percent - 25) / 2, 2)
+		top: auto
+		bottom: 140px
 		color: white
 		+size(nth($slider-promo-button-size, 2), nth($slider-promo-button-size, 1))
-		margin-top: -#{round(nth($slider-promo-button-size, 1)/2)}
+		//margin-bottom: -#{round(nth($slider-promo-button-size, 1)/2)}
+		margin-bottom: 60px
 
 		+media('<desk-sm')
 			//top: calc(100% / 2)
+			bottom: auto
 			top: round-float($hundred-percent / 2, 2)
 			+size(nth($slider-promo-button-size--mob, 2), nth($slider-promo-button-size--mob, 1))
+			margin-bottom: 0
 			margin-top: -#{round(nth($slider-promo-button-size--mob, 1)/2)}
 
 		+media('<mob-lg')
@@ -1078,17 +1093,18 @@ a.prod__inner
 
 	.swiper-pagination
 		line-height: 0
-		bottom: 25%
-		margin-bottom: $bottom-space--article
+		//bottom: 25%
+		bottom: 140px
+		margin-bottom: 3rem
 
 		+media('<desk-ml')
 			margin-bottom: 2rem
 
 		+media('<desk-sm')
 			bottom: 0
-			margin-bottom: $bottom-space--article--md
+			//margin-bottom: 2rem
 
-		+media('<desk-sm')
+		//+media('<desk-sm')
 			margin-bottom: $bottom-space--article--mob
 
 	.swiper-pagination-bullet
@@ -1112,14 +1128,17 @@ a.prod__inner
 		+padding-horizontal(nth($slider-promo-button-size--mob, 2) + 50)
 
 	+media('<mob-lg')
-		+padding-horizontal(nth($page-layout-space--mob, 2))
+		//+padding-horizontal(nth($page-layout-space--mob, 2))
+		padding: 0
+		display: block
 
 	&::after
 		position: relative
 		content: ""
 		display: block
 		width: 100%
-		height: 25%
+		//height: 25%
+		height: 140px
 		pointer-events: none
 		z-index: -1
 
@@ -1138,6 +1157,24 @@ a.prod__inner
 		+size(100%)
 		max-width: none
 		+object-fit(cover)
+
+		+media('<mob-lg')
+			height: auto
+
+	&.for-mob
+		display: none
+
+	+media('<mob-lg')
+		&
+			position: relative
+			left: auto
+			top: auto
+			width: auto
+			height: auto
+			display: none
+
+			&.for-mob
+				display: block
 
 .promo-slider__item__content
 	position: relative
@@ -1159,6 +1196,14 @@ a.prod__inner
 
 	//+media('<tab-lg')
 		width: 480px
+
+	+media('<mob-lg')
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		+padding-horizontal(nth($page-layout-space--mob, 2))
 
 .promo-slider__item__title
 	$font-size: 60px
@@ -1215,7 +1260,8 @@ a.prod__inner
 .promo-slider__item__footer
 	position: absolute
 	left: 0
-	bottom: 9rem
+	//bottom: 9rem
+	bottom: 8rem
 	width: 100%
 
 	+media('<desk-ml')
@@ -1244,7 +1290,8 @@ a.prod__inner
 	display: block
 	position: absolute
 	left: 0
-	bottom: 25%
+	//bottom: 25%
+	bottom: 0
 	height: 3px
 	width: 100%
 	background-color: rgba(white, 0.25)
@@ -1290,7 +1337,9 @@ $width: 25%
 .parts
 	+media('>=desk-sm')
 		height: 25%
+		height: 140px
 		pointer-events: auto
+		box-shadow: inset 0 1px 0 rgba(white, 0.15)
 
 .parts__list
 	+media('>=desk-sm')
@@ -1423,6 +1472,7 @@ $width: 25%
 
 		.t
 			font-size: 3rem
+			font-size: 2.8rem
 			line-height: round-float(30/30, 2)
 			//letter-spacing: 0.05em
 			letter-spacing: normal
@@ -1458,6 +1508,7 @@ $width: 25%
 			display: block
 			position: absolute
 			bottom: 20px
+			bottom: 12px
 			left: 50%
 			height: $height
 			width: $width
@@ -1542,8 +1593,10 @@ $width: 25%
 	position: absolute
 	overflow: hidden
 	left: 0
-	bottom: 25%
-	height: 75%
+	//bottom: 25%
+	//height: 75%
+	bottom: 140px
+	height: calc(100% - 140px)
 	z-index: 1
 	width: $width
 	pointer-events: none
@@ -1622,6 +1675,9 @@ $width: 25%
 				color: inherit
 				text-decoration: none
 
+				@media (max-height: 800px)
+					padding: $space--sm $space
+
 				+media('<desk-ml')
 					padding: $space--sm
 
@@ -1656,6 +1712,9 @@ $width: 25%
 		font-size: 1.8rem
 		line-height: 2.4rem
 		color: #000
+
+		@media (max-height: 800px)
+			padding-top: 10px
 
 		+media('<desk-ml')
 			padding-top: 10px
