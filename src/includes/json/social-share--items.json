@@ -3,7 +3,7 @@
 	"label": "Марко - холдинг:",
 	"vk": {
 	  "class": "vk",
-	  "href": "https://vk.com/marko_holding ",
+	  "link": "https://vk.com/marko_holding ",
 	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
 	  "title": "Vkontakte"
 	}
@@ -12,28 +12,40 @@
 	"label": "Марко - обувь:",
 	"vk": {
 	  "class": "vk",
-	  "href": "https://vk.com/markoholding",
+	  "link": "https://vk.com/markoholding",
 	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
 	  "title": "Vkontakte"
 	},
 	"inst": {
 	  "class": "instagram",
-	  "href": "https://www.instagram.com/markoholding/?hl=ru",
+	  "link": "https://www.instagram.com/markoholding/?hl=ru",
 	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
 	  "title": "Instagram"
+	},
+	"ok": {
+	  "class": "instagram",
+	  "link": "https://ok.ru/markoholding",
+	  "svg": "@@include('includes/svg/icon-soc--odnoklassniki.svg')",
+	  "title": "Odnoklassniki"
+	},
+	"fb": {
+	  "class": "instagram",
+	  "link": "https://www.facebook.com/markoholding/",
+	  "svg": "@@include('includes/svg/icon-soc--facebook.svg')",
+	  "title": "Facebook"
 	}
   },
   {
 	"label": "Сан Марко - детская обувь:",
 	"vk": {
 	  "class": "vk",
-	  "href": "https://vk.com/san_marko_kids",
+	  "link": "https://vk.com/san_marko_kids",
 	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
 	  "title": "Vkontakte"
 	},
 	"inst": {
 	  "class": "instagram",
-	  "href": "https://www.instagram.com/sanmarkokids/?hl=ru",
+	  "link": "https://www.instagram.com/sanmarkokids/?hl=ru",
 	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
 	  "title": "Instagram"
 	}
@@ -42,7 +54,7 @@
 	"label": "Браво - обувь:",
 	"inst": {
 	  "class": "instagram",
-	  "href": "https://www.instagram.com/bravotrend_official/?hl=ru",
+	  "link": "https://www.instagram.com/bravotrend_official/?hl=ru",
 	  "svg": "@@include('includes/svg/icon-soc--instagram.svg')",
 	  "title": "Instagram"
 	}
