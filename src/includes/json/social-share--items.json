@@ -23,13 +23,13 @@
 	  "title": "Instagram"
 	},
 	"ok": {
-	  "class": "instagram",
+	  "class": "ok",
 	  "link": "https://ok.ru/markoholding",
 	  "svg": "@@include('includes/svg/icon-soc--odnoklassniki.svg')",
 	  "title": "Odnoklassniki"
 	},
 	"fb": {
-	  "class": "instagram",
+	  "class": "fb",
 	  "link": "https://www.facebook.com/markoholding/",
 	  "svg": "@@include('includes/svg/icon-soc--facebook.svg')",
 	  "title": "Facebook"
