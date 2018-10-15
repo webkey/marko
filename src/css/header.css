@@ -50,6 +50,10 @@ html {
 	margin-bottom: 0;
 }
 
+.header .social-networks {
+	display: none;
+}
+
 .social-networks__list {
 	display: inline-block;
 	vertical-align: top;
