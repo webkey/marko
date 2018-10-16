@@ -263,12 +263,12 @@ $slider-pag-size: 10px 10px // h w
 			margin-right: -1px
 
 	.swiper-slide
-		border: 0 solid $border-color
-		border-left-width: 1px
+		//border: 0 solid $border-color
+		//border-left-width: 1px
 		background-color: $bg-color-alt
 
 		+media('<desk-sm')
-			border-width: 1px
+			//border-width: 1px
 
 	.swiper-pagination
 		margin-top: $bottom-space--article
@@ -1835,36 +1835,47 @@ $width: 25%
 .collection-slider__item
 	position: relative
 	display: block
+	display: flex
+	justify-content: stretch
+	align-items: flex-end
 	text-decoration: none
-	color: white
-	padding: $grid-space
-	+font(1.8rem, round-float(30/18, 2))
-	z-index: 1
+	//color: white
+	//padding: $grid-space
+	padding-top: 205px
+	+font(1.8rem, 3.0rem)
+	//z-index: 1
+	border: 0 solid $border-color
+	border-width: 1px 1px 0 0
+	//box-shadow: inset 0 0 0 1px $border-color
 
-	+media('<desk-sm')
+	&:first-child
+		border-left-width: 1px
+
+	//+media('<desk-sm')
 		padding: $grid-space--md
 
 	+media('<mob-lg')
 		font-size: 1.6rem
 
-	&:first-child
+	//&:first-child
 		border-left-width: 0
 
-	.collection-slider &
+	//.collection-slider &
 		border: none
 
 	a
 		color: inherit
 
-.collection-slider__item__bg
+.collection-slider__item-bg
+	//width: 100%
 	position: absolute
 	left: 0
 	top: 0
 	width: 100%
 	height: 100%
-	z-index: -1
+	//z-index: -1
 
-	&::before
+	//&::before
 		content: ''
 		display: block
 		position: absolute
@@ -1879,21 +1890,36 @@ $width: 25%
 		max-width: none
 		+object-fit(cover)
 
-.collection-slider__item__inner
+.collection-slider__item-inner
 	display: block
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: center
+	position: relative
+	width: 100%
+	min-height: 100%
+	padding: 10px 20px 10px
 	text-decoration: none
-	margin: 0 auto
-	width: 250px
-	max-width: 100%
-
-.collection-slider__item__img
+	color: white
 	text-align: center
-	margin-bottom: $bottom-space--element
+	//background-color: rgba($base-color, 0.2)
+	background-repeat: no-repeat
+	background-position: 0 0
+	background-size: cover
 
-	+media('<desk-sm')
+.collection-slider__item-logo
+	display: inline-block
+	vertical-align: top
+	max-width: calc(100% - 40px)
+	text-align: center
+	//margin-bottom: $bottom-space--element
+	margin-bottom: 10px
+
+	//+media('<desk-sm')
 		margin-bottom: $bottom-space--element--md
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		margin-bottom: $bottom-space--element--mob
 
 	&:last-child
@@ -1902,7 +1928,12 @@ $width: 25%
 	img
 		margin: 0 auto
 
-.collection-slider__item__title
+.collection-slider__item-content
+	margin: 0 auto
+	max-width: 350px
+
+.collection-slider__item-title
+	display: none
 	//+font-black
 	+font-bold
 	+font(2.4rem, round-float(30/24, 2))

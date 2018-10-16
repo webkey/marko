@@ -1,26 +1,30 @@
 [
   {
 	"src": "img/img-collection-01.png",
-	"bg": "img/img-part-01.jpg",
-	"title": "MarkoSport",
-	"text": "Коллекция <a href=\"#\">мужской</a> и <a href=\"#\">женской</a> обуви. Это обувь для тех, у кого спорт живет в душе. Покупатели коллекции независимы и уверенны в себе."
+	"bg": "img/img-collection-bg-01.jpg",
+	"title": "Spotter",
+	"text": "<a href=\"#!\">Мужская</a> и <a href=\"#!\">женская</a> коллекции. Обувь для тех, у кого спорт живет в душе.",
+	"mask": "img/mask-collection-01.png"
   },
   {
 	"src": "img/img-collection-02.png",
-	"bg": "img/img-part-02.jpg",
-	"title": "MarkoBoots",
-	"text": "Коллекция мужской, женской и детской обуви Обладает высокими теплозащитными свойствами и надежной защитой от влаги и загрязнений."
+	"bg": "img/img-collection-bg-02.jpg",
+	"title": "Marko Boots",
+	"text": "<a href=\"#!\">Мужская</a>, <a href=\"#!\">женская</a> и <a href=\"#!\">детская</a> коллекции. Обувь для экстремальных погодных условий.",
+	"mask": "img/mask-collection-02.png"
   },
   {
 	"src": "img/img-collection-03.png",
-	"bg": "img/img-part-03.jpg",
-	"title": "MarkoOptima",
-	"text": "Коллекция мужской и женской обуви из искусственных материалов. Оптимальное соотношение цены и высокого качества."
+	"bg": "img/img-collection-bg-03.jpg",
+	"title": "Marko City Style",
+	"text": "<a href=\"#!\">Мужская</a> и <a href=\"#!\">женская</a> коллекции из технологичных синтетических материалов.",
+	"mask": "img/mask-collection-03.png"
   },
   {
 	"src": "img/img-collection-04.png",
-	"bg": "img/img-part-04.jpg",
-	"title": "HomeMarko",
-	"text": "Коллекция мужской и женской домашней обуви, созданная дарить уют, тепло и комфорт."
+	"bg": "img/img-collection-bg-04.jpg",
+	"title": "Home Marko",
+	"text": "<a href=\"#!\">Мужская</a> и <a href=\"#!\">женская</a> коллекции домашней обуви. Создана дарить уют, тепло и комфорт.",
+	"mask": "img/mask-collection-04.png"
   }
 ]

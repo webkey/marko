@@ -1,14 +1,13 @@
 <div class="collection-slider__item swiper-slide">
-	<div class="collection-slider__item__bg">
-		<img src="@@bg" alt="" />
+	<div class="collection-slider__item-bg">
+		<img src="@@bg" alt="image description" />
 	</div>
-	<div class="collection-slider__item__inner">
-		<div class="collection-slider__item__img">
+	<div class="collection-slider__item-inner" style="background-image: url(@@mask);">
+		<a href="#!" class="collection-slider__item-logo">
 			<img src="@@src" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
-		</div>
-		<div class="collection-slider__item__content">
-			<div class="collection-slider__item__title">@@title</div>
-			<div class="collection-slider__item__text">@@text</div>
+		</a>
+		<div class="collection-slider__item-content">
+			<div class="collection-slider__item-text">@@text</div>
 		</div>
 	</div>
 </div>
