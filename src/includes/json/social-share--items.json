@@ -6,6 +6,12 @@
 	  "link": "https://vk.com/marko_holding ",
 	  "svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
 	  "title": "Vkontakte"
+	},
+	"youtube": {
+	  "class": "youtube",
+	  "link": "https://www.youtube.com/channel/UCR90-TJR5cfT4kem7OWTGxg",
+	  "svg": "@@include('includes/svg/icon-soc--youtube.svg')",
+	  "title": "Youtube"
 	}
   },
   {
